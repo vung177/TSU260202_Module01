@@ -4,3 +4,16 @@
   box-sizing: border-box;
   line-height: 1.5;
 }
+
+.btn {
+  padding: 10px;
+  margin: 20px;
+  font-size: 20px;
+  border: none;
+}
+
+.btn:active {
+  background-color: red;
+  color: white;
+  border: none;
+}
