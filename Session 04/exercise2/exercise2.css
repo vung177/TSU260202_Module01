@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.container {
+  text-align: center;
+  width: 80%;
+  background-color: grey;
+}
+
+.title {
+  color: white;
+  padding: 20px;
+  width: 100%;
+  background-color: black;
+}
+
+a {
+  color: lightblue;
+  padding: 20px;
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 10px;
+}

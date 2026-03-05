@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: none;
+  line-height: 1.5;
+}
+
+.container {
+  width: 400px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.form-body {
+  padding: 5px 20px;
+}
+
+.btn {
+  width: 100%;
+  background-color: lightgreen;
+}

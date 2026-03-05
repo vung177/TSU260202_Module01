@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
+      }
+      table {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        <h2 style="margin: 0; font-style: italic">My Store</h2>
+      </caption>
+      <thead>
+        <tr>
+          <th>Item Photo</th>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img
+              src="https://laboiteagrains.com/cdn/shop/files/shutterstock_1840946851.jpg?v=1712688692&width=1920"
+              alt="Oranges"
+              width="185px"
+              height="115px"
+              style="border-radius: 15px"
+            />
+          </td>
+          <td>Oranges</td>
+          <td>$1 ea.</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2021/01/30152155/shutterstock_518328943-1.jpg"
+              alt="Bananas"
+              width="185px"
+              height="115px"
+              style="border-radius: 15px"
+            />
+          </td>
+          <td>Bananas</td>
+          <td>$0.75/lb</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="https://healthyfamilyproject.com/wp-content/uploads/2020/05/Pomegranate-background.jpg"
+              alt="Pomegranates"
+              width="185px"
+              height="115px"
+              style="border-radius: 15px"
+            />
+          </td>
+          <td>Pomegranates</td>
+          <td>3 for $5</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="https://cdn11.bigcommerce.com/s-6sn2vgky9c/images/stencil/1280x1280/products/438/389/12-flavor-gummi-bears_7__19903.1698691446.jpg?c=2"
+              alt="Gummy Bears"
+              width="185px"
+              height="115px"
+              style="border-radius: 15px"
+            />
+          </td>
+          <td>Gummy Bears</td>
+          <td>$6 per bag</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/5b5aa0922487fd1ce32c117a/1547765015801-FSR1DVSKCZU3PAYWIRQG/broccoli.jpg"
+              alt="Broccoli"
+              width="185px"
+              height="115px"
+              style="border-radius: 15px"
+            />
+          </td>
+          <td>Broccoli</td>
+          <td>$3 a head</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Booking Form</h2>
+    <label for="name"
+      >Name: <input type="text" id="name" placeholder="Please type your name" />
+    </label>
+    <br />
+    <br />
+    <label for="email"
+      >Email:
+      <input type="email" id="email" placeholder="Please type your email"
+    /></label>
+    <br />
+    <br />
+    <label for="Phone"
+      >Phone:
+      <input
+        type="phone"
+        id="phone"
+        placeholder="Please type your phone number"
+      />
+    </label>
+    <br />
+    <br />
+    <label for="Date">Date: <input type="date" input="date" /></label>
+    <br />
+    <br />
+    <label for="time">Time: <input type="time" id="time" /></label>
+    <br />
+    <br />
+    <label for="guest"
+      >Number of Guests: <input type="number" id="guest"
+    /></label>
+    <br />
+    <br />
+    <button>Submit</button>
+
+    <h2>Car Purchase Form</h2>
+    <label for="name"
+      >Name: <input type="name" id="name" placeholder="Please type your name"
+    /></label>
+    <br />
+    <br />
+    <label for="email"
+      >Email:
+      <input type="email" id="email" placeholder="Please type your email" />
+    </label>
+    <br />
+    <br />
+    <label for="phone" class="phone"
+      >Phone:
+      <input
+        type="text"
+        class="phone"
+        id="phone"
+        placeholder="Please type your phone number"
+    /></label>
+    <br />
+    <br />
+    <label for="cartype" class="cartype"
+      >Choose a Car:
+      <select name="cars" id="cartype" class="cartype">
+        <option value="volvo">Volvo</option>
+        <option value="honda">Honda</option>
+        <option value="audi">Audi</option>
+        <option value="BMW">BMW</option>
+      </select></label
+    >
+    <br />
+    <br />
+    <label for="carcolor" class="carcolor"
+      >Choose a Color:
+      <select name="carcolor" id="carcolor">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="black">Black</option>
+      </select>
+    </label>
+    <br />
+    <br />
+    <label for="quantity" class="quantity"
+      >Quantity: <input type="number" class="number" id="number"
+    /></label>
+    <br />
+    <br />
+    <label for="delivery" class="deliverydate"
+      >Delivery Date: <input type="date" id="delivery" name="deliverydate"
+    /></label>
+    <br />
+    <br />
+    <button class="submit">Submit</button>
+  </body>
+</html>
