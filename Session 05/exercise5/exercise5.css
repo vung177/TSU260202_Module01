@@ -12,4 +12,17 @@
   color: white;
   font-weight: bold;
   font-size: 30px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.btn0:hover {
+  opacity: 1;
+}
+
+.btn1:hover {
+  background-color: aqua;
+}
+
+.btn2:hover {
 }
