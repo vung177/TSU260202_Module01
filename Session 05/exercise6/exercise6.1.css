@@ -4,3 +4,54 @@
   box-sizing: border-box;
   line-height: 1.5;
 }
+
+img {
+  width: 400px;
+  height: auto;
+  display: block; /*Dùng để xóa khoảng trắng dưới bức ảnh*/
+  transition: 0.4s ease;
+}
+
+.container {
+  width: 400px;
+  height: auto;
+
+  margin: 15px auto; /*Chỉnh một container ra giữa */
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.container:hover .image {
+  transform: scale(1.1);
+}
+
+.viewer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  opacity: 0.75;
+  padding: 8px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.viewer-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  background-color: orange;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+h1 {
+  text-align: center;
+}
