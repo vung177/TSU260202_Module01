@@ -93,15 +93,13 @@
   opacity: 0.8;
 }
 
-.char1 {
+.char-list {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   gap: 30px;
   width: 30%;
-  height: 200px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 10px;
@@ -109,20 +107,12 @@
   z-index: 2;
 }
 
+.char1 {
+  left: 0px;
+}
+
 .char2 {
-  position: absolute;
-  bottom: 10px;
   right: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 30%;
-  height: 150px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  text-align: center;
-  z-index: 2;
 }
 
 .char1 span,
