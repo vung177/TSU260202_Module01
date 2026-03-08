@@ -15,35 +15,31 @@
 
 .assemble {
   position: absolute;
-  top: 5px;
+  top: 35px;
   left: -20px;
-  width: 400px;
   z-index: 2;
+  opacity: 0.2;
 }
 
 .assemble .img2 {
-  width: 100%;
+  /* width: 100%; */
   display: block;
   border-radius: 20px;
 }
 
 .img1 {
+  position: relative;
   width: 600px;
   height: auto;
   display: block;
   z-index: 0;
-  /* Điều chỉnh thứ tự của hình ảnh, số càng lớn càng nằm trên cùng */
+  /* Điều chỉnh thứ tự của hình ảnh, số càng lớn càng nằm trên cùng, yêu cầu phải có position thì code này mới có tác dụng */
   filter: brightness(0.6);
 }
 
 .img2 {
-  position: absolute;
-  top: 30px;
-  left: 0px;
-  width: 300px;
+  width: 400px;
   height: 600px;
-  z-index: 2;
-  opacity: 0.2;
 }
 
 .img3 {
@@ -85,15 +81,16 @@
 
 .tag {
   position: absolute;
-  top: 75px;
-  left: 100px;
+  top: 80px;
+  left: 80px;
   background: red;
   color: white;
   width: auto;
   padding: 5px 10px;
   font-weight: bold;
-  z-index: 4;
+  z-index: 2;
   border-radius: 10px;
+  opacity: 0.8;
 }
 
 .char1 {
@@ -140,6 +137,7 @@
   border-radius: 10px;
 }
 
+/* Phần này cần xem lại 1 lần nữa, phần này khó */
 .char1 span:not(:last-child)::after,
 .char2 span:not(:last-child)::after {
   content: '';
