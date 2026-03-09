@@ -18,13 +18,12 @@
   top: 35px;
   left: -20px;
   z-index: 2;
-  opacity: 0.2;
 }
 
 .assemble .img2 {
-  /* width: 100%; */
   display: block;
   border-radius: 20px;
+  opacity: 0.2;
 }
 
 .img1 {
@@ -81,8 +80,8 @@
 
 .tag {
   position: absolute;
-  top: 80px;
-  left: 80px;
+  top: 50px;
+  left: 100px;
   background: red;
   color: white;
   width: auto;
