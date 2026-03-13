@@ -21,14 +21,15 @@
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  height: 280px;
+  height: 400px;
   gap: 15px;
 }
 
 .body1 {
-  width: 300px;
-  height: 250px;
-  margin-left: 30px;
+  width: 30%;
+  height: 100%;
+  padding: 10px;
+  margin-left: 0px;
   border: 1px solid grey;
 }
 
@@ -41,14 +42,22 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 250px;
+  width: 70%;
+  height: 100%;
   gap: 30px;
 }
 
 .body2-1,
 .body2-2 {
-  padding: 20px;
+  width: 100%;
   border-bottom: 1px solid grey;
+}
+
+.body2 img {
+  display: block;
+  width: 170px;
+  height: 100px;
+  padding: 5px 0px;
 }
 
 .footer {
