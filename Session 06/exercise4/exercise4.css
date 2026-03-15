@@ -21,7 +21,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  min-height: 400px;
+  height: 400px;
   gap: 15px;
 }
 
