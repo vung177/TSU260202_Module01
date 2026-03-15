@@ -19,7 +19,8 @@
 .body {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* Dòng code 23 có thể bỏ vì mặc định của flex là stretch */
+  align-items: stretch;
   padding: 10px;
   height: 400px;
   gap: 15px;
@@ -27,7 +28,7 @@
 
 .body1 {
   width: 30%;
-  height: 100%;
+  /* height: 100%; */
   padding: 10px;
   margin-left: 0px;
   border: 1px solid grey;
@@ -43,7 +44,7 @@
   justify-content: space-between;
   align-items: center;
   width: 70%;
-  height: 100%;
+  /* height: 100%; */
   gap: 30px;
 }
 
