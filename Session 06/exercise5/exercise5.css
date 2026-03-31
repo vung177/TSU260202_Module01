@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.head {
+  background-color: rgb(87, 179, 87);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.head ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.content {
+  background-color: rgb(237, 236, 236);
+  text-align: center;
+  padding: 20px;
+}
+
+.btn {
+  background-color: rgb(60, 101, 0);
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.details {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.art {
+  background-color: lightgray;
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+
+  /* Điều chỉnh độ rộng của phần tử có độ rộng theo flex */
+  flex: 1;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
