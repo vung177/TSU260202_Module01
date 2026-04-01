@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  background-color: lightcyan;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid lightsalmon;
+}
+
+.block1,
+.block2 {
+  width: 50%;
+}
+
+.block3 {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .block1,
+  .block2 {
+    width: 100%;
+  }
+}
