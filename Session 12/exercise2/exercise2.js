@@ -111,3 +111,18 @@ if (isNaN(numberAA) || isNaN(numberBB) || isNaN(numberCC)) {
 }
 
 // Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không (điều kiện: một số nguyên là tuổi của một người khi nhỏ hơn 120 và lớn hơn 0)
+
+let inputAge = parseFloat(prompt(' Hãy nhập tuổi của bạn: '));
+if (isNaN(inputAge)) {
+  console.log('Hãy nhập số tuổi hợp lệ');
+} else if (!Number.isInteger(inputAge)) {
+  console.log('Hãy nhập lại số tuổi hợp lệ');
+} else if (inputAge > 0 && inputAge < 120) {
+  console.log(
+    `Số tuổi bạn nhập (${inputAge}) là số tuổi hợp lệ của một người.`,
+  );
+} else {
+  console.log(
+    `Số tuổi bạn nhập (${inputAge}) không phải là số tuổi hợp lệ của một người.`,
+  );
+}
