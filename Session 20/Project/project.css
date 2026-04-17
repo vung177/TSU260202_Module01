@@ -14,8 +14,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 160px;
-  gap: 32px;
+  padding: 16px 5%;
+  gap: 20px;
   height: 88px;
   background: #ffffff;
   border: 1px solid #000000;
@@ -33,7 +33,8 @@ body {
   background-color: #f5f5f5;
   border-radius: 8px;
   padding: 16px;
-  width: 478px;
+  width: 100%;
+  max-width: 400px;
   height: 56px;
 }
 
@@ -53,7 +54,8 @@ body {
 .navigation {
   display: flex;
   align-items: center;
-  gap: 52px;
+  gap: 24px;
+  flex-shrink: 0;
 }
 
 .navigation a {
@@ -94,10 +96,12 @@ body {
 /* ============= Subnav ============= */
 .subnav-nav {
   display: flex;
-  height: 48px;
+  flex-wrap: nowrap;
+  height: auto;
+  min-height: 48px;
   justify-content: center;
   align-items: center;
-  padding: 8px 160px;
+  padding: 8px 5%;
   background: #2b2b2f;
 }
 
@@ -105,11 +109,12 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 32px;
+  padding: 0 15px;
   border-right: 1px solid #555555;
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
 .subnav-nav div:last-child {
@@ -144,12 +149,28 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex: 1;
+  flex: 1.5;
   padding-right: 50px;
 }
 
+.title {
+  white-space: nowrap;
+  letter-spacing: -5px;
+}
+
+.banner-image {
+  flex: 1;
+}
+
+.banner-contents .title,
+.banner-contents .title span {
+  font-size: clamp(40px, 5vw, 96px);
+  line-height: 1.1;
+}
+
 .banner-contents .subtitle {
-  width: 714px;
+  width: 100%;
+  max-width: 100%;
   height: 32px;
   opacity: 0.4;
   font-family: 'Inter', sans-serif;
@@ -165,12 +186,14 @@ body {
   font-size: 96px;
   font-family: 'Inter', sans-serif;
   color: #ffffff;
-  line-height: 72px;
+  line-height: 1.1;
   margin-top: 24px;
   margin-bottom: 20px;
+  white-space: nowrap;
 }
 
 .banner-contents .title span {
+  display: inline;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 96px;
@@ -225,7 +248,7 @@ body {
 .category {
   display: flex;
   flex-direction: column;
-  padding: 80px 160px;
+  padding: 60px 160px;
   background-color: #ffffff;
   font-family: 'Inter', sans-serif;
   gap: 32px;
@@ -334,7 +357,48 @@ body {
 }
 
 /* ======= Products ======= */
+.products {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 160px;
+}
 
+.products-tags {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 10px;
+}
+
+.btn-new {
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: 10px 0;
+  border-bottom: 2px solid transparent;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.products-tags:not(:hover) .btn-new.active {
+  opacity: 1;
+  border-bottom: 2px solid #000;
+}
+
+.products-tags:hover .btn-new {
+  opacity: 0.3;
+  border-bottom: 2px solid transparent;
+}
+
+.products-tags .btn-new:hover {
+  opacity: 1;
+  border-bottom: 2px solid #000;
+}
+
+.products-main {
+  display: grid;
+}
 /* ======= Discount Products ======= */
 
 /* ======= Banner 2 ======= */
