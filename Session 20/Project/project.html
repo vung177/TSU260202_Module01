@@ -11,6 +11,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- ========= Header ========= -->
@@ -118,7 +124,7 @@
           </svg>
         </section>
       </section>
-      <section class="subnav">
+      <section class="subnav-container">
         <nav class="subnav-nav">
           <div class="phones">
             <svg
@@ -294,7 +300,7 @@
           <p class="short-p">
             Được tạo ra để thay đổi mọi thứ để tốt hơn. Cho tất cả mọi người
           </p>
-          <button class="btn">Mua ngay</button>
+          <button class="btn-buy">Mua ngay</button>
         </section>
         <div class="banner-image">
           <img
@@ -634,12 +640,17 @@
               />
             </svg>
           </div>
+          <img
+            class="cards-img"
+            src="/Session 20/Photos/iphone 14 pro.png"
+            alt="iPhone 14 Pro Purple"
+          />
           <div class="cards-info">
             <h4 class="cards-name">
               Apple iPhone 14 Pro Max 128 GB Deep Purple
             </h4>
             <p class="cards-price">$900</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -660,10 +671,15 @@
               />
             </svg>
           </div>
+          <img
+            class="cards-img"
+            src="/Session 20/Photos/BBC.png"
+            alt="Cameras"
+          />
           <div class="cards-info">
             <h4 class="cards-name">Blackmagic Pocket Cinema Camera 6k</h4>
             <p class="cards-price">$2535</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -684,12 +700,17 @@
               />
             </svg>
           </div>
+          <img
+            src="/Session 20/Photos/Apple Watch 41mm.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">
               Apple Watch Series 9 GPS 41mm Starlight Aluminium
             </h4>
             <p class="cards-price">$399</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -710,10 +731,15 @@
               />
             </svg>
           </div>
+          <img
+            src="/Session 20/Photos/AirPods Max Silver.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">AirPods Max Silver</h4>
             <p class="cards-price">$549</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -734,10 +760,15 @@
               />
             </svg>
           </div>
+          <img
+            src="/Session 20/Photos/Galaxy Watch 6.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">Samsung Galaxy Watch6 Classic 47mm Black</h4>
             <p class="cards-price">$369</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -758,12 +789,17 @@
               />
             </svg>
           </div>
+          <img
+            src="/Session 20/Photos/Galaxy Z Fold 5.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">
               Galaxy Z Fold5 Unlocked | 256 GB | Phantom Black
             </h4>
             <p class="cards-price">$1799</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -784,10 +820,15 @@
               />
             </svg>
           </div>
+          <img
+            src="/Session 20/Photos/Galaxy Buds FE.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">Galaxy Buds FE Graphie</h4>
             <p class="cards-price">$99.99</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
         <article class="products-card">
@@ -808,121 +849,236 @@
               />
             </svg>
           </div>
+          <img
+            src="/session 20/Photos/iPad Air 2021.png"
+            alt=""
+            class="cards-img"
+          />
           <div class="cards-info">
             <h4 class="cards-name">
-              APple iPad 9 10.2" 64GB Wi-Fi Silver (MK2L3) 2021
+              Apple iPad 9 10.2" 64GB Wi-Fi Silver (MK2L3) 2021
             </h4>
             <p class="cards-price">$398</p>
-            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-cards">Mua ngay</button>
           </div>
         </article>
       </section>
 
       <!-- ========= Products Discount ========= -->
       <section class="products-discount">
-        <h3 class="products-discount-title">Sản phẩm giảm giá</h3>
-        <article class="products-card">
-          <div class="cards-top">
-            <svg
-              class="cards-icon"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
-                stroke="#919191"
-                stroke-opacity="0.77"
-                stroke-width="1.4"
-              />
-            </svg>
-          </div>
-          <div class="cards-info">
-            <h4 class="cards-name">Apple iPhone 14 Pro 512GB Gold (MQ233)</h4>
-            <p class="cards-price">$1437</p>
-            <button class="btn-buy">Mua ngay</button>
-          </div>
-        </article>
-        <article class="products-card">
-          <div class="cards-top">
-            <svg
-              class="cards-icon"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
-                stroke="#919191"
-                stroke-opacity="0.77"
-                stroke-width="1.4"
-              />
-            </svg>
-          </div>
-          <div class="cards-info">
-            <h4 class="cards-name">AirPods Max Silver</h4>
-            <p class="cards-price">$549</p>
-            <button class="btn-buy">Mua ngay</button>
-          </div>
-        </article>
-        <article class="products-card">
-          <div class="cards-top">
-            <svg
-              class="cards-icon"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
-                stroke="#919191"
-                stroke-opacity="0.77"
-                stroke-width="1.4"
-              />
-            </svg>
-          </div>
-          <div class="cards-info">
-            <h4 class="cards-name">
-              Apple Watch Series 9 GPS 41mm Starlight Aluminium
-            </h4>
-            <p class="cards-price">$399</p>
-            <button class="btn-buy">Mua ngay</button>
-          </div>
-        </article>
-        <article class="products-card">
-          <div class="cards-top">
-            <svg
-              class="cards-icon"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
-                stroke="#919191"
-                stroke-opacity="0.77"
-                stroke-width="1.4"
-              />
-            </svg>
-          </div>
-          <div class="cards-info">
-            <h4 class="cards-name">Apple iPhone 14 Pro 1TB Gold (MQ2V3)</h4>
-            <p class="cards-price">$1499</p>
-            <button class="btn-buy">Mua ngay</button>
-          </div>
+        <h3 class="category-title">Sản phẩm giảm giá</h3>
+        <section class="products-discount-items">
+          <article class="products-card">
+            <div class="cards-top">
+              <svg
+                class="cards-icon"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
+                  stroke="#919191"
+                  stroke-opacity="0.77"
+                  stroke-width="1.4"
+                />
+              </svg>
+            </div>
+            <img
+              src="/Session 20/Photos/Iphone 14 Pro Gold.png"
+              alt=""
+              class="cards-img"
+            />
+            <div class="cards-info">
+              <h4 class="cards-name">Apple iPhone 14 Pro 512GB Gold (MQ233)</h4>
+              <p class="cards-price">$1437</p>
+              <button class="btn-cards">Mua ngay</button>
+            </div>
+          </article>
+          <article class="products-card">
+            <div class="cards-top">
+              <svg
+                class="cards-icon"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
+                  stroke="#919191"
+                  stroke-opacity="0.77"
+                  stroke-width="1.4"
+                />
+              </svg>
+            </div>
+            <img
+              src="/Session 20/Photos/AirPods Max Silver.png"
+              alt=""
+              class="cards-img"
+            />
+            <div class="cards-info">
+              <h4 class="cards-name">AirPods Max Silver</h4>
+              <p class="cards-price">$549</p>
+              <button class="btn-cards">Mua ngay</button>
+            </div>
+          </article>
+          <article class="products-card">
+            <div class="cards-top">
+              <svg
+                class="cards-icon"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
+                  stroke="#919191"
+                  stroke-opacity="0.77"
+                  stroke-width="1.4"
+                />
+              </svg>
+            </div>
+            <img
+              src="/Session 20/Photos/Apple Watch.png"
+              alt=""
+              class="cards-img"
+            />
+            <div class="cards-info">
+              <h4 class="cards-name">
+                Apple Watch Series 9 GPS 41mm Starlight Aluminium
+              </h4>
+              <p class="cards-price">$399</p>
+              <button class="btn-cards">Mua ngay</button>
+            </div>
+          </article>
+          <article class="products-card">
+            <div class="cards-top">
+              <svg
+                class="cards-icon"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.93439 18.5443L15.3155 27.3568C15.6399 27.6616 15.8021 27.814 16.0002 27.814C16.1982 27.814 16.3604 27.6616 16.6848 27.3568L26.0659 18.5443C28.6742 16.0941 28.9909 12.0621 26.7972 9.23474L26.3848 8.7031C23.7605 5.32075 18.493 5.888 16.6491 9.75151C16.3886 10.2973 15.6117 10.2973 15.3513 9.75151C13.5073 5.888 8.23979 5.32075 5.61556 8.7031L5.20308 9.23474C3.00943 12.0621 3.32616 16.0941 5.93439 18.5443Z"
+                  stroke="#919191"
+                  stroke-opacity="0.77"
+                  stroke-width="1.4"
+                />
+              </svg>
+            </div>
+            <img
+              src="/Session 20/Photos/iPhone 14 Pro 1TB.png"
+              alt=""
+              class="cards-img"
+            />
+            <div class="cards-info">
+              <h4 class="cards-name">Apple iPhone 14 Pro 1TB Gold (MQ2V3)</h4>
+              <p class="cards-price">$1499</p>
+              <button class="btn-cards">Mua ngay</button>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section class="banner2">
+        <img
+          src="/Session 20/Photos/MacBook Gold.png"
+          alt=""
+          class="banner2-img"
+        />
+        <img src="/Session 20/Photos/iPhone 14 Pro Purple.png" alt="" />
+        <img src="/Session 20/Photos/iPad Air 2024.png" alt="" />
+        <img src="/Session 20/Photos/Apple Watch SE.png" alt="" />
+        <img src="/Session 20/Photos/iPad 2025.png" alt="" />
+        <article class="banner2-contents">
+          <h2 class="banner2-title">Ưu đãi mùa hè</h2>
+          <p class="banner2-body">Nhanh tay săn đón các sản phẩm chất lượng</p>
+          <button class="btn-cards">Mua ngay</button>
         </article>
       </section>
-      <section class="banner2"></section>
-      <section class="footer"></section>
+      <section class="footer">
+        <article class="footer-info">
+          <div class="footer-contents">
+            <svg
+              class="footer-logo"
+              width="96"
+              height="29"
+              viewBox="0 0 96 29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.42812 9.39935L8.91177 7.39026L6.96725 4.02409H25.2549L16.114 19.862L14.1695 16.49L10.6859 18.505L16.114 27.9044L32.2221 0H0L5.42812 9.39935Z"
+                fill="white"
+              />
+              <path
+                d="M44.736 21.488C43.68 22.76 42.072 23.408 40.152 23.408C36.36 23.408 34.056 20.96 34.056 17.408C34.056 13.88 36.384 11.432 40.152 11.432C41.976 11.432 43.728 12.128 44.784 13.4L42.888 15.392C42.12 14.552 41.28 14.216 40.152 14.216C38.544 14.216 37.152 15.512 37.152 17.408C37.152 19.472 38.448 20.624 40.152 20.624C41.16 20.624 42.312 20.24 42.936 19.448L44.736 21.488Z"
+                fill="white"
+              />
+              <path
+                d="M59.3568 11.72L52.3728 28.28H48.9408L51.1728 23.12L46.3488 11.72H49.7568L52.1568 17.816L52.8528 20L53.5248 17.816L55.9249 11.72H59.3568Z"
+                fill="white"
+              />
+              <path
+                d="M67.2028 14.264C65.4748 14.264 64.2268 15.584 64.2268 17.384C64.2268 19.16 65.4748 20.48 67.2028 20.48C68.8828 20.48 70.0348 19.232 70.0348 17.384C70.0348 15.512 68.8828 14.264 67.2028 14.264ZM61.2268 23V5.408H64.2748V11.672L64.2268 12.488C64.7308 11.816 66.2668 11.432 67.3228 11.432C71.0908 11.432 73.2028 14.192 73.2028 17.384C73.2028 20.984 71.0428 23.312 67.3228 23.312C66.4108 23.312 64.9468 22.88 64.3468 22.16L64.3708 22.808V23H61.2268Z"
+                fill="white"
+              />
+              <path
+                d="M85.8911 21.56C85.0031 22.712 82.9631 23.408 81.2111 23.408C77.3951 23.408 75.2591 20.792 75.2591 17.408C75.2591 13.952 77.3711 11.432 81.0911 11.432C84.7871 11.432 86.8991 13.952 86.8991 17.408C86.8991 17.792 86.8991 18.032 86.8751 18.368H78.3791C78.5471 19.784 79.6031 20.672 81.2111 20.672C82.3631 20.672 83.4431 20.288 84.1151 19.544L85.8911 21.56ZM78.4271 16.304H83.7071C83.5631 15.032 82.5071 14.168 81.0911 14.168C79.6751 14.168 78.5471 15.032 78.4271 16.304Z"
+                fill="white"
+              />
+              <path
+                d="M95.3049 14.552C94.6809 14.336 94.1289 14.264 93.4809 14.264C93.0489 14.264 92.6889 14.288 92.3529 14.432V23H89.2569V12.224C90.1929 11.744 91.8009 11.408 93.3609 11.408C94.0329 11.408 95.2329 11.48 95.9529 11.744L95.3049 14.552Z"
+                fill="white"
+              />
+            </svg>
+
+            <p>
+              Chúng tôi cung cấp các sản phẩm công nghệ, giúp khách hàng thỏa
+              sức trải nghiệm các dịch vụ, tiện ích nhanh chóng và hiệu quả
+            </p>
+          </div>
+          <section class="footer-nav">
+            <article class="footer-service">
+              <h3>Dịch vụ</h3>
+              <nav>
+                <a href="">Chương trình khuyến mãi</a>
+                <a href="">Gift cards</a>
+                <a href="">Tín dụng và thNh toán</a>
+                <a href="">Dịch vụ hợp đồng</a>
+                <a href="">Ví tiền điện tử</a>
+                <a href="">Thanh toán</a>
+              </nav>
+            </article>
+            <article class="footer-support">
+              <h3>Hỗ trợ người mua</h3>
+              <nav>
+                <a href="">Tìm kiếm đơn đặt hàng</a>
+                <a href="">Điều khoản giao hàng</a>
+                <a href="">Trao đổi và trả hàng</a>
+                <a href="">Chính sách bảo hành</a>
+                <a href="">Câu hỏi thường gặp</a>
+                <a href="">Chính sách và điều khoản</a>
+              </nav>
+            </article>
+          </section>
+        </article>
+        <div class="footer-icons"></div>
+      </section>
     </section>
     <script src="./project.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
