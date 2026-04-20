@@ -472,6 +472,10 @@ body {
   opacity: 0.7;
 }
 
+.actived {
+  fill: red;
+}
+
 /* ======= Discount Products ======= */
 .products-discount {
   display: flex;
@@ -487,11 +491,116 @@ body {
 }
 
 /* ======= Banner 2 ======= */
+.banner2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(55, 55, 55);
+  width: 100%;
+  height: 448px;
+  overflow: hidden;
+}
+
+.banner2-contents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.banner2-title {
+  font-size: 72px;
+  line-height: 1.2;
+  letter-spacing: -1%;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.banner2-body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  color: #787878;
+}
+
+.btn-banner2 {
+  width: 187px;
+  height: 56px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  padding: 16px 56px;
+  margin-top: 30px;
+  background-color: black;
+  color: #ffffff;
+}
+
+.banner2-left {
+  position: absolute;
+  left: -10%;
+  top: 5%;
+}
+
+.banner2-right {
+  position: absolute;
+  right: 5%;
+  bottom: -2%;
+}
+
+.macbook {
+  height: 50%;
+  width: 20%;
+  left: 15%;
+  top: -30%;
+}
+
+.newipad {
+  height: 38%;
+  width: 100%px;
+  left: 3%;
+  top: 1%;
+}
+
+.ipadair {
+  height: 65%;
+  width: 30%;
+  left: -5%;
+  top: 34%;
+  transform: scaleX(-1);
+}
+
+.iphone14 {
+  transform: rotate(-30deg);
+  height: 100%;
+  width: 10%;
+  right: -5%;
+}
+
+.applese {
+  top: 60%;
+  right: -1%;
+  height: 70%;
+  width: 25%;
+}
+
+/* Chặn việc click vào hỉnh ảnh hay hover trúng hình ảnh */
+.banner2-left,
+.banner2-right {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
 
 /* ======= Footer ======= */
 .footer {
+  height: 464px;
   padding: 104px 160px;
-  background-color: #000;
+  background-color: #2e2e2e;
 }
 
 .footer p {
