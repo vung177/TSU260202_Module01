@@ -588,7 +588,7 @@ body {
   width: 25%;
 }
 
-/* Chặn việc click vào hỉnh ảnh hay hover trúng hình ảnh */
+/* Hình ảnh: không thể hiển thị hay bị click nhầm bởi người dùng*/
 .banner2-left,
 .banner2-right {
   position: absolute;
