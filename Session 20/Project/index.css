@@ -561,7 +561,7 @@ body {
 
 .newipad {
   height: 38%;
-  width: 100%px;
+  width: 15%;
   left: 3%;
   top: 1%;
 }
@@ -598,11 +598,60 @@ body {
 
 /* ======= Footer ======= */
 .footer {
-  height: 464px;
-  padding: 104px 160px;
   background-color: #2e2e2e;
+  padding: 100px 160px;
+  color: #ffffff;
 }
 
-.footer p {
+.footer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.footer-contents {
+  flex: 1;
+}
+.footer-p {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.footer-service h3,
+.footer-support h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 2;
+}
+
+.footer-nav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #cfcfcf;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
   color: #ffffff;
+}
+
+.footer-icons {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
 }
