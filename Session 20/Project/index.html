@@ -293,22 +293,109 @@
           </div>
         </nav>
       </section>
-      <section class="banner">
-        <section class="banner-contents">
-          <h3 class="subtitle">Đột phá công nghệ</h3>
-          <h2 class="title">iPhone 14 <span>Pro</span></h2>
-          <p class="short-p">
-            Được tạo ra để thay đổi mọi thứ để tốt hơn. Cho tất cả mọi người
-          </p>
-          <button class="btn-buy">Mua ngay</button>
-        </section>
-        <div class="banner-image">
-          <img
-            src="/Session 20/Photos/Iphone Image.png"
-            alt="iPhone 14 Pro Max"
-          />
+      <div id="iphoneCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#iphoneCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#iphoneCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#iphoneCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
-      </section>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <section class="banner">
+              <section class="banner-contents">
+                <h3 class="subtitle">Đột phá công nghệ</h3>
+                <h2 class="title">iPhone 14 <span>Pro</span></h2>
+                <p class="short-p">
+                  Được tạo ra để thay đổi mọi thứ để tốt hơn. Cho tất cả mọi
+                  người
+                </p>
+                <button class="btn-buy">Mua ngay</button>
+              </section>
+              <div class="banner-image">
+                <img
+                  src="/Session 20/Photos/Iphone Image.png"
+                  alt="iPhone 14 Pro Max"
+                  class="img-fluid w-auto"
+                />
+              </div>
+            </section>
+          </div>
+
+          <div class="carousel-item">
+            <section class="banner">
+              <section class="banner-contents">
+                <h3 class="subtitle">Trải nghiệm mới</h3>
+                <h2 class="title">MacBook <span>Air</span></h2>
+                <p class="short-p">Mỏng, nhẹ và cực kỳ mạnh mẽ với chip M2.</p>
+                <button class="btn-buy">Tìm hiểu thêm</button>
+              </section>
+              <div class="banner-image">
+                <img
+                  src="https://ipowerresale.com/cdn/shop/files/media_7c183408-86c2-4815-a00f-a7d39bcc701a.png?v=1766096140
+                  "
+                  alt="Macbook Air"
+                  class="img-fluid"
+                />
+              </div>
+            </section>
+          </div>
+
+          <div class="carousel-item">
+            <section class="banner">
+              <section class="banner-contents">
+                <h3 class="subtitle">Âm thanh Sống động</h3>
+                <h2 class="title">AirPods <span>Max</span></h2>
+                <p class="short-p">Âm thanh cải tiến, chống ồn đỉnh cao!</p>
+                <button class="btn-buy">Xem thêm</button>
+              </section>
+              <div class="banner-image">
+                <img
+                  src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/121205-airpods-max.png"
+                  alt="AirPods Max"
+                  class="AirpodsMax"
+                />
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#iphoneCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#iphoneCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </header>
 
     <!-- ========= Category ========= -->
