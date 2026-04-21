@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./register.css" />
+  </head>
+  <body>
+    <main class="container mt-5">
+      <section class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
+          <section class="card border-0 shadow-lg p-4">
+            <div class="card-body">
+              <div class="mb-4">
+                <h2 class="text-center fw-bold mb-2">Đăng ký tài khoản</h2>
+                <p class="text-center text-muted small">
+                  Đăng ký tài khoản để sử dụng dịch vụ
+                </p>
+              </div>
+
+              <form class="needs-validation">
+                <div class="row mb-3">
+                  <div class="col-12 col-sm-6 mb-3 mb-sm-0">
+                    <label class="form-label fw-semibold">Họ và tên đệm</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-md"
+                      placeholder="Họ và tên đệm"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                    <label class="form-label fw-semibold">Tên</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-md"
+                      placeholder="Tên"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="email@xyz.com"
+                    id="emailInput"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Vui lòng nhập đúng định dạng email (ví dụ: name@gmail.com).
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Mật Khẩu</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Xác nhận mật khẩu</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+
+                <div class="mb-4 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="terms"
+                    required
+                  />
+
+                  <label
+                    for="terms"
+                    class="form-check-label small text-secondary"
+                  >
+                    Bạn đồng ý với
+                    <a href="#" class="text-primary fw-medium"
+                      >chính sách và điều khoản.</a
+                    >
+                  </label>
+                </div>
+
+                <div class="d-grid shadow-sm">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg fw-bold"
+                    style="border-radius: 8px"
+                  >
+                    Đăng ký
+                  </button>
+                </div>
+
+                <div class="text-center mt-4">
+                  <span class="text-muted small">Bạn đã có tài khoản?</span>
+                  <a href="#" class="text-decoration-none fw-bold">Đăng nhập</a>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
