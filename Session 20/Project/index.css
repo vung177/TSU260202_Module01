@@ -159,8 +159,20 @@ body {
   letter-spacing: -5px;
 }
 
+.banner-image img {
+  flex: 2.5;
+  height: 85%;
+  width: auto;
+  object-fit: contain;
+}
+
 .banner-image {
-  flex: 2;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 0;
 }
 
 .banner-contents .title,
@@ -227,22 +239,6 @@ body {
 .btn-buy:hover {
   background-color: #ffffff;
   color: #211c24;
-}
-
-.banner-image {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding-top: 73px;
-  width: 406px;
-  height: 100%;
-}
-
-.banner-image img {
-  height: 160%;
-  object-fit: cover;
-  transform: translateY(350px);
 }
 
 /* ========= Category Top ========= */
