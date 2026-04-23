@@ -1,0 +1,38 @@
+/* Chỉnh sửa chiều rộng của thanh nav */
+.col-lg-2 {
+  width: 12%;
+}
+
+.col-10 {
+  width: 88%;
+}
+
+/* Chỉnh sửa màu của tiêu đề thanh nav */
+.nav-link {
+  color: #000;
+}
+
+/* Chỉnh sửa màu của thanh nav */
+.nav-link.active {
+  color: #ffffff !important;
+}
+
+/* Sửa kích thước ảnh Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+/* Chỉnh sửa viền xanh của bootstrap */
+.form-control:focus,
+.form-select:focus {
+  border-color: #dee2e6;
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Chỉnh sửa độ rộng nút dropdown và tìm kiếm */
+.custom-width {
+  width: 275px !important;
+  cursor: pointer;
+}
