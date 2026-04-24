@@ -36,3 +36,31 @@
   width: 275px !important;
   cursor: pointer;
 }
+
+/* Tùy chỉnh mọi thành phần có class overflow-auto của Bootstrap */
+.overflow-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: transparent; /* Để nền trong suốt cho sang ông ạ */
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e0; /* Màu xám nhạt */
+  border-radius: 100px; /* Bo tròn tuyệt đối */
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
