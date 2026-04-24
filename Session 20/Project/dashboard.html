@@ -808,7 +808,16 @@
     >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-body">
+          <div class="modal-header border-bottom-0 mb-0">
+            <h5 class="modal-title">Thêm mới sản phẩm</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body mt-0">
             <form id="formAddProduct">
               <div class="row g-3">
                 <div class="col-md-6">
@@ -832,6 +841,7 @@
                   <label class="form-label"
                     >Tên sản phẩm <span class="text-danger">*</span></label
                   >
+
                   <input
                     type="text"
                     class="form-control"
@@ -959,6 +969,15 @@
     >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <div class="modal-header border-bottom-0 mb-0">
+            <h5 class="modal-title">Cập nhật sản phẩm</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
           <div class="modal-body">
             <form id="updateProduct">
               <div class="row g-3">
@@ -1084,22 +1103,23 @@
                 </div>
               </div>
             </form>
-            <div class="modal-footer border-top-0 d-flex justify-content-end">
-              <button
-                class="btn btn-outline-secondary px-4 me-2"
-                type="button"
-                data-bs-dismiss="modal"
-              >
-                Hủy
-              </button>
-              <button
-                class="btn btn-primary px-4"
-                form="updateProduct"
-                id="btnSubmit"
-              >
-                Cập nhật
-              </button>
-            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn btn-outline-secondary px-4 me-2"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button
+              type="submit"
+              form="updateProduct"
+              class="btn btn-primary px-4"
+              id="btnSubmit"
+            >
+              Thêm
+            </button>
           </div>
         </div>
       </div>
