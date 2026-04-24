@@ -117,7 +117,16 @@
         </div>
 
         <!-- ====== Header-body ====== -->
-        <section class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none">
+        <section
+          class="col-12 p-0 vh-100 d-flex align-content-center justify-content-center d-none"
+          id="mainStatistics"
+        >
+          <h3>Trang này đang được hoàn thiện, vui lòng quay lại sau...</h3>
+        </section>
+        <section
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
+          id="mainCategory"
+        >
           <div
             class="d-flex align-items-center justify-content-end gap-2 border-bottom p-2"
           >
@@ -412,7 +421,10 @@
             </ul>
           </nav>
         </section>
-        <section class="col-10 p-0 vh-100 d-flex flex-column bg-light">
+        <section
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
+          id="mainProduct"
+        >
           <div
             class="d-flex align-items-center justify-content-end gap-2 border-bottom p-2"
           >
@@ -806,9 +818,9 @@
       tabindex="-1"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header border-bottom-0 mb-0">
+          <div class="modal-header border-bottom-0 mb-0 pb-2">
             <h5 class="modal-title">Thêm mới sản phẩm</h5>
             <button
               type="button"
@@ -817,7 +829,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body mt-0">
+          <div class="modal-body mt-0 py-1">
             <form id="formAddProduct">
               <div class="row g-3">
                 <div class="col-md-6">
@@ -940,7 +952,9 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer border-top-0 d-flex justify-content-end">
+          <div
+            class="modal-footer border-top-0 d-flex justify-content-end pt-2"
+          >
             <button
               type="button"
               class="btn btn-outline-secondary px-4 me-2"
@@ -967,9 +981,9 @@
       tabindex="-1"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header border-bottom-0 mb-0">
+          <div class="modal-header border-bottom-0 pb-2">
             <h5 class="modal-title">Cập nhật sản phẩm</h5>
             <button
               type="button"
@@ -978,7 +992,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body py-1">
             <form id="updateProduct">
               <div class="row g-3">
                 <div class="col-md-6">
@@ -1104,7 +1118,9 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer border-top-0 d-flex justify-content-end">
+          <div
+            class="modal-footer border-top-0 d-flex justify-content-end pt-2"
+          >
             <button
               type="button"
               class="btn btn-outline-secondary px-4 me-2"
