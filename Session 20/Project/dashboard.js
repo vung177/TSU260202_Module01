@@ -1,4 +1,4 @@
-// Bật trang thêm mới sản phẩm
+// Mở tab thêm mới sản phẩm
 /*
 - Lấy phần tử nút thêm mới
 - Lấy phần tử Modal, tạo mới modal của bootstrap
@@ -12,7 +12,25 @@ btnAddNewProduct.addEventListener('click', () => {
   myProductModal.show();
 });
 
-// Khi thêm sản phẩm mới, nhưng lại chưa nhập tên và mã sản phẩm
+// Cập nhật sản phẩm
+/*
+- Vì là chỉnh sửa sản phẩm (có rất nhiều sản phẩm), nên không thể làm theo item (ID), mà nên làm theo class
+- Cần lấy thông tin vào tất cả thông tin trong tài liệu document
+- Đặt sự kiện click (gián tiếp) vào phần document có chứa btn-update-product
+*/
+const modalUpdateElement = document.getElementById('modalUpdateProduct');
+const myNewProductModal = new bootstrap.Modal(modalUpdateElement);
+
+document.addEventListener('click', function (event) {
+  if (
+    event.target.classList.contains('btn-update-product') ||
+    event.target.closest('.btn-update-product') //Bắt buộc
+  ) {
+    myNewProductModal.show();
+  }
+});
+
+// Kiểm tra Tên sản phẩm hay Mã sản phẩm đã được nhập hay chưa
 const form = document.getElementById('formAddProduct');
 const inputId = document.getElementById('productId');
 const inputName = document.getElementById('productName');
@@ -57,6 +75,42 @@ form.addEventListener('submit', (event) => {
   }
 });
 
+// Cập nhật hay chỉnh sửa thông tin sản phẩm
+const updateForm = document.getElementById('updateProduct');
+const inputUpdateId = document.getElementById('updateProductId');
+const inputUpdateName = document.getElementById('updateProductName');
+
+updateForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const idUpdateValue = updateProductId.value.trim();
+  const nameUpdateValue = updateProductName.value.trim();
+  let isValid = true;
+  if (idUpdateValue == '') {
+    showError(
+      inputUpdateId,
+      'errorUpdateProductId',
+      'Mã sản phẩm không được để trống',
+    );
+    isValid = false;
+  } else {
+    removeError(inputUpdateId, 'errorUpdateProductId');
+  }
+  if (nameUpdateValue == '') {
+    showError(
+      inputUpdateName,
+      'errorUpdateProductName',
+      'Tên sản phẩm không được để trống',
+    );
+    isValue = false;
+  } else {
+    removeError(inputUpdateName, 'errorUpdateProductName');
+  }
+  if (isValid) {
+    alert('Cập nhật sản phẩm thành công!');
+    updateForm.reset();
+  }
+});
+
 // Lưu item vào localStorage
 const newItems = 'listProduct';
 
@@ -91,4 +145,3 @@ function removeError(input, errorId) {
 }
 
 const data = JSON.parse(localStorage.getItem('listProduct'));
-console.log('Danh sách sản phẩm đang có:', data);
