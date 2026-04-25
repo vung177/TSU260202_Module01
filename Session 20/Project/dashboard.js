@@ -1,10 +1,10 @@
 // Mở tab Thêm mới danh mục
 const btnAddNewCategory = document.getElementById('btnAddNewCategory');
 const modalCategory = document.getElementById('idModalAddCategory');
-const myCategoryModal = new bootstrap.Modal(modalCategory);
+const categoryAddModal = new bootstrap.Modal(modalCategory);
 
 btnAddNewCategory.addEventListener('click', () => {
-  myCategoryModal.show();
+  categoryAddModal.show();
 });
 
 // Kiểm tra việc Thêm mới danh mục, tên danh mục và mã danh mục có để trống hay không.
@@ -53,36 +53,34 @@ categoryForm.addEventListener('submit', (e) => {
 
 // Cập nhật danh mục
 const modalUpdateCategory = document.getElementById('idModalUpdateCategory');
-const myNewCategoryModal = new bootstrap.Modal(modalUpdateCategory);
+const categoryUpdateModal = new bootstrap.Modal(modalUpdateCategory);
 
-document.addEventListener('click', function (event) {
+document.addEventListener('click', function (e) {
   if (
-    event.target.classList.contains('btn-update-category') ||
-    event.target.closest('.btn-update-category')
+    e.target.classList.contains('btn-update-category') ||
+    e.target.closest('.btn-update-category')
   ) {
-    myNewCategoryModal.show();
+    categoryUpdateModal.show();
   }
 });
 
 // Mở tab thêm mới sản phẩm
 const btnAddNewProduct = document.getElementById('btnAddNewProduct');
 const modalElement = document.getElementById('modalAddProduct');
-const myProductModal = new bootstrap.Modal(modalElement);
+const productAddModal = new bootstrap.Modal(modalElement);
 
 btnAddNewProduct.addEventListener('click', () => {
-  myProductModal.show();
+  productAddModal.show();
 });
 
 // Cập nhật sản phẩm
 const modalUpdateElement = document.getElementById('modalUpdateProduct');
-const myNewProductModal = new bootstrap.Modal(modalUpdateElement);
+const productUpdateModal = new bootstrap.Modal(modalUpdateElement);
 
 document.addEventListener('click', function (event) {
-  if (
-    event.target.classList.contains('btn-update-product') ||
-    event.target.closest('.btn-update-product') //Bắt buộc
-  ) {
-    myNewProductModal.show();
+  const btn = event.target.closest('.btn-update-product');
+  if (btn) {
+    productUpdateModal.show();
   }
 });
 
@@ -125,7 +123,6 @@ addForm.addEventListener('submit', (event) => {
       id: idValue,
       name: nameValue,
     };
-    saveToStorage(newProduct);
     alert('Thêm sản phẩm thành công!');
     addForm.reset();
     closeModal('modalAddProduct');
@@ -139,8 +136,8 @@ const inputUpdateName = document.getElementById('updateProductName');
 
 updateForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const idUpdateValue = updateProductId.value.trim();
-  const nameUpdateValue = updateProductName.value.trim();
+  const idUpdateValue = inputUpdateId.value.trim();
+  const nameUpdateValue = inputUpdateName.value.trim();
   let isValid = true;
   if (idUpdateValue == '') {
     showError(
@@ -168,24 +165,6 @@ updateForm.addEventListener('submit', (e) => {
     closeModal('modalUpdateProduct');
   }
 });
-
-// Lưu item vào localStorage
-const newItems = 'listProducts';
-
-function saveItems() {
-  const data = localStorage.getItem(newItems);
-  if (data) {
-    return JSON.parse(data);
-  } else {
-    return [];
-  }
-}
-
-function saveToStorage(newProduct) {
-  const products = saveItems();
-  products.push(newProduct);
-  localStorage.setItem(newItems, JSON.stringify(products));
-}
 
 // Hiển thị lỗi
 function showError(input, errorId, message) {
