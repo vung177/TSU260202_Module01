@@ -7,6 +7,7 @@ btnAddNewCategory.addEventListener('click', () => {
   myCategoryModal.show();
 });
 
+// Kiểm tra việc Thêm mới danh mục, tên danh mục và mã danh mục có để trống hay không.
 const categoryForm = document.getElementById('formAddCategory');
 const inputIdCategory = document.getElementById('category-id');
 const inputNameCategory = document.getElementById('category-name');
@@ -46,6 +47,7 @@ categoryForm.addEventListener('submit', (e) => {
     saveToStorage(newCategory);
     alert('Thêm danh mục thành công!');
     categoryForm.reset();
+    closeModal('idModalAddCategory');
   }
 });
 
@@ -77,12 +79,12 @@ document.addEventListener('click', function (event) {
 });
 
 // Kiểm tra Tên sản phẩm hay Mã sản phẩm đã được nhập hay chưa
-const form = document.getElementById('formAddProduct');
+const addForm = document.getElementById('formAddProduct');
 const inputId = document.getElementById('productId');
 const inputName = document.getElementById('productName');
 
 // Khi người dùng nhấn submit - Thêm
-form.addEventListener('submit', (event) => {
+addForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const idValue = inputId.value.trim();
@@ -117,7 +119,8 @@ form.addEventListener('submit', (event) => {
     };
     saveToStorage(newProduct);
     alert('Thêm sản phẩm thành công!');
-    form.reset();
+    addForm.reset();
+    closeModal('modalAddProduct');
   }
 });
 
@@ -154,6 +157,7 @@ updateForm.addEventListener('submit', (e) => {
   if (isValid) {
     alert('Cập nhật sản phẩm thành công!');
     updateForm.reset();
+    closeModal('modalUpdateProduct');
   }
 });
 
@@ -168,6 +172,8 @@ function saveItems() {
     return [];
   }
 }
+
+const data = JSON.parse(localStorage.getItem('listProduct'));
 
 function saveToStorage(newProduct) {
   const products = saveItems();
@@ -190,4 +196,11 @@ function removeError(input, errorId) {
   errorElement.style.display = 'none';
 }
 
-const data = JSON.parse(localStorage.getItem('listProduct'));
+// Hàm tự đóng Modal
+function closeModal(modalID) {
+  const modalElement = document.getElementById(modalID);
+  const modalInstance = bootstrap.Modal.getInstance(modalElement);
+  if (modalInstance) {
+    modalInstance.hide();
+  }
+}
