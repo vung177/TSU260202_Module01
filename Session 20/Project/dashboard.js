@@ -74,11 +74,6 @@ btnAddNewProduct.addEventListener('click', () => {
 });
 
 // Cập nhật sản phẩm
-/*
-- Vì là chỉnh sửa sản phẩm (có rất nhiều sản phẩm), nên không thể làm theo item (ID), mà nên làm theo class
-- Cần lấy thông tin vào tất cả thông tin trong tài liệu document
-- Đặt sự kiện click (gián tiếp) vào phần document có chứa btn-update-product
-*/
 const modalUpdateElement = document.getElementById('modalUpdateProduct');
 const myNewProductModal = new bootstrap.Modal(modalUpdateElement);
 
@@ -93,8 +88,8 @@ document.addEventListener('click', function (event) {
 
 // Kiểm tra Tên sản phẩm hay Mã sản phẩm đã được nhập hay chưa
 const addForm = document.getElementById('formAddProduct');
-const inputId = document.getElementById('product-id');
-const inputName = document.getElementById('product-name');
+const inputId = document.getElementById('productId');
+const inputName = document.getElementById('productName');
 
 // Khi người dùng nhấn submit - Thêm
 addForm.addEventListener('submit', (event) => {
@@ -163,7 +158,7 @@ updateForm.addEventListener('submit', (e) => {
       'errorUpdateProductName',
       'Tên sản phẩm không được để trống',
     );
-    isValue = false;
+    isValid = false;
   } else {
     removeError(inputUpdateName, 'errorUpdateProductName');
   }
@@ -175,7 +170,7 @@ updateForm.addEventListener('submit', (e) => {
 });
 
 // Lưu item vào localStorage
-const newItems = 'listProduct';
+const newItems = 'listProducts';
 
 function saveItems() {
   const data = localStorage.getItem(newItems);
@@ -185,8 +180,6 @@ function saveItems() {
     return [];
   }
 }
-
-const data = JSON.parse(localStorage.getItem('listProduct'));
 
 function saveToStorage(newProduct) {
   const products = saveItems();

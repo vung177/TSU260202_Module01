@@ -124,7 +124,7 @@
           <h3>Trang này đang được hoàn thiện, vui lòng quay lại sau...</h3>
         </section>
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
           id="mainCategory"
         >
           <div
@@ -228,7 +228,32 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody class="list-category"></tbody>
+                <tbody id="listCategories">
+                  <tr>
+                    <td class="ps-4">DM001</td>
+
+                    <td>Quần áo</td>
+
+                    <td class="text-center">
+                      <span
+                        class="badge rounded-pill bg-success-subtle text-success p-2"
+                        >● Đang hoạt động</span
+                      >
+                    </td>
+
+                    <td class="text-center">
+                      <button class="btn btn-link text-danger p-1">
+                        <i class="bi bi-trash"></i>
+                      </button>
+
+                      <button
+                        class="btn btn-link text-warning p-1 btn-update-category"
+                      >
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -253,7 +278,7 @@
           </nav>
         </section>
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
           id="mainProduct"
         >
           <div
@@ -421,7 +446,34 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody class="list-product"></tbody>
+                <tbody id="listProducts">
+                  <tr>
+                    <td class="ps-4">SP001</td>
+
+                    <td>iPhone 12 Pro</td>
+                    <td>12.000.000</td>
+                    <td class="text-center">10</td>
+                    <td class="text-center">0%</td>
+                    <td class="text-center">
+                      <span
+                        class="badge rounded-pill bg-danger-subtle text-danger p-2"
+                        >● Ngừng hoạt động</span
+                      >
+                    </td>
+
+                    <td class="text-center">
+                      <button class="btn btn-link text-danger p-1">
+                        <i class="bi bi-trash"></i>
+                      </button>
+
+                      <button
+                        class="btn btn-link text-warning p-1 btn-update-product"
+                      >
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -577,7 +629,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Nhập mã sản phẩm"
-                    id="product-id"
+                    id="productId"
                   />
                   <small
                     class="text-danger"
@@ -595,7 +647,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Nhập tên sản phẩm"
-                    id="product-name"
+                    id="productName"
                   />
                   <small
                     class="text-danger"
@@ -608,7 +660,7 @@
                   <label class="form-label"
                     >Danh mục <span class="text-danger">*</span></label
                   >
-                  <select class="form-select" id="product-category">
+                  <select class="form-select" id="productCategory">
                     <option value="1" selected>Điện thoại</option>
                     <option value="2">Máy tính</option>
                   </select>
@@ -646,7 +698,7 @@
                     type="number"
                     class="form-control"
                     value="1"
-                    id="product-quantity"
+                    id="productQuantity"
                   />
                 </div>
                 <div class="col-md-4">
@@ -655,7 +707,7 @@
                     type="text"
                     class="form-control"
                     placeholder="10.000.000"
-                    id="product-price"
+                    id="productPrice"
                   />
                 </div>
                 <div class="col-md-4">
@@ -664,7 +716,7 @@
                     type="number"
                     class="form-control"
                     placeholder="10"
-                    id="product-discount"
+                    id="productDiscount"
                   />
                 </div>
 
@@ -674,7 +726,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Nhập link hình ảnh"
-                    id="product-img"
+                    id="productImg"
                   />
                 </div>
 
@@ -683,7 +735,7 @@
                   <textarea
                     class="form-control"
                     rows="3"
-                    id="product-description"
+                    id="productDescription"
                   ></textarea>
                 </div>
               </div>
@@ -807,7 +859,7 @@
               form="formUpdateCategory"
               id="btnUpdateCategory"
             >
-              Thêm
+              Cập nhật
             </button>
           </div>
         </div>
@@ -975,7 +1027,7 @@
               class="btn btn-primary px-4"
               id="btnUpdateProduct"
             >
-              Thêm
+              Cập nhật
             </button>
           </div>
         </div>
