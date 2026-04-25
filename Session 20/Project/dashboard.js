@@ -7,12 +7,49 @@ btnAddNewCategory.addEventListener('click', () => {
   myCategoryModal.show();
 });
 
+const categoryForm = document.getElementById('formAddCategory');
+const inputIdCategory = document.getElementById('category-id');
+const inputNameCategory = document.getElementById('category-name');
+
+categoryForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const categoryIdValue = inputIdCategory.value.trim();
+  const categoryNameValue = inputNameCategory.value.trim();
+  let isValid = true;
+  if (categoryIdValue === '') {
+    showError(
+      inputIdCategory,
+      'errorCategoryId',
+      'Mã danh mục không được để trống',
+    );
+    isValid = false;
+  } else {
+    removeError(inputIdCategory, 'errorCategoryId');
+  }
+  if (categoryNameValue === '') {
+    showError(
+      inputNameCategory,
+      'errorCategoryName',
+      'Tên danh mục không được để trống',
+    );
+    isValid = false;
+  } else {
+    removeError(inputNameCategory, 'errorCategoryName');
+  }
+
+  if (isValid) {
+    const newCategory = {
+      id: categoryIdValue,
+      name: categoryNameValue,
+    };
+    saveToStorage(newCategory);
+    alert('Thêm danh mục thành công!');
+    categoryForm.reset();
+  }
+});
+
 // Mở tab thêm mới sản phẩm
-/*
-- Lấy phần tử nút thêm mới
-- Lấy phần tử Modal, tạo mới modal của bootstrap
-- Đặt sự kiện click vào nút
- */
 const btnAddNewProduct = document.getElementById('btnAddNewProduct');
 const modalElement = document.getElementById('modalAddProduct');
 const myProductModal = new bootstrap.Modal(modalElement);

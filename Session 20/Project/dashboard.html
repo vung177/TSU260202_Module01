@@ -991,7 +991,7 @@
             ></button>
           </div>
           <div class="modal-body py-1">
-            <form id="updateCategory">
+            <form id="formAddCategory">
               <div class="row g-3">
                 <div class="col-12">
                   <label for="idCategory" class="form-label fw-semibold"
@@ -1001,8 +1001,13 @@
                     type="text"
                     class="form-control"
                     placeholder="Mã danh mục"
-                    id="idCategory"
+                    id="category-id"
                   />
+                  <small
+                    class="text-danger"
+                    id="errorCategoryId"
+                    style="display: none"
+                  ></small>
                 </div>
                 <div class="col-12">
                   <label for="nameCategory" class="form-label fw-semibold"
@@ -1012,8 +1017,13 @@
                     type="text"
                     class="form-control"
                     placeholder="Tên danh mục"
-                    id="nameCategory"
+                    id="category-name"
                   />
+                  <small
+                    class="text-danger"
+                    id="errorCategoryName"
+                    style="display: none"
+                  ></small>
                 </div>
                 <div class="col-12">
                   <label for="Trạng thái" class="form-label d-block">
@@ -1058,8 +1068,8 @@
             <button
               class="btn btn-primary rounded-3 px-4"
               type="submit"
-              form="updateCategory"
-              id="btnNewCategory"
+              form="formAddCategory"
+              id="btnAddCategory"
             >
               Thêm
             </button>
