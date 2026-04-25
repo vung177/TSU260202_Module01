@@ -209,7 +209,7 @@ function removeError(input, errorId) {
   errorElement.style.display = 'none';
 }
 
-// Hàm tự đóng Modal
+// Hàm đóng Modal
 function closeModal(modalID) {
   const modalElement = document.getElementById(modalID);
   const modalInstance = bootstrap.Modal.getInstance(modalElement);
