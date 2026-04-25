@@ -1,3 +1,12 @@
+// Mở tab Thêm mới danh mục
+const btnAddNewCategory = document.getElementById('btnAddNewCategory');
+const modalCategory = document.getElementById('idModalAddCategory');
+const myCategoryModal = new bootstrap.Modal(modalCategory);
+
+btnAddNewCategory.addEventListener('click', () => {
+  myCategoryModal.show();
+});
+
 // Mở tab thêm mới sản phẩm
 /*
 - Lấy phần tử nút thêm mới
