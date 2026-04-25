@@ -239,7 +239,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -259,7 +261,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -279,7 +283,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -299,7 +305,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -319,7 +327,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -339,7 +349,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -359,7 +371,9 @@
                       >
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-category"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
                       <button
@@ -374,7 +388,7 @@
                     <td>Điện thoại</td>
                     <td class="text-center">
                       <span
-                        class="badge rounded-pill bg-danger-subtle text-danger p-1"
+                        class="badge rounded-pill bg-danger-subtle text-danger p-1 btn-delete-category"
                         >● Ngừng hoạt động</span
                       >
                     </td>
@@ -816,6 +830,107 @@
       </div>
     </section>
 
+    <!-- ====== Thêm mới danh mục ====== -->
+    <div class="modal fade" id="idModalAddCategory" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0 pb-2">
+            <h5 class="modal-title fw-bold">Thêm mới danh mục</h5>
+            <button
+              class="btn-close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="close"
+            ></button>
+          </div>
+          <div class="modal-body py-1">
+            <form id="formAddCategory">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="idCategory" class="form-label fw-semibold"
+                    >Mã danh mục <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Mã danh mục"
+                    id="category-id"
+                  />
+                  <small
+                    class="text-danger"
+                    id="errorCategoryId"
+                    style="display: none"
+                  ></small>
+                </div>
+                <div class="col-12">
+                  <label for="nameCategory" class="form-label fw-semibold"
+                    >Tên danh mục <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tên danh mục"
+                    id="category-name"
+                  />
+                  <small
+                    class="text-danger"
+                    id="errorCategoryName"
+                    style="display: none"
+                  ></small>
+                </div>
+                <div class="col-12">
+                  <label for="Trạng thái" class="form-label d-block">
+                    Trạng thái
+                  </label>
+                  <div class="form-check form-check-inline">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="status"
+                      id="active"
+                      checked
+                    />
+                    <label for="active" class="form-label"
+                      >Đang hoạt động</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="status"
+                      id="inactive"
+                    />
+                    <label for="inactive" class="form-label"
+                      >Ngừng hoạt động</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <hr class="mx-3 my-0 opacity-25" />
+          <div class="modal-footer border-top-0 d-flex justify-content-end">
+            <button
+              class="btn btn-outline-secondary rounded-3 px-4 me-2"
+              type="button"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button
+              class="btn btn-primary rounded-3 px-4"
+              type="submit"
+              form="formAddCategory"
+              id="btnAddCategory"
+            >
+              Thêm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ======= Thêm mới sản phẩm ====== -->
     <div
       class="modal fade"
@@ -981,12 +1096,12 @@
       </div>
     </div>
 
-    <!-- ====== Thêm mới danh mục ====== -->
-    <div class="modal fade" id="idModalAddCategory" aria-hidden="true">
+    <!-- ====== Cập nhật danh mục ====== -->
+    <div class="modal fade" id="idModalUpdateCategory" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom-0 pb-2">
-            <h5 class="modal-title fw-bold">Thêm mới danh mục</h5>
+            <h5 class="modal-title fw-bold">Cập nhật danh mục</h5>
             <button
               class="btn-close"
               type="button"
@@ -995,7 +1110,7 @@
             ></button>
           </div>
           <div class="modal-body py-1">
-            <form id="formAddCategory">
+            <form id="formUpdateCategory">
               <div class="row g-3">
                 <div class="col-12">
                   <label for="idCategory" class="form-label fw-semibold"
@@ -1072,8 +1187,8 @@
             <button
               class="btn btn-primary rounded-3 px-4"
               type="submit"
-              form="formAddCategory"
-              id="btnAddCategory"
+              form="formUpdateCategory"
+              id="btnUpdateCategory"
             >
               Thêm
             </button>
@@ -1081,6 +1196,7 @@
         </div>
       </div>
     </div>
+
     <!-- ====== Cập nhật sản phẩm -->
     <div
       class="modal fade"

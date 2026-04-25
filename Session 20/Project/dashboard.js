@@ -51,6 +51,19 @@ categoryForm.addEventListener('submit', (e) => {
   }
 });
 
+// Cập nhật danh mục
+const modalUpdateCategory = document.getElementById('idModalUpdateCategory');
+const myNewCategoryModal = new bootstrap.Modal(modalUpdateCategory);
+
+document.addEventListener('click', function (event) {
+  if (
+    event.target.classList.contains('btn-update-category') ||
+    event.target.closest('.btn-update-category')
+  ) {
+    myNewCategoryModal.show();
+  }
+});
+
 // Mở tab thêm mới sản phẩm
 const btnAddNewProduct = document.getElementById('btnAddNewProduct');
 const modalElement = document.getElementById('modalAddProduct');
