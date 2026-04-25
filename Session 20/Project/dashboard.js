@@ -93,8 +93,8 @@ document.addEventListener('click', function (event) {
 
 // Kiểm tra Tên sản phẩm hay Mã sản phẩm đã được nhập hay chưa
 const addForm = document.getElementById('formAddProduct');
-const inputId = document.getElementById('productId');
-const inputName = document.getElementById('productName');
+const inputId = document.getElementById('product-id');
+const inputName = document.getElementById('product-name');
 
 // Khi người dùng nhấn submit - Thêm
 addForm.addEventListener('submit', (event) => {
