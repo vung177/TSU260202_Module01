@@ -421,11 +421,11 @@
                 <thead class="table-light flex-shrink-0">
                   <tr>
                     <th class="ps-4">
-                      <span class="fw-lighter">Mã danh mục</span>
+                      <span class="fw-lighter">Mã sản phẩm</span>
                       <i class="bi bi-arrow-down small"></i>
                     </th>
                     <th>
-                      <span class="fw-lighter">Tên danh mục</span>
+                      <span class="fw-lighter">Tên sản phẩm</span>
                       <i class="bi bi-arrow-down small"></i>
                     </th>
                     <th>
@@ -446,10 +446,9 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody id="listProducts">
+                <tbody id="tableProducts">
                   <tr>
                     <td class="ps-4">SP001</td>
-
                     <td>iPhone 12 Pro</td>
                     <td>12.000.000</td>
                     <td class="text-center">10</td>
@@ -671,8 +670,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="status"
-                      id="active"
+                      name="productStatus"
+                      id="productActive"
+                      value="active"
                       checked
                     />
                     <label class="form-check-label" for="active"
@@ -683,8 +683,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="status"
-                      id="inactive"
+                      name="productStatus"
+                      id="productInactive"
+                      value="inactive"
                     />
                     <label class="form-check-label" for="inactive"
                       >Ngừng hoạt động</label
