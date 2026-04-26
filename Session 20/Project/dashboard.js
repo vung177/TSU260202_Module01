@@ -76,6 +76,8 @@ const productAddModal = new bootstrap.Modal(modalElement);
 // Mở tab thêm mới sản phẩm
 btnAddNewProduct.addEventListener('click', () => {
   productAddModal.show();
+  removeError(inputId, 'errorProductId');
+  removeError(inputName, 'errorProductName');
 });
 
 // Thêm sản phẩm mới
@@ -95,7 +97,14 @@ addForm.addEventListener('submit', (event) => {
   const statusChecked = document.querySelector(
     'input[name="productStatus"]:checked',
   );
-  const statusSelected = statusChecked ? statusChecked.value : 'active';
+
+  // Lấy trạng thái từ thông tin đăng nhập của người dùng
+  let statusSelected;
+  if (statusChecked) {
+    statusSelected = statusChecked.value;
+  } else {
+    statusSelected = 'active';
+  }
 
   const idValue = inputId.value.trim();
   const nameValue = inputName.value.trim();
@@ -167,6 +176,8 @@ document.addEventListener('click', function (event) {
   const btn = event.target.closest('.btn-update-product');
   if (btn) {
     productUpdateModal.show();
+    removeError(inputUpdateId, 'errorUpdateProductId');
+    removeError(inputUpdateName, 'errorUpdateProductName');
   }
 });
 
