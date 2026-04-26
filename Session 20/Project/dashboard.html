@@ -461,7 +461,9 @@
                     </td>
 
                     <td class="text-center">
-                      <button class="btn btn-link text-danger p-1">
+                      <button
+                        class="btn btn-link text-danger p-1 btn-delete-product"
+                      >
                         <i class="bi bi-trash"></i>
                       </button>
 
@@ -1034,6 +1036,47 @@
         </div>
       </div>
     </div>
+    <!-- ====== Xóa danh mục ====== -->
+    <!-- ====== Xóa sản phẩm ====== -->
+    <div
+      class="modal fade"
+      id="modalDeleteProduct"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Xác nhận xóa sản phẩm</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              Bạn có chắc chắn muốn xóa sản phẩm <span></span> khỏi hệ thống
+              không?
+            </div>
+          </div>
+          <hr class="mx-3 my-0 opacity-25" />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button type="submit" class="btn btn-danger">Xóa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

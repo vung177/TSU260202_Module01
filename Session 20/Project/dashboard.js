@@ -218,6 +218,16 @@ updateForm.addEventListener('submit', (e) => {
   }
 });
 
+// Mở tab xóa sản phẩm
+const modalDeleteElement = document.getElementById('modalDeleteProduct');
+const productDeleteModal = new bootstrap.Modal(modalDeleteElement);
+document.addEventListener('click', (d) => {
+  const btn = d.target.closest('.btn-delete-product');
+  if (btn) {
+    productDeleteModal.show();
+  }
+});
+
 renderProducts(listProducts);
 
 /**
@@ -275,7 +285,7 @@ function renderProducts(arr) {
                     ${statusBadge}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-link text-danger p-1" onclick="deleteProduct('${p.id}')">
+                    <button class="btn btn-link text-danger p-1 btn-delete-product" onclick="deleteProduct('${p.id}')">
                         <i class="bi bi-trash"></i>
                     </button>
                     <button class="btn btn-link text-warning p-1 btn-update-product" onclick="editProduct('${p.id}')">
