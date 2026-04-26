@@ -224,6 +224,12 @@ const productDeleteModal = new bootstrap.Modal(modalDeleteElement);
 document.addEventListener('click', (d) => {
   const btn = d.target.closest('.btn-delete-product');
   if (btn) {
+    const productDeleteName = btn.dataset.name;
+    const spanName = modalDeleteElement.querySelector('.modal-body span');
+    if (spanName) {
+      spanName.textContent = productDeleteName;
+      spanName.classList.add('fw-bold');
+    }
     productDeleteModal.show();
   }
 });
@@ -236,6 +242,7 @@ renderProducts(listProducts);
  * removeError
  * closeModal
  * renderProducts
+ * deleteProducts
  */
 
 // Hiển thị lỗi
@@ -285,10 +292,10 @@ function renderProducts(arr) {
                     ${statusBadge}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-link text-danger p-1 btn-delete-product" onclick="deleteProduct('${p.id}')">
+                    <button class="btn btn-link text-danger p-1 btn-delete-product" data-id="${p.id}" data-name="${p.name}">
                         <i class="bi bi-trash"></i>
                     </button>
-                    <button class="btn btn-link text-warning p-1 btn-update-product" onclick="editProduct('${p.id}')">
+                    <button class="btn btn-link text-warning p-1 btn-update-product" data-id="${p.id}" data-name="${p.name}">
                         <i class="bi bi-pencil-square"></i>
                     </button>
                 </td>
@@ -297,4 +304,12 @@ function renderProducts(arr) {
     })
     .join('');
   products.innerHTML = newProducts;
+}
+
+function deleteProducts(id) {
+  listProducts = listProducts.filter((i) => {
+    return i.id !== id;
+  });
+  localStorage.setItem('listProducts', JSON.stringify(listProducts));
+  renderProducts(listProducts);
 }
