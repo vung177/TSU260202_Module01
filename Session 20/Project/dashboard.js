@@ -129,7 +129,14 @@ addForm.addEventListener('submit', (event) => {
     return checkInputId.id === idValue;
   });
 
-  if (checkId) {
+  let checkName = listProducts.some((checkInputName) => {
+    return (
+      checkInputName.name.toLowerCase().trim() ===
+      nameValue.toLowerCase().trim()
+    );
+  });
+
+  if (checkId || checkName) {
     alert('ID hoặc tên sản phẩm bị trùng, vui lòng nhập lại!');
     return;
   }
@@ -175,6 +182,22 @@ const productUpdateModal = new bootstrap.Modal(modalUpdateElement);
 document.addEventListener('click', function (event) {
   const btn = event.target.closest('.btn-update-product');
   if (btn) {
+    const idOld = btn.dataset.id;
+    const productIdOld = listProducts.find((p) => p.id === idOld);
+    if (productIdOld) {
+      document.getElementById('updateProductId').value = productIdOld.id;
+      document.getElementById('updateProductName').value = productIdOld.name;
+      document.getElementById('updateProductCategory').value =
+        productIdOld.category;
+      document.getElementById('updateProductQuantity').value =
+        productIdOld.stock;
+      document.getElementById('updateProductPrice').value = productIdOld.price;
+      document.getElementById('updateProductDiscount').value =
+        productIdOld.discount;
+      document.getElementById('updateProductImg').value = productIdOld.img;
+      document.getElementById('updateProductDescription').value =
+        productIdOld.description;
+    }
     productUpdateModal.show();
     removeError(inputUpdateId, 'errorUpdateProductId');
     removeError(inputUpdateName, 'errorUpdateProductName');
@@ -185,11 +208,43 @@ const updateForm = document.getElementById('updateProduct');
 const inputUpdateId = document.getElementById('updateProductId');
 const inputUpdateName = document.getElementById('updateProductName');
 
-// Kiểm tra thông tin sản phẩm có bị để trống hay không
+/** Thực thi cập nhật sản phẩm
+ * Kiểm tra tên sản phẩm hay mã sản phẩm phải được điền, không được để trống
+ * Lấy thông tin sản phẩm cần cập nhật: mã sản phẩm, danh mục, giá, số lượng, giảm giá, trạng thái
+ * Thay thế toàn bộ thông tin đó bằng thông tin vừa nhập
+ * Lưu vào localStorage
+ * render dữ liệu ra màn hình
+ */
 updateForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  const statusUpdateChecked = document.querySelector(
+    'input[name="productUpdateStatus"]:checked',
+  );
+  let statusUpdateSelected;
+
+  if (statusUpdateChecked) {
+    statusUpdateSelected = statusUpdateChecked.value;
+  } else {
+    statusUpdateSelected = 'active';
+  }
+
   const idUpdateValue = inputUpdateId.value.trim();
   const nameUpdateValue = inputUpdateName.value.trim();
+  const categoryUpdate = document.getElementById('updateProductCategory').value;
+  const stockUpdate = Number(
+    document.getElementById('updateProductQuantity').value,
+  );
+  const priceUpdate = Number(
+    document.getElementById('updateProductPrice').value,
+  );
+  const discountUpdate = Number(
+    document.getElementById('updateProductDiscount').value,
+  );
+  const imgUpdate = document.getElementById('updateProductImg').value;
+  const descriptionUpdate = document.getElementById(
+    'updateProductDescription',
+  ).value;
+
   let isValid = true;
   if (idUpdateValue == '') {
     showError(
@@ -211,7 +266,24 @@ updateForm.addEventListener('submit', (e) => {
   } else {
     removeError(inputUpdateName, 'errorUpdateProductName');
   }
+
   if (isValid) {
+    const index = listProducts.findIndex((p) => p.id === idUpdateValue);
+    if (index !== -1) {
+      listProducts[index] = {
+        id: idUpdateValue,
+        name: nameUpdateValue,
+        category: categoryUpdate,
+        status: statusUpdateSelected,
+        stock: stockUpdate,
+        price: priceUpdate,
+        discount: discountUpdate,
+        img: imgUpdate,
+        description: descriptionUpdate,
+      };
+    }
+    localStorage.setItem('listProducts', JSON.stringify(listProducts));
+    renderProducts(listProducts);
     alert('Cập nhật sản phẩm thành công!');
     updateForm.reset();
     closeModal('modalUpdateProduct');
@@ -231,6 +303,30 @@ document.addEventListener('click', (d) => {
       spanName.classList.add('fw-bold');
     }
     productDeleteModal.show();
+  }
+});
+
+// Thực hiện xóa sản phẩm
+let idProductToDelete = null; // Biến tạm để giữ ID
+
+// Cập nhật lại sự kiện click mở modal (đoạn tui hướng dẫn lúc nãy)
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-delete-product');
+  if (btn) {
+    idProductToDelete = btn.dataset.id; // Lưu ID vào biến tạm
+    // ... code hiển thị tên lên modal ...
+    productDeleteModal.show();
+  }
+});
+const btnConfirmDelete = document.querySelector(
+  '#modalDeleteProduct .btn-danger',
+);
+
+btnConfirmDelete.addEventListener('click', () => {
+  if (idProductToDelete) {
+    deleteProducts(idProductToDelete); // Truyền ID vào đây
+    idProductToDelete = null; // Xóa xong thì reset biến tạm
+    closeModal('modalDeleteProduct'); // Đóng modal
   }
 });
 

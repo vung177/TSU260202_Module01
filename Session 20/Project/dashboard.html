@@ -899,6 +899,7 @@
                     class="form-control"
                     placeholder="Nhập mã sản phẩm"
                     id="updateProductId"
+                    readonly
                   />
                   <small
                     class="text-danger"
@@ -928,7 +929,7 @@
                   >
                   <select
                     name="Tên danh mục"
-                    id="updateProductC"
+                    id="updateProductCategory"
                     class="form-select"
                   >
                     <option value="1" selected>Điện thoại</option>
@@ -944,8 +945,9 @@
                     <input
                       type="radio"
                       class="form-check-input"
-                      name="status"
-                      id="active"
+                      name="productUpdateStatus"
+                      value="active"
+                      checked
                     />
                     <label for="active" class="form-label"
                       >Đang hoạt động</label
@@ -955,8 +957,8 @@
                     <input
                       type="radio"
                       class="form-check-input"
-                      name="status"
-                      id="inactive"
+                      name="productUpdateStatus"
+                      value="inactive"
                     />
                     <label for="inactive" class="form-label"
                       >Ngừng hoạt động</label
@@ -1007,7 +1009,7 @@
                     name="Chi tiết sản phẩm"
                     class="form-control"
                     rows="3"
-                    id="updateProductDetails"
+                    id="updateProductDescription"
                   ></textarea>
                 </div>
               </div>
@@ -1092,7 +1094,7 @@
             >
               Hủy
             </button>
-            <button type="submit" class="btn btn-danger">Xóa</button>
+            <button type="submit" class="btn btn-danger btn-delete">Xóa</button>
           </div>
         </div>
       </div>
