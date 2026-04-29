@@ -1,22 +1,22 @@
 let listAccount = JSON.parse(localStorage.getItem('users'));
 if (!listAccount) {
-  listAccount = [{ id: 'admin@gmail.com', password: '12345678' }];
-  localStorage.setItem('user', JSON.stringify(listAccount));
+  listAccount = [{ email: 'admin@gmail.com', password: '12345678' }];
+  localStorage.setItem('users', JSON.stringify(listAccount));
 }
 
 document.getElementById('loginForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const emailValue = document.getElementById('email').value;
+  const passwordValue = document.getElementById('password').value;
   const isRemember = document.getElementById('saveId').checked;
 
   const userFound = listAccount.find(function (user) {
-    return user.email === emailInput && user.password === passwordInput;
+    return user.email === emailValue && user.password === passwordValue;
   });
 
   if (userFound) {
     if (isRemember) {
-      localStorage.setItem('rememberedEmail', emailInputs);
+      localStorage.setItem('rememberedEmail', email);
     } else {
       localStorage.removeItem('rememberedEmail');
     }
