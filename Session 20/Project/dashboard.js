@@ -209,7 +209,7 @@ const inputUpdateId = document.getElementById('updateProductId');
 const inputUpdateName = document.getElementById('updateProductName');
 
 /** Thực thi cập nhật sản phẩm
- * Kiểm tra tên sản phẩm hay mã sản phẩm phải được điền, không được để trống
+ * Kiểm tra tên sản phẩm hay mã sản phẩm phải được điền, không được để trống, tên sản phẩm khi cập nhật không được trùng
  * Lấy thông tin sản phẩm cần cập nhật: mã sản phẩm, danh mục, giá, số lượng, giảm giá, trạng thái
  * Thay thế toàn bộ thông tin đó bằng thông tin vừa nhập
  * Lưu vào localStorage
@@ -220,14 +220,16 @@ updateForm.addEventListener('submit', (e) => {
   const statusUpdateChecked = document.querySelector(
     'input[name="productUpdateStatus"]:checked',
   );
-  let statusUpdateSelected;
 
+  // Lấy dữ liệu ô radio
+  let statusUpdateSelected;
   if (statusUpdateChecked) {
     statusUpdateSelected = statusUpdateChecked.value;
   } else {
     statusUpdateSelected = 'active';
   }
 
+  // Khởi tạo các giá trị về thông tin sản phẩm update
   const idUpdateValue = inputUpdateId.value.trim();
   const nameUpdateValue = inputUpdateName.value.trim();
   const categoryUpdate = document.getElementById('updateProductCategory').value;
@@ -245,6 +247,7 @@ updateForm.addEventListener('submit', (e) => {
     'updateProductDescription',
   ).value;
 
+  // Khi cập nhật các ô tên sản phẩm và mã sản phẩm không được để trống
   let isValid = true;
   if (idUpdateValue == '') {
     showError(
@@ -267,10 +270,27 @@ updateForm.addEventListener('submit', (e) => {
     removeError(inputUpdateName, 'errorUpdateProductName');
   }
 
+  // Khi tên sản phẩm được nhập, kiểm tra xem có trùng tên sản phẩm không
+  if (isValid) {
+    let checkName = listProducts.some((checkInputName) => {
+      return (
+        checkInputName.id !== idUpdateValue &&
+        checkInputName.name.toLowerCase().trim() ===
+          nameUpdateValue.toLowerCase().trim()
+      );
+    });
+
+    if (checkName) {
+      alert('Tên sản phẩm đã bị trùng, vui lòng nhập lại!');
+      return;
+    }
+  }
+  // Lấy toàn bộ những thông tin đã nhập trước đó ghi đè vào mảng đã có dựa theo id
   if (isValid) {
     const index = listProducts.findIndex((p) => p.id === idUpdateValue);
     if (index !== -1) {
       listProducts[index] = {
+        // ...listProducts[index],
         id: idUpdateValue,
         name: nameUpdateValue,
         category: categoryUpdate,
