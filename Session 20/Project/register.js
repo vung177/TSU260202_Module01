@@ -1,3 +1,9 @@
+let listAccount = JSON.parse(localStorage.getItem('users'));
+if (!listAccount) {
+  listAccount = [{ id: 'admin@gmail.com', password: '12345678' }];
+  localStorage.setItem('user', JSON.stringify(listAccount));
+}
+
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -35,7 +41,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
       email: email,
       password: password,
     };
-    localStorage.setItem(email, JSON.stringify(user));
+    if (listAccount.some((u) => u.email === email)) {
+      alert('Email đã được đăng ký, vui lòng đăng ký email khác!');
+      return;
+    }
+    listAccount.push(user);
+    localStorage.setItem('user', JSON.stringify(listAccount));
     alert('Đăng ký thành công!');
     window.location.href = './signin.html';
   }
