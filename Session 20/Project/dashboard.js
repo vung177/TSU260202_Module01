@@ -1,26 +1,57 @@
 // Nếu có dữ liệu mẫu thì thêm ở đây
 let listProducts = JSON.parse(localStorage.getItem('listProducts'));
 if (!listProducts) {
-  listProducts = [];
+  listProducts = [
+    {
+      id: 1,
+      productName: 'Quần Áo',
+      status: 'Đang hoạt động',
+      img: '../img/anh1.png',
+    },
+
+    {
+      id: 2,
+      productName: 'Kính mắt',
+      status: 'Đang hoạt động',
+      img: '../img/anh2.png',
+    },
+
+    {
+      id: 3,
+      productName: 'Điện tử',
+      status: 'Ngừng hoạt động',
+      img: '../img/anh3.png',
+    },
+
+    {
+      id: 4,
+      productName: 'Hoa quả',
+      status: 'Đang hoạt động',
+      img: '../img/anh4.png',
+    },
+
+    {
+      id: 5,
+      productName: 'Giày dép',
+      status: 'Ngừng hoạt động',
+      img: '../img/anh1.png',
+    },
+  ];
 }
 localStorage.setItem('listProducts', JSON.stringify(listProducts));
 
-const btnAddNewCategory = document.getElementById('btnAddNewCategory');
-const modalCategory = document.getElementById('idModalAddCategory');
-const categoryAddModal = new bootstrap.Modal(modalCategory);
+let categories = JSON.parse(localStorage.getItem('categories'));
+if (!categories) {
+  categories = [];
+}
+
+localStorage.setItem('categories', JSON.stringify(categories));
 
 // Log out user
 let isLogin = JSON.parse(localStorage.getItem('isLogin'));
 if (!isLogin) {
   window.location.href = './signin.html';
 }
-// let btnLogOut = document.getElementById('logOutBtn');
-// btnLogOut.addEventListener('click', (e) => {
-//   if (confirm('Bạn có chắc chắn muốn thoát tài khoản không?')) {
-//     localStorage.removeItem('isLogin');
-//     window.location.href = './signin.html';
-//   }
-// });
 
 let logOutModal = new bootstrap.Modal(document.getElementById('modalLogOut'));
 
@@ -40,6 +71,10 @@ if (btnConfirmLogOut) {
 }
 
 // Mở Thêm mới danh mục
+const btnAddNewCategory = document.getElementById('btnAddNewCategory');
+const modalCategory = document.getElementById('idModalAddCategory');
+const categoryAddModal = new bootstrap.Modal(modalCategory);
+
 btnAddNewCategory.addEventListener('click', () => {
   categoryAddModal.show();
 });
@@ -385,6 +420,7 @@ renderProducts(listProducts);
 
 /**
  * Danh sách các hàm
+ * saveToStorage - newCategory
  * showError
  * removeError
  * closeModal
@@ -393,6 +429,18 @@ renderProducts(listProducts);
  * deleteProducts
  * BONUS
  */
+
+// Lưu dữ liệu vào mảng với danh mục mới
+function saveToStorage(newCategory) {
+  const isExisted = categories.some((item) => item.id === newCategory.id);
+  if (isExisted) {
+    alert('Mã danh mục đã tồn tại, vui lòng nhập lại!');
+    return false;
+  }
+  categories.push(newCategory);
+  localStorage.setItem('categories', JSON.stringify(categories));
+  return true;
+}
 
 // Hiển thị lỗi
 function showError(input, errorId, message) {
@@ -416,16 +464,6 @@ function closeModal(modalID) {
   if (modalInstance) {
     modalInstance.hide();
   }
-}
-
-// Hàm mở Modal bất kỳ
-function openModalManual(modalID) {
-  const modal = document.getElementById(modalID);
-  const backdrop = document.getElementById('modalBackdrop');
-
-  modal.classList.add('show-custom');
-  backdrop.classList.add('backdrop-show');
-  document.body.classList.add('modal-open');
 }
 
 // Render sản phẩm ra màn hình
