@@ -20,6 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     } else {
       localStorage.removeItem('rememberedEmail');
     }
+    localStorage.setItem('isLogin', true);
     alert('Đăng nhập thành công!');
     window.location.href = './dashboard.html';
   } else {

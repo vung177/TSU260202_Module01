@@ -10,9 +10,34 @@ const modalCategory = document.getElementById('idModalAddCategory');
 const categoryAddModal = new bootstrap.Modal(modalCategory);
 
 // Log out user
-document.getElementById('logOutBtn').addEventListener('click', (e) => {
-  modalLogOut.show();
+let isLogin = JSON.parse(localStorage.getItem('isLogin'));
+if (!isLogin) {
+  window.location.href = './signin.html';
+}
+// let btnLogOut = document.getElementById('logOutBtn');
+// btnLogOut.addEventListener('click', (e) => {
+//   if (confirm('Bạn có chắc chắn muốn thoát tài khoản không?')) {
+//     localStorage.removeItem('isLogin');
+//     window.location.href = './signin.html';
+//   }
+// });
+
+let logOutModal = new bootstrap.Modal(document.getElementById('modalLogOut'));
+
+let btnLogOut = document.getElementById('logOutBtn');
+btnLogOut.addEventListener('click', (e) => {
+  e.preventDefault();
+  logOutModal.show();
 });
+
+let btnConfirmLogOut = document.querySelector('.btn-logout');
+if (btnConfirmLogOut) {
+  btnConfirmLogOut.addEventListener('click', () => {
+    localStorage.removeItem('isLogin');
+    logOutModal.hide();
+    window.location.href = './signin.html';
+  });
+}
 
 // Mở Thêm mới danh mục
 btnAddNewCategory.addEventListener('click', () => {
@@ -359,12 +384,14 @@ btnConfirmDelete.addEventListener('click', () => {
 renderProducts(listProducts);
 
 /**
- * Các hàm dùng để check.
+ * Danh sách các hàm
  * showError
  * removeError
  * closeModal
+ * openModal
  * renderProducts
  * deleteProducts
+ * BONUS
  */
 
 // Hiển thị lỗi
@@ -382,13 +409,23 @@ function removeError(input, errorId) {
   errorElement.style.display = 'none';
 }
 
-// Hàm đóng Modal
+// Hàm đóng Modal cho bootstrap - có sẵn
 function closeModal(modalID) {
   const modalElement = document.getElementById(modalID);
   const modalInstance = bootstrap.Modal.getInstance(modalElement);
   if (modalInstance) {
     modalInstance.hide();
   }
+}
+
+// Hàm mở Modal bất kỳ
+function openModalManual(modalID) {
+  const modal = document.getElementById(modalID);
+  const backdrop = document.getElementById('modalBackdrop');
+
+  modal.classList.add('show-custom');
+  backdrop.classList.add('backdrop-show');
+  document.body.classList.add('modal-open');
 }
 
 // Render sản phẩm ra màn hình

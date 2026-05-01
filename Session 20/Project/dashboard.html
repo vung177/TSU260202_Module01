@@ -45,7 +45,7 @@
             <li class="nav-item w-100">
               <a
                 href="#"
-                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2 active"
+                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2"
                 data-target="section-thong-ke"
               >
                 <svg
@@ -67,7 +67,7 @@
             <li class="nav-item w-100">
               <a
                 href="#"
-                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2"
+                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2 active"
                 data-target="section-danh-muc"
               >
                 <svg
@@ -120,7 +120,7 @@
         <!-- #mainStatistics Bảng thống kê tham khảo -->
         <!-- ======================================= -->
         <section
-          class="col-10 p-0 vh-100 bg-light d-flex flex-column d-none"
+          class="col-10 p-0 vh-100 bg-light d-flex flex-column"
           id="mainStatistics"
         >
           <!-- Header statistics -->
@@ -312,7 +312,7 @@
         <!-- #maincategory Danh mục sản phẩm -->
         <!-- =============================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none d-none"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
           id="mainCategory"
         >
           <div
@@ -391,26 +391,13 @@
               </ul>
             </div>
 
-            <!-- #inputsearch Tìm kiếm danh mục theo tên -->
+            <!-- #categorysearch Tìm kiếm danh mục theo tên -->
             <!-- ======================================= -->
             <div class="input-group border rounded px-1 custom-width">
               <input
                 type="text"
                 class="form-control border-0"
                 placeholder="Tìm kiếm danh mục theo tên"
-              />
-              <span class="input-group-text bg-white border-0 bg-white"
-                ><i class="bi bi-search"></i
-              ></span>
-            </div>
-
-            <!-- #inputsearch Tìm kiếm sản phẩm theo tên -->
-            <!-- ======================================= -->
-            <div class="input-group border rounded px-1 custom-width">
-              <input
-                type="text"
-                class="form-control border-0"
-                placeholder="Tìm kiếm sản phẩm theo tên"
               />
               <span class="input-group-text bg-white border-0 bg-white"
                 ><i class="bi bi-search"></i
@@ -496,7 +483,7 @@
         <!-- #mainproduct Sản phẩm -->
         <!-- ===================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
           id="mainProduct"
         >
           <!-- #avatar Avatar user -->
@@ -632,11 +619,14 @@
                 </li>
               </ul>
             </div>
+
+            <!-- #productsearch Tìm kiếm sản phẩm -->
+            <!-- ================================ -->
             <div class="input-group border rounded px-1 custom-width">
               <input
                 type="text"
                 class="form-control border-0"
-                placeholder="Tìm kiếm danh mục theo tên"
+                placeholder="Tìm kiếm sản phẩm theo tên"
               />
               <span class="input-group-text bg-white border-0 bg-white"
                 ><i class="bi bi-search"></i
@@ -732,6 +722,69 @@
         </section>
       </div>
     </section>
+    <!-- #logout Log out tài khoản -->
+    <div
+      class="modal fade"
+      id="modalLogOut"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="icon p-3">
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="4" y="4" width="48" height="48" rx="24" fill="#FEE4E2" />
+              <rect
+                x="4"
+                y="4"
+                width="48"
+                height="48"
+                rx="24"
+                stroke="#FEF3F2"
+                stroke-width="8"
+              />
+              <path
+                d="M28 24V28M28 32H28.01M38 28C38 33.5228 33.5228 38 28 38C22.4772 38 18 33.5228 18 28C18 22.4772 22.4772 18 28 18C33.5228 18 38 22.4772 38 28Z"
+                stroke="#D92D20"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="modal-header border-bottom-0 py-0">
+            <h5 class="modal-title" id="modalTitleId">
+              Xác nhận Thoát tài khoản
+            </h5>
+          </div>
+          <div class="modal-body py-2">
+            <div class="container-fluid p-0">
+              Bạn có chắc chắn muốn thoát tài khoản không?
+            </div>
+          </div>
+          <hr class="mx-3 my-0 opacity-25" />
+          <div class="modal-footer border-top-0">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button type="submit" class="btn btn-danger btn-logout">
+              Thoát
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ====== #addcategory Nút Thêm mới danh mục ====== -->
     <div class="modal fade" id="idModalAddCategory" aria-hidden="true">
@@ -834,7 +887,7 @@
       </div>
     </div>
 
-    <!-- ======= Nút Thêm mới sản phẩm ====== -->
+    <!-- ======= #addproduct Nút Thêm mới sản phẩm ====== -->
     <div
       class="modal fade"
       id="modalAddProduct"
@@ -1001,7 +1054,7 @@
       </div>
     </div>
 
-    <!-- ====== Nút cập nhật danh mục ====== -->
+    <!-- ====== #updatecategory Nút cập nhật danh mục ====== -->
     <div class="modal fade" id="idModalUpdateCategory" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -1102,7 +1155,7 @@
       </div>
     </div>
 
-    <!-- ====== Nút cập nhật sản phẩm -->
+    <!-- ====== #updateproduct Nút cập nhật sản phẩm -->
     <div
       class="modal fade"
       id="modalUpdateProduct"
@@ -1272,8 +1325,8 @@
         </div>
       </div>
     </div>
-    <!-- ====== Nút xóa danh mục ====== -->
-    <!-- ====== Nút xóa sản phẩm ====== -->
+    <!-- ====== #deletecategory Nút xóa danh mục ====== -->
+    <!-- ====== #deleteproduct Nút xóa sản phẩm ====== -->
     <div
       class="modal fade"
       id="modalDeleteProduct"
@@ -1346,7 +1399,7 @@
         <div class="d-flex">
           <div class="toast-body">
             <i class="bi bi-check-circle-fill text-success-bright me-2"></i>
-            <strong>Success!</strong><br />
+            <strong class="fw-bold fs-5">Success!</strong><br />
             Xóa sản phẩm thành công
           </div>
           <button
@@ -1358,6 +1411,7 @@
         </div>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
