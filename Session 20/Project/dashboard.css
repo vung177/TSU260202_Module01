@@ -64,3 +64,11 @@
   font-size: 12px;
   display: none;
 }
+
+.text-success-bright {
+  color: #2ecc71 !important; /* Màu xanh lá chuẩn modern */
+  filter: drop-shadow(
+    0 0 2px rgba(46, 204, 113, 0.5)
+  ); /* Thêm chút hiệu ứng hắt sáng */
+  font-size: 1.2rem; /* Chỉnh to hơn một chút nếu muốn nổi bật */
+}

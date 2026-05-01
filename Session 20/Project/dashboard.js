@@ -195,10 +195,11 @@ document.addEventListener('click', function (event) {
       document.getElementById('updateProductCategory').value =
         productIdOld.category;
       document.getElementById('updateProductQuantity').value =
-        productIdOld.stock;
-      document.getElementById('updateProductPrice').value = productIdOld.price;
+        productIdOld.stock || 0;
+      document.getElementById('updateProductPrice').value =
+        productIdOld.price || 0;
       document.getElementById('updateProductDiscount').value =
-        productIdOld.discount;
+        productIdOld.discount || 0;
       document.getElementById('updateProductImg').value = productIdOld.img;
       document.getElementById('updateProductDescription').value =
         productIdOld.description;
@@ -239,13 +240,13 @@ updateForm.addEventListener('submit', (e) => {
   const nameUpdateValue = inputUpdateName.value.trim();
   const categoryUpdate = document.getElementById('updateProductCategory').value;
   const stockUpdate = Number(
-    document.getElementById('updateProductQuantity').value,
+    document.getElementById('updateProductQuantity').value || 0,
   );
   const priceUpdate = Number(
-    document.getElementById('updateProductPrice').value,
+    document.getElementById('updateProductPrice').value || 0,
   );
   const discountUpdate = Number(
-    document.getElementById('updateProductDiscount').value,
+    document.getElementById('updateProductDiscount').value || 0,
   );
   const imgUpdate = document.getElementById('updateProductImg').value;
   const descriptionUpdate = document.getElementById(
@@ -316,12 +317,18 @@ updateForm.addEventListener('submit', (e) => {
 });
 
 // Mở tab xóa sản phẩm
+// Cần có 1 biến trung gian để khi xóa sản phẩm cần lưu id sản phẩm xóa đó vào biến trung gian
 const modalDeleteElement = document.getElementById('modalDeleteProduct');
 const productDeleteModal = new bootstrap.Modal(modalDeleteElement);
+let idProductToDelete = null;
 document.addEventListener('click', (d) => {
   const btn = d.target.closest('.btn-delete-product');
   if (btn) {
+    // Lấy id sản phẩm muốn xóa
+    idProductToDelete = btn.dataset.id;
     const productDeleteName = btn.dataset.name;
+
+    // Hiển thị tên sản phẩm lên bảng
     const spanName = modalDeleteElement.querySelector('.modal-body span');
     if (spanName) {
       spanName.textContent = productDeleteName;
@@ -331,21 +338,11 @@ document.addEventListener('click', (d) => {
   }
 });
 
-// Thực hiện xóa sản phẩm
-// Cần phải có id của sản phẩm cần xóa
-// Lưu thông tin khi nhấn nút xóa sản phẩm vào mục cần xóa
-let idProductToDelete = null;
-
-// Cập nhật lại sự kiện click mở modal
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.btn-delete-product');
-  if (btn) {
-    idProductToDelete = btn.dataset.id;
-    productDeleteModal.show();
-  }
-});
 const btnConfirmDelete = document.querySelector(
   '#modalDeleteProduct .btn-danger',
+);
+const successToast = new bootstrap.Toast(
+  document.getElementById('deleteSuccessToast'),
 );
 
 // Nhấn nút xóa sản phẩm
@@ -353,22 +350,8 @@ btnConfirmDelete.addEventListener('click', () => {
   if (idProductToDelete) {
     deleteProducts(idProductToDelete);
     idProductToDelete = null;
-    closeModal('modalDeleteProduct');
-  }
-});
-
-const toastElement = document.getElementById('deleteSuccessToast');
-const successToast = new bootstrap.Toast(toastElement);
-
-btnConfirmDelete.addEventListener('click', () => {
-  if (idProductToDelete) {
-    deleteProducts(idProductToDelete);
-    idProductToDelete = null;
-
-    // Đóng modal
     productDeleteModal.hide();
-
-    // Thay thế alert bằng Toast
+    closeModal('modalDeleteProduct');
     successToast.show();
   }
 });

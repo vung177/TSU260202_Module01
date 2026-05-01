@@ -120,7 +120,7 @@
         <!-- #mainStatistics Bảng thống kê tham khảo -->
         <!-- ======================================= -->
         <section
-          class="col-10 p-0 vh-100 bg-light d-flex flex-column"
+          class="col-10 p-0 vh-100 bg-light d-flex flex-column d-none"
           id="mainStatistics"
         >
           <!-- Header statistics -->
@@ -496,7 +496,7 @@
         <!-- #mainproduct Sản phẩm -->
         <!-- ===================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
           id="mainProduct"
         >
           <!-- #avatar Avatar user -->
@@ -1210,8 +1210,9 @@
                 <div class="col-md-4">
                   <label for="Giá" class="form-label">Giá</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
+                    min="0"
                     placeholder="10.000.000"
                     id="updateProductPrice"
                   />
@@ -1333,7 +1334,7 @@
       </div>
     </div>
 
-    <!-- ====== Nút thông báo xóa sản phẩm ====== -->
+    <!-- ====== #toast Nút thông báo xóa sản phẩm ====== -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
       <div
         id="deleteSuccessToast"
@@ -1344,8 +1345,8 @@
       >
         <div class="d-flex">
           <div class="toast-body">
-            <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <strong>Thành công</strong><br />
+            <i class="bi bi-check-circle-fill text-success-bright me-2"></i>
+            <strong>Success!</strong><br />
             Xóa sản phẩm thành công
           </div>
           <button
