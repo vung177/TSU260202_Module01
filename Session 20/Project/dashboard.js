@@ -80,15 +80,25 @@ btnAddNewCategory.addEventListener('click', () => {
 });
 
 const categoryForm = document.getElementById('formAddCategory');
-const inputIdCategory = document.getElementById('category-id');
-const inputNameCategory = document.getElementById('category-name');
+const inputIdCategory = document.getElementById('categoryId');
+const inputNameCategory = document.getElementById('categoryName');
 
 // Kiếm tra tên hay mã danh mục có để trống hay không
 categoryForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  const statusChecked = document.querySelector(
+    'input[name="categoriesStatus"]:checked',
+  );
+  // Lấy trạng thái từ thông tin đăng nhập của người dùng
+  let statusSelected;
+  if (statusChecked) {
+    statusSelected = statusChecked.value;
+  } else {
+    statusSelected = 'active';
+  }
   const categoryIdValue = inputIdCategory.value.trim();
   const categoryNameValue = inputNameCategory.value.trim();
+
   let isValid = true;
   if (categoryIdValue === '') {
     showError(
@@ -100,6 +110,15 @@ categoryForm.addEventListener('submit', (e) => {
   } else {
     removeError(inputIdCategory, 'errorCategoryId');
   }
+
+  const isExisted = categories.some((item) => item.id === newCategory.id);
+  if (isExisted) {
+    alert('Mã danh mục đã tồn tại, vui lòng nhập lại!');
+    isValid = false;
+  } else {
+    removeError(inputIdCategory, 'errorCategoryId');
+  }
+
   if (categoryNameValue === '') {
     showError(
       inputNameCategory,
@@ -115,11 +134,16 @@ categoryForm.addEventListener('submit', (e) => {
     const newCategory = {
       id: categoryIdValue,
       name: categoryNameValue,
+      status: statusSelected,
     };
-    // saveToStorage(newCategory);
+
+    categories.push(newCategory);
+    localStorage.setItem('categories', JSON.stringify(categories));
     alert('Thêm danh mục thành công!');
+
     categoryForm.reset();
-    closeModal('idModalAddCategory');
+    categoryAddModal.hide();
+    renderCategories(categories);
   }
 });
 
@@ -416,30 +440,48 @@ btnConfirmDelete.addEventListener('click', () => {
   }
 });
 
+renderCategories(categories);
 renderProducts(listProducts);
 
 /**
  * Danh sách các hàm
- * saveToStorage - newCategory
+ * renderCategories
  * showError
  * removeError
- * closeModal
- * openModal
  * renderProducts
  * deleteProducts
  * BONUS
  */
 
-// Lưu dữ liệu vào mảng với danh mục mới
-function saveToStorage(newCategory) {
-  const isExisted = categories.some((item) => item.id === newCategory.id);
-  if (isExisted) {
-    alert('Mã danh mục đã tồn tại, vui lòng nhập lại!');
-    return false;
-  }
-  categories.push(newCategory);
-  localStorage.setItem('categories', JSON.stringify(categories));
-  return true;
+// Render danh mục ra màn hình
+function renderCategories(arr) {
+  const tabelCategories = document.getElementById('listCategories');
+  tabelCategories.innerHTML = '';
+
+  tabelCategories.innerHTML = arr
+    .map((e) => {
+      let statusBadge =
+        e.status === 'active'
+          ? `<span class="badge rounded-pill bg-success-subtle text-success p-2">● Đang hoạt động</span>`
+          : `<span class="badge rounded-pill bg-danger-subtle text-danger p-2">● Ngừng hoạt động</span>`;
+      return `<tr>
+                    <td class="ps-4">${e.id}</td>
+                    <td>${e.name}</td>
+                    <td class="text-center">${statusBadge}
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-link text-danger p-1" data-id="${e.id}" data-name="${e.name}">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                      <button
+                        class="btn btn-link text-warning p-1 btn-update-category" data-id="${e.id}" data-name="${e.name}"
+                      >
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                  </tr>`;
+    })
+    .join('');
 }
 
 // Hiển thị lỗi
@@ -455,15 +497,6 @@ function removeError(input, errorId) {
   input.classList.remove('is-invalid');
   const errorElement = document.getElementById(errorId);
   errorElement.style.display = 'none';
-}
-
-// Hàm đóng Modal cho bootstrap - có sẵn
-function closeModal(modalID) {
-  const modalElement = document.getElementById(modalID);
-  const modalInstance = bootstrap.Modal.getInstance(modalElement);
-  if (modalInstance) {
-    modalInstance.hide();
-  }
 }
 
 // Render sản phẩm ra màn hình
