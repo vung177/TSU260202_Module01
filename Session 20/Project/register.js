@@ -28,7 +28,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     confirmPasswordInput.classList.remove('is-invalid');
   }
 
-  // 4. Kết luận
+  // 4. Lưu tài khoản và mật khẩu vào localStorage, đồng thời kiểm tra tài khoản đăng ký có bị trùng hay không.
   if (isValid) {
     const user = {
       fullName: `${firstName} ${lastName}`,
@@ -43,7 +43,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     } else {
       listAccount = [{ email: 'admin@gmail.com', password: '12345678' }];
     }
-    if (listAccount.some((u) => u.email === email)) {
+    if (listAccount.some((e) => e.email === email)) {
       alert('Email đã được đăng ký, vui lòng đăng ký email khác!');
       return;
     }
@@ -52,4 +52,8 @@ document.querySelector('form').addEventListener('submit', function (e) {
     alert('Đăng ký thành công!');
     window.location.href = './signin.html';
   }
+});
+
+document.getElementById('logIn').addEventListener('click', function (e) {
+  window.location.href = './signin.html';
 });

@@ -45,7 +45,7 @@
             <li class="nav-item w-100">
               <a
                 href="#"
-                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2"
+                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2 active"
                 data-target="section-thong-ke"
               >
                 <svg
@@ -67,7 +67,7 @@
             <li class="nav-item w-100">
               <a
                 href="#"
-                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2 active"
+                class="nav-link text-dark d-flex align-items-center justify-content-center justify-content-xl-center gap-2 mt-2"
                 data-target="section-danh-muc"
               >
                 <svg
@@ -117,16 +117,15 @@
         </div>
 
         <!-- ====== Header-body ====== -->
+        <!-- #mainStatistics Bảng thống kê tham khảo -->
+        <!-- ======================================= -->
         <section
-          class="col-12 p-0 vh-100 d-flex align-content-center justify-content-center d-none"
+          class="col-10 p-0 vh-100 bg-light d-flex flex-column"
           id="mainStatistics"
-        ></section>
-        <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
-          id="mainCategory"
         >
+          <!-- Header statistics -->
           <div
-            class="d-flex align-items-center justify-content-end gap-2 border-bottom p-2"
+            class="d-flex align-items-center justify-content-end gap-2 border-bottom p-3"
           >
             <svg
               width="20"
@@ -146,8 +145,202 @@
               class="rounded-circle border img-fuild img-thumbnail avatar"
             />
           </div>
-          <div class="d-flex justify-content-between p-4">
-            <span><h4 class="mb-4">Danh mục</h4> </span>
+          <div class="d-flex justify-content-between align-items-center p-4">
+            <h4 class="mb-0">Thống kê</h4>
+            <button
+              class="btn btn-outline-secondary d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm bg-gradient border"
+              id="logOutBtn"
+            >
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log out</span>
+            </button>
+          </div>
+          <!-- Contents statistics -->
+          <div class="p-4">
+            <div class="row g-4 mb-4">
+              <!-- Tổng doanh thu -->
+              <div class="col-md-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div class="bg-primary-subtle p-2 rounded-3">
+                      <i class="bi bi-currency-dollar text-primary fs-4"></i>
+                    </div>
+                    <span class="text-success small fw-bold"
+                      >+12% <i class="bi bi-arrow-up"></i
+                    ></span>
+                  </div>
+                  <h6 class="text-secondary mb-1">Tổng doanh thu</h6>
+                  <h4 class="fw-bold mb-0">128.450.000đ</h4>
+                </div>
+              </div>
+              <!-- Đơn hàng mới -->
+              <div class="col-md-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div class="bg-success-subtle p-2 rounded-3">
+                      <i class="bi bi-cart-check text-success fs-4"></i>
+                    </div>
+                    <span class="text-success small fw-bold"
+                      >+5% <i class="bi bi-arrow-up"></i
+                    ></span>
+                  </div>
+                  <h6 class="text-secondary mb-1">Đơn hàng mới</h6>
+                  <h4 class="fw-bold mb-0">456</h4>
+                </div>
+              </div>
+              <!-- Khách hàng -->
+              <div class="col-md-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div class="bg-warning-subtle p-2 rounded-3">
+                      <i class="bi bi-people text-warning fs-4"></i>
+                    </div>
+                    <span class="text-danger small fw-bold"
+                      >-2% <i class="bi bi-arrow-down"></i
+                    ></span>
+                  </div>
+                  <h6 class="text-secondary mb-1">Khách hàng mới</h6>
+                  <h4 class="fw-bold mb-0">1,204</h4>
+                </div>
+              </div>
+              <!-- Sản phẩm tồn kho -->
+              <div class="col-md-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div class="bg-info-subtle p-2 rounded-3">
+                      <i class="bi bi-box-seam text-info fs-4"></i>
+                    </div>
+                  </div>
+                  <h6 class="text-secondary mb-1">Sản phẩm tồn kho</h6>
+                  <h4 class="fw-bold mb-0">89</h4>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card border-0 shadow-sm rounded-4 bg-white overflow-hidden"
+            >
+              <div
+                class="card-header bg-white border-0 p-4 pb-0 d-flex justify-content-between align-items-center"
+              >
+                <h5 class="fw-bold mb-0">Sản phẩm bán chạy nhất</h5>
+                <button class="btn btn-sm btn-light border">Xem tất cả</button>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="ps-4">Tên sản phẩm</th>
+                        <th class="text-center">Số lượng bán</th>
+                        <th class="text-center">Doanh thu</th>
+                        <th class="text-center">Đánh giá</th>
+                        <th class="text-end pe-4">Trạng thái</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ps-4">
+                          <div class="d-flex align-items-center gap-3">
+                            <span class="fw-medium">iPhone 15 Pro Max</span>
+                          </div>
+                        </td>
+                        <td class="text-center">124</td>
+                        <td class="text-center">3.450.000.000đ</td>
+                        <td class="text-center">
+                          <span class="text-warning"
+                            ><i class="bi bi-star-fill"></i> 4.9</span
+                          >
+                        </td>
+                        <td class="text-end pe-4">
+                          <span class="badge bg-success-subtle text-success"
+                            >Còn hàng</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-4">
+                          <div class="d-flex align-items-center gap-3">
+                            <span class="fw-medium">MacBook Air M3</span>
+                          </div>
+                        </td>
+                        <td class="text-center">86</td>
+                        <td class="text-center">2.150.000.000đ</td>
+                        <td class="text-center">
+                          <span class="text-warning"
+                            ><i class="bi bi-star-fill"></i> 4.8</span
+                          >
+                        </td>
+                        <td class="text-end pe-4">
+                          <span class="badge bg-success-subtle text-success"
+                            >Còn hàng</span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 bg-white mt-4">
+              <div class="card-header bg-white border-0 p-4 pb-0">
+                <h5 class="fw-bold mb-0">Tăng trưởng doanh thu theo tháng</h5>
+              </div>
+              <div class="card-body p-4">
+                <!-- Canvas là nơi biểu đồ sẽ được vẽ lên -->
+                <canvas id="revenueChart" style="max-height: 400px"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- #maincategory Danh mục sản phẩm -->
+        <!-- =============================== -->
+        <section
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none d-none"
+          id="mainCategory"
+        >
+          <div
+            class="d-flex align-items-center justify-content-end gap-2 border-bottom p-3"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 14 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.99985 0C8.59115 0 10.1173 0.632141 11.2425 1.75736C12.3677 2.88258 12.9998 4.4087 12.9998 6V9.586L13.7068 10.293C13.8467 10.4329 13.9419 10.611 13.9804 10.805C14.019 10.9989 13.9992 11.2 13.9235 11.3827C13.8479 11.5654 13.7197 11.7215 13.5553 11.8314C13.3909 11.9413 13.1976 12 12.9998 12H0.999846C0.802096 12 0.608798 11.9413 0.444388 11.8314C0.279979 11.7215 0.151839 11.5654 0.076169 11.3827C0.000498772 11.2 -0.0193043 10.9989 0.0192633 10.805C0.0578308 10.611 0.153036 10.4329 0.292846 10.293L0.999846 9.586V6C0.999846 4.4087 1.63199 2.88258 2.75721 1.75736C3.88242 0.632141 5.40855 0 6.99985 0ZM6.99985 16C7.7955 16 8.55856 15.6839 9.12117 15.1213C9.68378 14.5587 9.99985 13.7956 9.99985 13H3.99985C3.99985 13.7956 4.31592 14.5587 4.87853 15.1213C5.44113 15.6839 6.2042 16 6.99985 16Z"
+                fill="#B0BABF"
+              />
+            </svg>
+            <img
+              src="/Session 20/Photos/Avatar.png"
+              alt="Avatar"
+              class="rounded-circle border img-fuild img-thumbnail avatar"
+            />
+          </div>
+
+          <!-- #btnaddnewcategory Thêm mới danh mục -->
+          <!-- ==================================== -->
+          <div class="d-flex justify-content-between align-items-center p-4">
+            <span><h4 class="mb-0">Danh mục</h4> </span>
             <button
               class="btn btn-primary rounded-3 px-4"
               id="btnAddNewCategory"
@@ -155,6 +348,9 @@
               Thêm mới danh mục
             </button>
           </div>
+
+          <!-- #btnselectcategory Nút chọn danh mục -->
+          <!-- ==================================== -->
           <div class="d-flex justify-content-end px-4 gap-2 mb-3">
             <div class="dropdown custom-width">
               <button
@@ -194,6 +390,9 @@
                 </li>
               </ul>
             </div>
+
+            <!-- #inputsearch Tìm kiếm danh mục theo tên -->
+            <!-- ======================================= -->
             <div class="input-group border rounded px-1 custom-width">
               <input
                 type="text"
@@ -204,7 +403,23 @@
                 ><i class="bi bi-search"></i
               ></span>
             </div>
+
+            <!-- #inputsearch Tìm kiếm sản phẩm theo tên -->
+            <!-- ======================================= -->
+            <div class="input-group border rounded px-1 custom-width">
+              <input
+                type="text"
+                class="form-control border-0"
+                placeholder="Tìm kiếm sản phẩm theo tên"
+              />
+              <span class="input-group-text bg-white border-0 bg-white"
+                ><i class="bi bi-search"></i
+              ></span>
+            </div>
           </div>
+
+          <!-- #tablecategory Bảng danh mục -->
+          <!-- ============================ -->
           <div class="flex-grow-1 p-2 d-flex flex-column overflow-auto">
             <div class="table-responsive flex-grow-1 h-100 rounded px-4">
               <table class="table table-hover align-middle mb-0">
@@ -256,6 +471,8 @@
             </div>
           </div>
 
+          <!-- #paginationcategory Phân trang danh mục -->
+          <!-- ======================================= -->
           <nav class="d-flex justify-content-center mt-4">
             <ul class="pagination flex-shrink-0 text-black">
               <li class="page-item">
@@ -275,12 +492,17 @@
             </ul>
           </nav>
         </section>
+
+        <!-- #mainproduct Sản phẩm -->
+        <!-- ===================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
           id="mainProduct"
         >
+          <!-- #avatar Avatar user -->
+          <!-- =================== -->
           <div
-            class="d-flex align-items-center justify-content-end gap-2 border-bottom p-2"
+            class="d-flex align-items-center justify-content-end gap-2 border-bottom p-3"
           >
             <svg
               width="20"
@@ -300,8 +522,11 @@
               class="rounded-circle border img-fuild img-thumbnail avatar"
             />
           </div>
-          <div class="d-flex justify-content-between p-4">
-            <span><h4 class="mb-4">Sản phẩm</h4> </span>
+
+          <!-- #btnaddnewproduct Nút thêm mới sản phẩm -->
+          <!-- ======================================= -->
+          <div class="d-flex justify-content-between align-items-center p-4">
+            <h4 class="mb-0">Sản phẩm</h4>
             <button
               class="btn btn-primary rounded-3 px-4"
               id="btnAddNewProduct"
@@ -311,6 +536,8 @@
           </div>
           <div class="d-flex justify-content-end px-4 gap-2 mb-3">
             <div class="dropdown custom-width">
+              <!-- #dropdown Lọc theo danh mục -->
+              <!-- =========================== -->
               <button
                 class="btn bg-white border d-flex align-items-center justify-content-between w-100"
                 type="button"
@@ -365,6 +592,9 @@
                 </li>
               </ul>
             </div>
+
+            <!-- #dropdown Lọc sản phẩm theo trạng thái -->
+            <!-- ====================================== -->
             <div class="dropdown custom-width">
               <button
                 class="btn bg-white border d-flex align-items-center justify-content-between w-100"
@@ -413,6 +643,9 @@
               ></span>
             </div>
           </div>
+
+          <!-- #table Bảng danh sách sản phẩm -->
+          <!-- ============================== -->
           <div class="flex-grow-1 p-2 d-flex flex-column overflow-auto">
             <div class="table-responsive flex-grow-1 h-100 rounded px-4">
               <table class="table table-hover align-middle mb-0">
@@ -477,6 +710,8 @@
             </div>
           </div>
 
+          <!-- #pagination Phần trang sản phẩm hoặc trang danh mục sản phẩm -->
+          <!-- ================================================ -->
           <nav class="d-flex justify-content-center mt-4">
             <ul class="pagination flex-shrink-0 text-black">
               <li class="page-item">
@@ -498,7 +733,7 @@
       </div>
     </section>
 
-    <!-- ====== Thêm mới danh mục ====== -->
+    <!-- ====== #addcategory Nút Thêm mới danh mục ====== -->
     <div class="modal fade" id="idModalAddCategory" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -599,7 +834,7 @@
       </div>
     </div>
 
-    <!-- ======= Thêm mới sản phẩm ====== -->
+    <!-- ======= Nút Thêm mới sản phẩm ====== -->
     <div
       class="modal fade"
       id="modalAddProduct"
@@ -766,7 +1001,7 @@
       </div>
     </div>
 
-    <!-- ====== Cập nhật danh mục ====== -->
+    <!-- ====== Nút cập nhật danh mục ====== -->
     <div class="modal fade" id="idModalUpdateCategory" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -867,7 +1102,7 @@
       </div>
     </div>
 
-    <!-- ====== Cập nhật sản phẩm -->
+    <!-- ====== Nút cập nhật sản phẩm -->
     <div
       class="modal fade"
       id="modalUpdateProduct"
@@ -1036,8 +1271,8 @@
         </div>
       </div>
     </div>
-    <!-- ====== Xóa danh mục ====== -->
-    <!-- ====== Xóa sản phẩm ====== -->
+    <!-- ====== Nút xóa danh mục ====== -->
+    <!-- ====== Nút xóa sản phẩm ====== -->
     <div
       class="modal fade"
       id="modalDeleteProduct"
@@ -1098,6 +1333,31 @@
       </div>
     </div>
 
+    <!-- ====== Nút thông báo xóa sản phẩm ====== -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="deleteSuccessToast"
+        class="toast align-items-center text-white bg-dark border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <strong>Thành công</strong><br />
+            Xóa sản phẩm thành công
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

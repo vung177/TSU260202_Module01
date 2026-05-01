@@ -16,7 +16,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
 
   if (userFound) {
     if (isRemember) {
-      localStorage.setItem('rememberedEmail', email);
+      localStorage.setItem('rememberedEmail', emailValue);
     } else {
       localStorage.removeItem('rememberedEmail');
     }

@@ -9,6 +9,11 @@ const btnAddNewCategory = document.getElementById('btnAddNewCategory');
 const modalCategory = document.getElementById('idModalAddCategory');
 const categoryAddModal = new bootstrap.Modal(modalCategory);
 
+// Log out user
+document.getElementById('logOutBtn').addEventListener('click', (e) => {
+  modalLogOut.show();
+});
+
 // Mở Thêm mới danh mục
 btnAddNewCategory.addEventListener('click', () => {
   categoryAddModal.show();
@@ -327,14 +332,15 @@ document.addEventListener('click', (d) => {
 });
 
 // Thực hiện xóa sản phẩm
-let idProductToDelete = null; // Biến tạm để giữ ID
+// Cần phải có id của sản phẩm cần xóa
+// Lưu thông tin khi nhấn nút xóa sản phẩm vào mục cần xóa
+let idProductToDelete = null;
 
-// Cập nhật lại sự kiện click mở modal (đoạn tui hướng dẫn lúc nãy)
+// Cập nhật lại sự kiện click mở modal
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.btn-delete-product');
   if (btn) {
-    idProductToDelete = btn.dataset.id; // Lưu ID vào biến tạm
-    // ... code hiển thị tên lên modal ...
+    idProductToDelete = btn.dataset.id;
     productDeleteModal.show();
   }
 });
@@ -342,11 +348,28 @@ const btnConfirmDelete = document.querySelector(
   '#modalDeleteProduct .btn-danger',
 );
 
+// Nhấn nút xóa sản phẩm
 btnConfirmDelete.addEventListener('click', () => {
   if (idProductToDelete) {
-    deleteProducts(idProductToDelete); // Truyền ID vào đây
-    idProductToDelete = null; // Xóa xong thì reset biến tạm
-    closeModal('modalDeleteProduct'); // Đóng modal
+    deleteProducts(idProductToDelete);
+    idProductToDelete = null;
+    closeModal('modalDeleteProduct');
+  }
+});
+
+const toastElement = document.getElementById('deleteSuccessToast');
+const successToast = new bootstrap.Toast(toastElement);
+
+btnConfirmDelete.addEventListener('click', () => {
+  if (idProductToDelete) {
+    deleteProducts(idProductToDelete);
+    idProductToDelete = null;
+
+    // Đóng modal
+    productDeleteModal.hide();
+
+    // Thay thế alert bằng Toast
+    successToast.show();
   }
 });
 
@@ -429,3 +452,54 @@ function deleteProducts(id) {
   localStorage.setItem('listProducts', JSON.stringify(listProducts));
   renderProducts(listProducts);
 }
+
+// BONUS ++++++++++++++++++
+document.addEventListener('DOMContentLoaded', function () {
+  const ctx = document.getElementById('revenueChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'line', // Loại biểu đồ đường để thấy sự tăng giảm
+    data: {
+      labels: [
+        'Tháng 1',
+        'Tháng 2',
+        'Tháng 3',
+        'Tháng 4',
+        'Tháng 5',
+        'Tháng 6',
+      ], // Trục hoành
+      datasets: [
+        {
+          label: 'Doanh thu (VNĐ)',
+          data: [65000000, 59000000, 80000000, 81000000, 56000000, 95000000], // Dữ liệu tăng giảm
+          fill: true,
+          backgroundColor: 'rgba(13, 110, 253, 0.1)', // Màu nền dưới đường kẻ
+          borderColor: '#0d6efd', // Màu đường kẻ (Primary color của Bootstrap)
+          tension: 0.4, // Độ cong của đường kẻ cho "mượt"
+          pointRadius: 5,
+          pointBackgroundColor: '#0d6efd',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false, // Ẩn chú thích nếu chỉ có 1 tập dữ liệu cho gọn
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            // Định dạng hiển thị tiền tệ
+            callback: function (value) {
+              return value.toLocaleString('vi-VN') + 'đ';
+            },
+          },
+        },
+      },
+    },
+  });
+});
