@@ -187,9 +187,134 @@ if (!categories) {
 localStorage.setItem('categories', JSON.stringify(categories));
 
 let currentPage = 1;
+let currentListData = categories;
 const itemsPerPage = 2;
 
-// Log out user
+// Tìm kiếm và lọc - sản phẩm và danh mục
+// Sản phẩm
+const inputProductSearch = document.getElementById('inputProductSearch');
+const productStatusLinks = document.querySelectorAll(
+  '#mainProduct .dropdown-menu .dropdown-item',
+);
+
+let productStatusFilter = 'Tất cả';
+
+// Tìm kiếm sản phẩm theo tên
+inputProductSearch.addEventListener('input', () => {
+  filterAndRenderProduct();
+});
+
+// Lọc trạng thái sản phẩm
+productStatusLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    productStatusFilter = e.target.textContent.trim();
+    e.target
+      .closest('.dropdown')
+      .querySelector('button').firstChild.textContent =
+      productStatusFilter + ' ';
+    filterAndRenderProduct();
+  });
+});
+
+function filterAndRenderProduct() {
+  const searchText = inputProductSearch.value.toLowerCase().trim();
+
+  const filtered = listProducts.filter((p) => {
+    const matchName = p.name.toLowerCase().includes(searchText);
+    const matchStatus =
+      productStatusFilter === 'Tất cả' ||
+      (productStatusFilter === 'Đang hoạt động' && p.status === 'active') ||
+      (productStatusFilter === 'Ngừng hoạt động' && p.status === 'inactive');
+    return matchName && matchStatus;
+  });
+  renderProducts(filtered);
+}
+// Danh mục
+const inputCategorySearch = document.getElementById('inputCategorySearch');
+const categoryStatusLinks = document.querySelectorAll(
+  '#mainCategory .dropdown-menu .dropdown-item',
+);
+
+let categoryStatusFilter = 'Tất cả';
+
+inputCategorySearch.addEventListener('input', () => {
+  filterAndRenderCategories();
+});
+
+categoryStatusLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    categoryStatusFilter = e.target.textContent.trim();
+    e.target
+      .closest('.dropdown')
+      .querySelector('button').firstChild.textContent =
+      categoryStatusFilter + ' ';
+    filterAndRenderCategories();
+  });
+});
+
+function filterAndRenderCategories() {
+  const searchText = inputCategorySearch.value.toLowerCase().trim();
+  currentListData = categories.filter((c) => {
+    const matchName = c.name.toLowerCase().includes(searchText);
+    const matchStatus =
+      categoryStatusFilter === 'Tất cả' ||
+      (categoryStatusFilter === 'Đang hoạt động' && c.status === 'active') ||
+      (categoryStatusFilter === 'Ngừng hoạt động' && c.status === 'inactive');
+    return matchName && matchStatus;
+  });
+  currentPage = 1;
+  renderCategories(currentPage, currentListData);
+  setupPagination(currentListData);
+}
+
+// Sắp xếp Sản phẩm theo tên
+function sortProducts(direction = 'asc') {
+  listProducts.sort((a, b) => {
+    return direction === 'asc'
+      ? a.name.localeCompare(b.name)
+      : b.name.localeCompare(a.name);
+  });
+}
+
+// Sắp xếp theo danh mục
+function sortCategories(direction = 'asc') {
+  categories.sort((a, b) => {
+    return direction === 'asc'
+      ? a.name.localeCompare(b.name)
+      : b.name.localeCompare(a.name);
+  });
+  renderCategories(1);
+}
+
+// Kiểm tra danh mục có còn sản phẩm hay không
+document.getElementById('listCategories').addEventListener('click', (e) => {
+  const btnDelete = e.target.closest('.text-danger');
+  if (btnDelete) {
+    const catId = btnDelete.dataset.id;
+    const catName = btnDelete.dataset.name;
+    const hasProduct = listProducts.some(
+      (p) => p.category === catId || p.category === catName,
+    );
+    if (hasProduct) {
+      alert(
+        `Không thể xóa danh mục "${catName}" vì vẫn còn sản phẩm thuộc danh mục này!`,
+      );
+    } else {
+      if (confirm(`Bạn có chắn chắn muốn xóa danh mục ${catName}?`)) {
+        categories = categories.filter((c) => c.id !== catId);
+        localStorage.setItem('categories', JSON.stringify(categories));
+        renderCategories(currentPage);
+        setupPagination();
+      }
+    }
+  }
+});
+
+// Đăng xuất tài khoản
+// Chuyển hướng về trang đăng nhập
+// Kiểm tra trạng thái đã đăng nhập hay chưa?
 let isLogin = JSON.parse(localStorage.getItem('isLogin'));
 if (!isLogin) {
   window.location.href = './signin.html';
@@ -600,13 +725,13 @@ renderProducts(listProducts);
  * BONUS
  */
 
-function setupPagination() {
+function setupPagination(dataToPaginate = currentListData) {
   const paginationUl = document.querySelector('#pagination ul');
   if (!paginationUl) return;
   paginationUl.innerHTML = '';
 
-  const data = Array.isArray(categories[0]) ? categories[0] : categories;
-  const pageCount = Math.ceil(data.length / itemsPerPage);
+  const pageCount = Math.ceil(dataToPaginate.length / itemsPerPage);
+  if (pageCount < 1) return;
 
   // 1. Nút Mũi tên Trái (Previous)
   const prevLi = document.createElement('li');
@@ -616,8 +741,8 @@ function setupPagination() {
     e.preventDefault();
     if (currentPage > 1) {
       currentPage--;
-      renderCategories(currentPage);
-      setupPagination();
+      renderCategories(currentPage, dataToPaginate);
+      setupPagination(dataToPaginate);
     }
   };
   paginationUl.appendChild(prevLi);
@@ -639,7 +764,7 @@ function setupPagination() {
   for (let i of range) {
     if (l) {
       if (i - l === 2) {
-        renderPageBtn(paginationUl, l + 1);
+        renderPageBtn(paginationUl, l + 1, dataToPaginate);
       } else if (i - l !== 1) {
         const dotLi = document.createElement('li');
         dotLi.className = 'page-item disabled';
@@ -647,7 +772,7 @@ function setupPagination() {
         paginationUl.appendChild(dotLi);
       }
     }
-    renderPageBtn(paginationUl, i);
+    renderPageBtn(paginationUl, i, dataToPaginate);
     l = i;
   }
 
@@ -659,22 +784,22 @@ function setupPagination() {
     e.preventDefault();
     if (currentPage < pageCount) {
       currentPage++;
-      renderCategories(currentPage);
-      setupPagination();
+      renderCategories(currentPage, dataToPaginate);
+      setupPagination(dataToPaginate);
     }
   };
   paginationUl.appendChild(nextLi);
 }
 
-function renderPageBtn(container, i) {
+function renderPageBtn(container, i, dataToPaginate) {
   const li = document.createElement('li');
   li.className = `page-item ${i === currentPage ? 'active' : ''}`;
   li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
   li.onclick = (e) => {
     e.preventDefault();
     currentPage = i;
-    renderCategories(currentPage);
-    setupPagination();
+    renderCategories(currentPage, dataToPaginate);
+    setupPagination(dataToPaginate);
   };
   container.appendChild(li);
 }
@@ -687,20 +812,26 @@ function syncCategoryData() {
 
 // Đồng bộ sản phẩm
 function syncProductData() {
-  localStorage.setItem('products', JSON.stringify(products));
-  renderProducts(products);
+  localStorage.setItem('listProducts', JSON.stringify(listProducts));
+  renderProducts(listProducts);
 }
 
 // Render danh mục ra màn hình
-function renderCategories(page = 1) {
+function renderCategories(page = 1, dataToRender = categories) {
   const tableCategories = document.getElementById('listCategories');
   if (!tableCategories) return;
 
   tableCategories.innerHTML = '';
-  const flatCategories = categories.flat();
+
   const start = itemsPerPage * (page - 1);
   const end = start + itemsPerPage;
-  const paginatedItems = categories.slice(start, end);
+  const paginatedItems = dataToRender.slice(start, end);
+
+  if (paginatedItems.length === 0) {
+    tableCategories.innerHTML = `<tr><td colspan="4" class="text-center">Không tìm thấy dữ liệu</td></tr>`;
+    return;
+  }
+
   tableCategories.innerHTML = paginatedItems
     .map((e) => {
       let statusBadge =
@@ -848,7 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts(listProducts); // Nếu sản phẩm chưa có phân trang thì render cả mảng
 
   // 3. Gọi hàm tạo các nút bấm
-  setupPagination();
+  setupPagination(categories);
 });
 
 /**
