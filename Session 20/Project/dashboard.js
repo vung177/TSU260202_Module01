@@ -1009,6 +1009,47 @@ document.addEventListener('DOMContentLoaded', () => {
   setupPagination(categories);
 });
 
+// 1. Lấy tất cả các link menu và các section
+const menuLinks = document.querySelectorAll('#menu .nav-link');
+const sections = {
+  'section-thong-ke': document.getElementById('mainStatistics'),
+  'section-danh-muc': document.getElementById('mainCategory'),
+  'section-san-pham': document.getElementById('mainProduct'),
+};
+
+// 2. Lắng nghe sự kiện click trên từng menu
+menuLinks.forEach((link) => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Bước A: Xóa class 'active' ở tất cả các menu và thêm vào menu vừa click
+    menuLinks.forEach((item) => item.classList.remove('active'));
+    this.classList.add('active');
+
+    // Bước B: Lấy tên target từ data-target của menu vừa click
+    const targetId = this.getAttribute('data-target');
+
+    // Bước C: Duyệt qua các section để ẩn/hiện
+    Object.keys(sections).forEach((key) => {
+      if (key === targetId) {
+        // Hiện section tương ứng (xóa d-none)
+        sections[key].classList.remove('d-none');
+      } else {
+        // Ẩn các section còn lại (thêm d-none)
+        sections[key].classList.add('d-none');
+      }
+    });
+
+    // Bước D: (Bonus) Tùy chỉnh thêm nếu cần khi chuyển tab
+    if (targetId === 'section-danh-muc') {
+      renderCategories(1);
+      setupPagination(categories);
+    } else if (targetId === 'section-san-pham') {
+      renderProducts(listProducts);
+    }
+  });
+});
+
 /**
  * Đoạn code lấy dữ liệu từ localStorage
 // Lấy dữ liệu có tên key là "categories"
