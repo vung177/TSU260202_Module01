@@ -7,6 +7,7 @@ if (!listProducts) {
       name: 'iPhone 15 Pro Max',
       price: '28000000',
       status: 'active',
+      category: 'DM008',
       stock: 30,
       discount: 5,
     },
@@ -15,6 +16,7 @@ if (!listProducts) {
       name: 'Samsung Galaxy S24 Ultra',
       price: '26500000',
       status: 'inactive',
+      category: 'DM008',
       stock: 50,
       discount: 5,
     },
@@ -23,6 +25,7 @@ if (!listProducts) {
       name: 'MacBook Air M3',
       price: '27990000',
       status: 'active',
+      category: 'DM011',
       stock: 20,
       discount: 10,
     },
@@ -188,7 +191,7 @@ localStorage.setItem('categories', JSON.stringify(categories));
 
 let currentPage = 1;
 let currentListData = categories;
-const itemsPerPage = 2;
+const itemsPerPage = 6;
 
 // Tìm kiếm và lọc - sản phẩm và danh mục
 // Sản phẩm
@@ -294,19 +297,22 @@ document.getElementById('listCategories').addEventListener('click', (e) => {
   if (btnDelete) {
     const catId = btnDelete.dataset.id;
     const catName = btnDelete.dataset.name;
-    const hasProduct = listProducts.some(
-      (p) => p.category === catId || p.category === catName,
-    );
-    if (hasProduct) {
-      alert(
-        `Không thể xóa danh mục "${catName}" vì vẫn còn sản phẩm thuộc danh mục này!`,
+
+    if (confirm(`Bạn có chắn chắn muốn xóa danh mục ${catName}?`)) {
+      const hasProduct = listProducts.some(
+        (p) => p.category === catId || p.category === catName,
       );
-    } else {
-      if (confirm(`Bạn có chắn chắn muốn xóa danh mục ${catName}?`)) {
+
+      if (hasProduct) {
+        alert(
+          `Không thể xóa danh mục "${catName}" vì vẫn còn sản phẩm thuộc danh mục này!`,
+        );
+      } else {
         categories = categories.filter((c) => c.id !== catId);
         localStorage.setItem('categories', JSON.stringify(categories));
-        renderCategories(currentPage);
-        setupPagination();
+        renderCategories(currentPage, categories);
+        setupPagination(categories);
+        alert(`Đã xóa danh mục "${catName}" thành công!`);
       }
     }
   }
@@ -529,7 +535,7 @@ addForm.addEventListener('submit', (event) => {
     alert('Thêm sản phẩm thành công!');
     renderProducts(listProducts);
     addForm.reset();
-    closeModal('modalAddProduct');
+    productAddModal.hide();
   }
 });
 
@@ -720,6 +726,7 @@ renderProducts(listProducts);
  * renderCategories
  * showError
  * removeError
+ * closeModal
  * renderProducts
  * deleteProducts
  * BONUS
@@ -814,6 +821,15 @@ function syncCategoryData() {
 function syncProductData() {
   localStorage.setItem('listProducts', JSON.stringify(listProducts));
   renderProducts(listProducts);
+}
+
+// Hàm đóng Modal
+function closeModal(modalId) {
+  const modalElement = document.getElementById(modalId);
+  const modalInstance = bootstrap.Modal.getInstance(modalElement);
+  if (modalInstance) {
+    modalInstance.hide();
+  }
 }
 
 // Render danh mục ra màn hình
