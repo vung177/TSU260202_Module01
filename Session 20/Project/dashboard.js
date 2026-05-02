@@ -300,7 +300,7 @@ document.getElementById('listCategories').addEventListener('click', (e) => {
 
     if (confirm(`Bạn có chắn chắn muốn xóa danh mục ${catName}?`)) {
       const hasProduct = listProducts.some(
-        (p) => p.category === catId || p.category === catName,
+        (p) => String(p.category) === String(catId),
       );
 
       if (hasProduct) {
@@ -312,6 +312,7 @@ document.getElementById('listCategories').addEventListener('click', (e) => {
         localStorage.setItem('categories', JSON.stringify(categories));
         renderCategories(currentPage, categories);
         setupPagination(categories);
+        renderCategoryToSelect();
         alert(`Đã xóa danh mục "${catName}" thành công!`);
       }
     }
@@ -472,10 +473,10 @@ addForm.addEventListener('submit', (event) => {
 
   const idValue = inputId.value.trim();
   const nameValue = inputName.value.trim();
-  const categoryValue = inputCategory.value.trim();
-  const quantityValue = inputQuantity.value.trim();
-  const priceValue = inputPrice.value.trim();
-  const discountValue = inputDiscount.value.trim();
+  const categoryValue = inputCategory.value;
+  const quantityValue = parseInt(inputQuantity.value) || 0;
+  const priceValue = parseFloat(inputPrice.value.replace(/\./g, '')) || 0;
+  const discountValue = parseFloat(inputDiscount.value) || 0;
   const imgValue = inputImg.value.trim();
   const descriptionValue = inputDescription.value.trim();
 
@@ -523,9 +524,9 @@ addForm.addEventListener('submit', (event) => {
       id: idValue,
       name: nameValue,
       category: categoryValue,
-      stock: Number(quantityValue),
-      price: Number(priceValue),
-      discount: Number(discountValue),
+      stock: quantityValue,
+      price: priceValue,
+      discount: discountValue,
       img: imgValue,
       status: statusSelected,
       description: descriptionValue,
@@ -985,11 +986,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 // Code này cũng cần xem lại
+function renderCategoryToSelect() {
+  const selectAdd = document.getElementById('productCategory');
+  const selectUpdate = document.getElementById('updateProductCategory');
+  const options = categories
+    .map((cat) => `<option value="${cat.id}">${cat.name}</option>`)
+    .join('');
+  if (selectAdd) selectAdd.innerHTML = options;
+  if (selectUpdate) selectUpdate.innerHTML = options;
+}
+
 // Đảm bảo các hàm này được gọi ngay khi file JS load xong
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Reset về trang 1
   currentPage = 1;
-
+  renderCategoryToSelect();
   // 2. Gọi hàm render dữ liệu (Truyền số 1 vào để tránh lỗi undefined)
   renderCategories(currentPage);
   renderProducts(listProducts); // Nếu sản phẩm chưa có phân trang thì render cả mảng
