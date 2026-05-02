@@ -72,3 +72,76 @@
   ); /* Thêm chút hiệu ứng hắt sáng */
   font-size: 1.2rem; /* Chỉnh to hơn một chút nếu muốn nổi bật */
 }
+
+/* ================= Cần xem lại ================ */
+/* Container phân trang */
+.pagination {
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* Chọn tất cả các thẻ link trong phân trang */
+.pagination .page-link {
+  width: 40px; /* Chiều rộng cố định */
+  height: 40px; /* Chiều cao cố định */
+  display: flex; /* Sử dụng flexbox */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  text-align: center;
+  padding: 0; /* Xóa padding mặc định để không bị lệch */
+  font-size: 14px; /* Chỉnh cỡ chữ/icon cho vừa mắt */
+}
+
+/* Style cho từng nút số */
+.page-item .page-link {
+  border-radius: 8px !important; /* Bo góc hiện đại */
+  color: #333;
+  border: 1px solid #dee2e6;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+}
+
+.page-item.disabled .page-link {
+  background: transparent;
+  color: #6c757d;
+  cursor: default;
+}
+
+/* Khi di chuột vào */
+.page-item .page-link:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Nút đang được chọn (Active) */
+.page-item.active .page-link {
+  background-color: #0d6efd; /* Màu xanh thương hiệu */
+  border-color: #0d6efd;
+  color: white;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Nút mũi tên */
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  font-weight: bold;
+  background-color: #fff;
+}
+
+#mainCategory {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Đảm bảo section luôn cao bằng màn hình */
+}
+
+/* Phần bao quanh bảng danh mục */
+#mainCategory .p-2.d-flex.flex-column {
+  flex-grow: 1; /* Cho phép phần bảng chiếm hết không gian trống phía trên */
+}
+
+/* Phần phân trang */
+#pagination {
+  margin-top: auto; /* Thần chú để đẩy nó xuống dưới cùng */
+  padding-bottom: 20px; /* Khoảng cách với mép dưới */
+}

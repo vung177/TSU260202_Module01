@@ -3,38 +3,164 @@ let listProducts = JSON.parse(localStorage.getItem('listProducts'));
 if (!listProducts) {
   listProducts = [
     {
-      id: 1,
-      productName: 'Quần Áo',
-      status: 'Đang hoạt động',
-      img: '../img/anh1.png',
+      id: 'SP01',
+      name: 'iPhone 15 Pro Max',
+      price: '28000000',
+      status: 'active',
+      stock: 30,
+      discount: 5,
     },
-
     {
-      id: 2,
-      productName: 'Kính mắt',
-      status: 'Đang hoạt động',
-      img: '../img/anh2.png',
+      id: 'SP02',
+      name: 'Samsung Galaxy S24 Ultra',
+      price: '26500000',
+      status: 'inactive',
+      stock: 50,
+      discount: 5,
     },
-
     {
-      id: 3,
-      productName: 'Điện tử',
-      status: 'Ngừng hoạt động',
-      img: '../img/anh3.png',
+      id: 'SP03',
+      name: 'MacBook Air M3',
+      price: '27990000',
+      status: 'active',
+      stock: 20,
+      discount: 10,
     },
-
     {
-      id: 4,
-      productName: 'Hoa quả',
-      status: 'Đang hoạt động',
-      img: '../img/anh4.png',
+      id: 'SP04',
+      name: 'Sony WH-1000XM5',
+      price: '6500000',
+      status: 'active',
+      stock: 30,
+      discount: 10,
     },
-
     {
-      id: 5,
-      productName: 'Giày dép',
-      status: 'Ngừng hoạt động',
-      img: '../img/anh1.png',
+      id: 'SP05',
+      name: 'Apple Watch Series 9',
+      price: '9200000',
+      status: 'active',
+      stock: 10,
+      discount: 15,
+    },
+    {
+      id: 'SP06',
+      name: 'Bàn phím cơ Keychron K2',
+      price: '1800000',
+      status: 'inactive',
+      stock: 20,
+      discount: 15,
+    },
+    {
+      id: 'SP07',
+      name: 'Chuột Logitech MX Master 3S',
+      price: '2300000',
+      status: 'active',
+      stock: 20,
+      discount: 15,
+    },
+    {
+      id: 'SP08',
+      name: 'Màn hình Dell Ultrasharp',
+      price: '8500000',
+      status: 'active',
+      stock: 10,
+      discount: 15,
+    },
+    {
+      id: 'SP09',
+      name: 'iPad Pro M2',
+      price: '21000000',
+      status: 'active',
+      stock: 30,
+      discount: 5,
+    },
+    {
+      id: 'SP10',
+      name: 'Loa Marshall Emberton II',
+      price: '3200000',
+      status: 'active',
+      stock: 20,
+      discount: 12,
+    },
+    {
+      id: 'SP11',
+      name: 'Máy ảnh Fujifilm X-T5',
+      price: '42000000',
+      status: 'inactive',
+      stock: 10,
+      discount: 15,
+    },
+    {
+      id: 'SP12',
+      name: 'Tai nghe Airpods Pro 2',
+      price: '5500000',
+      status: 'inactive',
+      stock: 20,
+      discount: 10,
+    },
+    {
+      id: 'SP13',
+      name: 'Sạc dự phòng Anker 20000mAh',
+      price: '1200000',
+      status: 'inactive',
+      stock: 30,
+      discount: 12,
+    },
+    {
+      id: 'SP14',
+      name: 'Đồng hồ Garmin Fenix 7',
+      price: '15000000',
+      status: 'active',
+      stock: 10,
+      discount: 10,
+    },
+    {
+      id: 'SP15',
+      name: 'Tay cầm PS5 DualSense',
+      price: '1600000',
+      status: 'active',
+      stock: 20,
+      discount: 15,
+    },
+    {
+      id: 'SP16',
+      name: 'Ổ cứng SSD Samsung 1TB',
+      price: '2500000',
+      status: 'active',
+      stock: 30,
+      discount: 10,
+    },
+    {
+      id: 'SP17',
+      name: 'Bút Apple Pencil 2',
+      price: '2800000',
+      status: 'inactive',
+      stock: 20,
+      discount: 5,
+    },
+    {
+      id: 'SP18',
+      name: 'Loa Bluetooth JBL Flip 6',
+      price: '2400000',
+      status: 'inactive',
+      stock: 20,
+      discount: 10,
+    },
+    {
+      id: 'SP19',
+      name: 'Microphone Blue Yeti',
+      price: '3500000',
+      status: 'inactive',
+      stock: 10,
+      discount: 12,
+    },
+    {
+      id: 'SP20',
+      name: 'Đèn bàn học chống cận',
+      price: '500000',
+      status: 'inactive',
+      stock: 20,
+      discount: 10,
     },
   ];
 }
@@ -42,10 +168,26 @@ localStorage.setItem('listProducts', JSON.stringify(listProducts));
 
 let categories = JSON.parse(localStorage.getItem('categories'));
 if (!categories) {
-  categories = [];
+  categories = [
+    { id: 'DM001', name: 'Quần Áo', status: 'active' },
+    { id: 'DM002', name: 'Kính mắt', status: 'inactive' },
+    { id: 'DM003', name: 'Giày dép', status: 'active' },
+    { id: 'DM004', name: 'Thời trang nam', status: 'inactive' },
+    { id: 'DM005', name: 'Thời trang nữ', status: 'active' },
+    { id: 'DM006', name: 'Hoa quả', status: 'inactive' },
+    { id: 'DM007', name: 'Rau', status: 'active' },
+    { id: 'DM008', name: 'Điện thoại', status: 'inactive' },
+    { id: 'DM009', name: 'Bàn phím máy tính', status: 'active' },
+    { id: 'DM010', name: 'Máy tính bảng', status: 'active' },
+    { id: 'DM011', name: 'Máy tính mini', status: 'active' },
+    { id: 'DM012', name: 'Tai nghe', status: 'inactive' },
+  ];
 }
 
 localStorage.setItem('categories', JSON.stringify(categories));
+
+let currentPage = 1;
+const itemsPerPage = 2;
 
 // Log out user
 let isLogin = JSON.parse(localStorage.getItem('isLogin'));
@@ -111,7 +253,7 @@ categoryForm.addEventListener('submit', (e) => {
     removeError(inputIdCategory, 'errorCategoryId');
   }
 
-  const isExisted = categories.some((item) => item.id === newCategory.id);
+  const isExisted = categories.some((item) => item.id === categoryIdValue);
   if (isExisted) {
     alert('Mã danh mục đã tồn tại, vui lòng nhập lại!');
     isValid = false;
@@ -138,6 +280,8 @@ categoryForm.addEventListener('submit', (e) => {
     };
 
     categories.push(newCategory);
+    renderCategories(currentPage);
+    setupPagination();
     localStorage.setItem('categories', JSON.stringify(categories));
     alert('Thêm danh mục thành công!');
 
@@ -440,11 +584,14 @@ btnConfirmDelete.addEventListener('click', () => {
   }
 });
 
+renderCategories(1);
+setupPagination();
 renderCategories(categories);
 renderProducts(listProducts);
 
 /**
  * Danh sách các hàm
+ * setupPagination - cần xem lại
  * renderCategories
  * showError
  * removeError
@@ -453,12 +600,108 @@ renderProducts(listProducts);
  * BONUS
  */
 
-// Render danh mục ra màn hình
-function renderCategories(arr) {
-  const tabelCategories = document.getElementById('listCategories');
-  tabelCategories.innerHTML = '';
+function setupPagination() {
+  const paginationUl = document.querySelector('#pagination ul');
+  if (!paginationUl) return;
+  paginationUl.innerHTML = '';
 
-  tabelCategories.innerHTML = arr
+  const data = Array.isArray(categories[0]) ? categories[0] : categories;
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  // 1. Nút Mũi tên Trái (Previous)
+  const prevLi = document.createElement('li');
+  prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+  prevLi.innerHTML = `<a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>`;
+  prevLi.onclick = (e) => {
+    e.preventDefault();
+    if (currentPage > 1) {
+      currentPage--;
+      renderCategories(currentPage);
+      setupPagination();
+    }
+  };
+  paginationUl.appendChild(prevLi);
+
+  // 2. Vòng lặp chính
+  const delta = 1;
+  const range = [];
+  for (let i = 1; i <= pageCount; i++) {
+    if (
+      i === 1 ||
+      i === pageCount ||
+      (i >= currentPage - delta && i <= currentPage + delta)
+    ) {
+      range.push(i);
+    }
+  }
+
+  let l;
+  for (let i of range) {
+    if (l) {
+      if (i - l === 2) {
+        renderPageBtn(paginationUl, l + 1);
+      } else if (i - l !== 1) {
+        const dotLi = document.createElement('li');
+        dotLi.className = 'page-item disabled';
+        dotLi.innerHTML = '<span class="page-link border-0"> ... </span>';
+        paginationUl.appendChild(dotLi);
+      }
+    }
+    renderPageBtn(paginationUl, i);
+    l = i;
+  }
+
+  // 3. Nút Mũi tên Phải (Next)
+  const nextLi = document.createElement('li');
+  nextLi.className = `page-item ${currentPage === pageCount ? 'disabled' : ''}`;
+  nextLi.innerHTML = `<a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>`;
+  nextLi.onclick = (e) => {
+    e.preventDefault();
+    if (currentPage < pageCount) {
+      currentPage++;
+      renderCategories(currentPage);
+      setupPagination();
+    }
+  };
+  paginationUl.appendChild(nextLi);
+}
+
+function renderPageBtn(container, i) {
+  const li = document.createElement('li');
+  li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+  li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+  li.onclick = (e) => {
+    e.preventDefault();
+    currentPage = i;
+    renderCategories(currentPage);
+    setupPagination();
+  };
+  container.appendChild(li);
+}
+
+// Đồng bộ danh mục
+function syncCategoryData() {
+  localStorage.setItem('categories', JSON.stringify(categories));
+  renderCategories(categories);
+}
+
+// Đồng bộ sản phẩm
+function syncProductData() {
+  localStorage.setItem('products', JSON.stringify(products));
+  renderProducts(products);
+}
+
+// Render danh mục ra màn hình
+function renderCategories(page = 1) {
+  const tableCategories = document.getElementById('listCategories');
+  if (!tableCategories) return;
+
+  tableCategories.innerHTML = '';
+  const flatCategories = categories.flat();
+  const start = itemsPerPage * (page - 1);
+  const end = start + itemsPerPage;
+  const paginatedItems = categories.slice(start, end);
+  tableCategories.innerHTML = paginatedItems
     .map((e) => {
       let statusBadge =
         e.status === 'active'
@@ -594,3 +837,37 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+// Code này cũng cần xem lại
+// Đảm bảo các hàm này được gọi ngay khi file JS load xong
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Reset về trang 1
+  currentPage = 1;
+
+  // 2. Gọi hàm render dữ liệu (Truyền số 1 vào để tránh lỗi undefined)
+  renderCategories(currentPage);
+  renderProducts(listProducts); // Nếu sản phẩm chưa có phân trang thì render cả mảng
+
+  // 3. Gọi hàm tạo các nút bấm
+  setupPagination();
+});
+
+/**
+ * Đoạn code lấy dữ liệu từ localStorage
+// Lấy dữ liệu có tên key là "categories"
+let data = localStorage.getItem('categories');
+
+console.log(data);
+
+// 1. Lấy chuỗi JSON từ localStorage
+let rawData = localStorage.getItem('categories');
+
+// 2. Chuyển chuỗi đó về lại thành Mảng/Đối tượng
+if (rawData) {
+  let categories = JSON.parse(rawData);
+  console.log('Danh sách danh mục:', categories);
+
+  // Bây giờ bạn có thể dùng categories.length để tính số trang
+} else {
+  console.log('Không tìm thấy dữ liệu trong localStorage');
+}
+ */

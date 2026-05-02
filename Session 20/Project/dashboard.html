@@ -312,7 +312,7 @@
         <!-- #maincategory Danh mục sản phẩm -->
         <!-- =============================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
           id="mainCategory"
         >
           <div
@@ -398,6 +398,7 @@
                 type="text"
                 class="form-control border-0"
                 placeholder="Tìm kiếm danh mục theo tên"
+                id="inputCategorySearch"
               />
               <span class="input-group-text bg-white border-0 bg-white"
                 ><i class="bi bi-search"></i
@@ -407,8 +408,8 @@
 
           <!-- #tablecategory Bảng danh mục -->
           <!-- ============================ -->
-          <div class="flex-grow-1 p-2 d-flex flex-column overflow-auto">
-            <div class="table-responsive flex-grow-1 h-100 rounded px-4">
+          <div class="p-2 d-flex flex-column overflow-auto">
+            <div class="table-responsive rounded px-4" id="categories-list">
               <table class="table table-hover align-middle mb-0">
                 <thead class="table-light flex-shrink-0">
                   <tr>
@@ -460,30 +461,35 @@
 
           <!-- #paginationcategory Phân trang danh mục -->
           <!-- ======================================= -->
-          <nav class="d-flex justify-content-center mt-4">
-            <ul class="pagination flex-shrink-0 text-black">
-              <li class="page-item">
-                <a class="page-link text-black" href="#"
-                  ><i class="bi bi-arrow-left"></i
-                ></a>
-              </li>
-              <li class="page-item">
-                <a class="page-link active" href="#">1</a>
-              </li>
+          <div
+            id="pagination"
+            class="pagination d-flex justify-content-center align-items-center"
+          >
+            <nav class="d-flex justify-content-center mt-4">
+              <ul class="pagination flex-shrink-0 text-black">
+                <!-- <li class="page-item">
+                  <a class="page-link text-black" href="#"
+                    ><i class="bi bi-arrow-left"></i
+                  ></a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link active" href="#">1</a>
+                </li>
 
-              <li class="page-item">
-                <a class="page-link text-black" href="#"
-                  ><i class="bi bi-arrow-right"></i
-                ></a>
-              </li>
-            </ul>
-          </nav>
+                <li class="page-item">
+                  <a class="page-link text-black" href="#"
+                    ><i class="bi bi-arrow-right"></i
+                  ></a>
+                </li> -->
+              </ul>
+            </nav>
+          </div>
         </section>
 
         <!-- #mainproduct Sản phẩm -->
         <!-- ===================== -->
         <section
-          class="col-10 p-0 vh-100 d-flex flex-column bg-light d-none"
+          class="col-10 p-0 vh-100 d-flex flex-column bg-light"
           id="mainProduct"
         >
           <!-- #avatar Avatar user -->
@@ -627,6 +633,7 @@
                 type="text"
                 class="form-control border-0"
                 placeholder="Tìm kiếm sản phẩm theo tên"
+                id="inputProductSearch"
               />
               <span class="input-group-text bg-white border-0 bg-white"
                 ><i class="bi bi-search"></i
@@ -844,6 +851,7 @@
                       class="form-check-input"
                       name="categoriesStatus"
                       id="active"
+                      value="active"
                       checked
                     />
                     <label for="active" class="form-label"
@@ -855,6 +863,7 @@
                       type="radio"
                       class="form-check-input"
                       name="categoriesStatus"
+                      value="inactive"
                       id="inactive"
                     />
                     <label for="inactive" class="form-label"
