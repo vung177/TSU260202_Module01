@@ -232,7 +232,7 @@ productStatusLinks.forEach((link) => {
 function filterAndRenderProduct() {
   const searchText = inputProductSearch.value.toLowerCase().trim();
 
-  const filtered = listProducts.filter((p) => {
+  filteredProducts = listProducts.filter((p) => {
     // Lọc theo tên sản phẩm
     const matchName = p.name.toLowerCase().includes(searchText);
 
@@ -248,7 +248,9 @@ function filterAndRenderProduct() {
       String(p.category) === String(selectedCategoryId);
     return matchName && matchStatus && matchCategory;
   });
-  renderProducts(filtered);
+  currentProductPage = 1;
+  renderProducts(filteredProducts);
+  setupProductPagination(filteredProducts);
 }
 
 // Danh mục
@@ -944,8 +946,8 @@ function renderCategories(page = 1, dataToRender = categories) {
     .map((e) => {
       let statusBadge =
         e.status === 'active'
-          ? `<span class="badge rounded-pill bg-success-subtle text-success p-2">● Đang hoạt động</span>`
-          : `<span class="badge rounded-pill bg-danger-subtle text-danger p-2">● Ngừng hoạt động</span>`;
+          ? `<span class="badge rounded-pill bg-success-subtle text-success p-2"><i class="bi bi-circle-fill"></i> Đang hoạt động</span>`
+          : `<span class="badge rounded-pill bg-danger-subtle text-danger p-2"><i class="bi bi-x-circle-fill"></i> Ngừng hoạt động</span>`;
       return `<tr>
                     <td class="ps-4">${e.id}</td>
                     <td>${e.name}</td>
@@ -982,11 +984,23 @@ function removeError(input, errorId) {
 }
 
 // Render sản phẩm ra màn hình
-function renderProducts(arr) {
-  let products = document.getElementById('tableProducts');
-  products.innerHTML = '';
+function renderProducts(arr = listProducts) {
+  let productsTable = document.getElementById('tableProducts');
+  if (!productsTable) return;
+  productsTable.innerHTML = '';
 
-  let newProducts = arr
+  // Phân trang gồm 3 thành phần, nút mũi tên, số trang rồi đến nút mũi tên
+  const start = productsPerPage * (currentProductPage - 1);
+  const end = start + productsPerPage;
+  const paginatedItems = arr.slice(start, end);
+
+  // Nếu không tìm thấy sản phẩm
+  if (paginatedItems.length === 0) {
+    productsTable.innerHTML = `<tr><td colspan="7" class="text-center">Không tìm thấy sản phẩm nào</td></tr>`;
+    return;
+  }
+
+  productsTable.innerHTML = paginatedItems
     .map((p) => {
       // Phần này dành cho việc render danh mục ra bảng sản phẩm khi bảng sản phẩm có thêm ô Danh mục
       // const categoryObj = categories.find(
@@ -997,8 +1011,8 @@ function renderProducts(arr) {
       const price = p.price ? Number(p.price).toLocaleString('vi-VN') : 0;
       const statusBadge =
         p.status === 'active'
-          ? `<span class="badge rounded-pill bg-success-subtle text-success p-2">● Đang hoạt động</span>`
-          : `<span class="badge rounded-pill bg-danger-subtle text-danger p-2">● Ngừng hoạt động</span>`;
+          ? `<span class="badge rounded-pill bg-success-subtle text-success p-2"><i class="bi bi-circle-fill"></i> Đang hoạt động</span>`
+          : `<span class="badge rounded-pill bg-danger-subtle text-danger p-2"><i class="bi bi-x-circle-fill"></i> Ngừng hoạt động</span>`;
       return `
     <tr>
                 <td class="ps-4">${p.id}</td>
@@ -1021,7 +1035,72 @@ function renderProducts(arr) {
     `;
     })
     .join('');
-  products.innerHTML = newProducts;
+}
+
+function setupProductPagination(dataToPaginate = listProducts) {
+  const paginationUl = document.querySelector('#productPagination ul');
+  if (!paginationUl) return;
+  paginationUl.innerHTML = '';
+
+  const pageCount = Math.ceil(dataToPaginate.length / productsPerPage);
+  if (pageCount <= 1) return; // Nếu chỉ có 1 trang thì không hiện thanh phân trang
+
+  // 1. Nút Mũi tên Trái
+  const prevLi = document.createElement('li');
+  prevLi.className = `page-item ${currentProductPage === 1 ? 'disabled' : ''}`;
+  prevLi.innerHTML = `<a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>`;
+  prevLi.onclick = (e) => {
+    e.preventDefault();
+    if (currentProductPage > 1) {
+      currentProductPage--;
+      renderProducts(dataToPaginate);
+      setupProductPagination(dataToPaginate);
+    }
+  };
+  paginationUl.appendChild(prevLi);
+
+  // 2. Vòng lặp hiển thị số trang (Logic delta như của ông)
+  const delta = 1;
+  for (let i = 1; i <= pageCount; i++) {
+    if (
+      i === 1 ||
+      i === pageCount ||
+      (i >= currentProductPage - delta && i <= currentProductPage + delta)
+    ) {
+      const li = document.createElement('li');
+      li.className = `page-item ${i === currentProductPage ? 'active' : ''}`;
+      li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+      li.onclick = (e) => {
+        e.preventDefault();
+        currentProductPage = i;
+        renderProducts(dataToPaginate);
+        setupProductPagination(dataToPaginate);
+      };
+      paginationUl.appendChild(li);
+    } else if (
+      i === currentProductPage - delta - 1 ||
+      i === currentProductPage + delta + 1
+    ) {
+      const dotLi = document.createElement('li');
+      dotLi.className = 'page-item disabled';
+      dotLi.innerHTML = '<span class="page-link border-0">...</span>';
+      paginationUl.appendChild(dotLi);
+    }
+  }
+
+  // 3. Nút Mũi tên Phải
+  const nextLi = document.createElement('li');
+  nextLi.className = `page-item ${currentProductPage === pageCount ? 'disabled' : ''}`;
+  nextLi.innerHTML = `<a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>`;
+  nextLi.onclick = (e) => {
+    e.preventDefault();
+    if (currentProductPage < pageCount) {
+      currentProductPage++;
+      renderProducts(dataToPaginate);
+      setupProductPagination(dataToPaginate);
+    }
+  };
+  paginationUl.appendChild(nextLi);
 }
 
 function deleteProducts(id) {
@@ -1030,6 +1109,7 @@ function deleteProducts(id) {
   });
   localStorage.setItem('listProducts', JSON.stringify(listProducts));
   renderProducts(listProducts);
+  setupProductPagination(listProducts);
 }
 
 // BONUS ++++++++++++++++++
@@ -1168,10 +1248,13 @@ menuLinks.forEach((link) => {
 
     // Bước D: (Bonus) Tùy chỉnh thêm nếu cần khi chuyển tab
     if (targetId === 'section-danh-muc') {
-      renderCategories(1);
+      currentPage = 1; // Reset trang danh mục về 1
+      renderCategories(currentPage, categories);
       setupPagination(categories);
     } else if (targetId === 'section-san-pham') {
-      renderProducts(listProducts);
+      currentProductPage = 1; // Reset trang sản phẩm về 1
+      renderProducts(listProducts); // Gọi hàm render sản phẩm mới
+      setupProductPagination(listProducts); // Gọi hàm phân trang sản phẩm mới
     }
   });
 });

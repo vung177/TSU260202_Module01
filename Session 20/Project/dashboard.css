@@ -145,3 +145,16 @@
   margin-top: auto; /* Thần chú để đẩy nó xuống dưới cùng */
   padding-bottom: 20px; /* Khoảng cách với mép dưới */
 }
+
+/* Chỉnh sửa cột và hàng ở phần sản phẩm */
+#mainProduct table {
+  table-layout: fixed; /* Ép bảng tuân thủ width của th */
+  width: 100%;
+}
+
+/* Xử lý nếu tên sản phẩm quá dài không làm vỡ cột */
+#mainProduct table td {
+  white-space: nowrap; /* Không cho xuống dòng */
+  overflow: hidden; /* Ẩn phần thừa */
+  text-overflow: ellipsis; /* Hiện dấu ... nếu dài quá */
+}
