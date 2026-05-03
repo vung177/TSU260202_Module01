@@ -29,6 +29,8 @@ document.querySelector('form').addEventListener('submit', function (e) {
   }
 
   // 4. Lưu tài khoản và mật khẩu vào localStorage, đồng thời kiểm tra tài khoản đăng ký có bị trùng hay không.
+  e.target.classList.add('was-validated');
+
   if (isValid) {
     const user = {
       fullName: `${firstName} ${lastName}`,
