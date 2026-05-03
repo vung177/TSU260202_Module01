@@ -832,7 +832,7 @@ function setupPagination(dataToPaginate = currentListData) {
   paginationUl.innerHTML = '';
 
   const pageCount = Math.ceil(dataToPaginate.length / itemsPerPage);
-  if (pageCount < 1) return;
+  if (pageCount <= 1) return;
 
   // 1. Nút Mũi tên Trái (Previous)
   const prevLi = document.createElement('li');
