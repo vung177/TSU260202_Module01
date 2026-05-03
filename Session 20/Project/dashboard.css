@@ -1,18 +1,41 @@
-/* Chỉnh sửa chiều rộng của thanh nav */
+/* 
+Cấu trúc hệ thống Grid
+- Tinh chỉnh lại tỉ lệ của bootstrap
+=========================
+*/
+
+/* Chỉnh sửa chiều rộng của thanh sidebar */
 .col-lg-2 {
   width: 12%;
 }
 
+/* Mở rộng phần nội dung để hiển thị dữ liệu nhiều hơn */
 .col-10 {
   width: 88%;
 }
 
+/* Đảm bảo section luôn cao bằng màn hình */
+#mainCategory {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Cho phép phần bảng chiếm hết không gian trống phía trên */
+#mainCategory .p-2.d-flex.flex-column {
+  flex-grow: 1;
+}
+
+/* 
+2. Thanh điều hướng navbar và Avatar
+=========================
+*/
 /* Chỉnh sửa màu của tiêu đề thanh nav */
 .nav-link {
   color: #000;
 }
 
-/* Chỉnh sửa màu của thanh nav */
+/* Chỉnh sửa màu của thanh, ghi đè bằng important nav */
 .nav-link.active {
   color: #ffffff !important;
 }
@@ -21,8 +44,13 @@
 .avatar {
   width: 40px;
   height: 40px;
+  object-fit: cover;
 }
 
+/* 
+3. Form và các thanh chọn
+=========================
+*/
 /* Chỉnh sửa viền xanh của bootstrap */
 .form-control:focus,
 .form-select:focus {
@@ -37,24 +65,7 @@
   cursor: pointer;
 }
 
-/* Tùy chỉnh mọi thành phần có class overflow-auto của Bootstrap */
-.overflow-auto::-webkit-scrollbar {
-  width: 6px;
-}
-
-.overflow-auto::-webkit-scrollbar-track {
-  background: transparent; /* Để nền trong suốt cho sang ông ạ */
-}
-
-.overflow-auto::-webkit-scrollbar-thumb {
-  background: #cbd5e0; /* Màu xám nhạt */
-  border-radius: 100px; /* Bo tròn tuyệt đối */
-}
-
-.overflow-auto::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
-}
-
+/* Trạng thái thông báo lỗi */
 .input-error {
   border: 1px solid red;
 }
@@ -65,15 +76,35 @@
   display: none;
 }
 
-.text-success-bright {
-  color: #2ecc71 !important; /* Màu xanh lá chuẩn modern */
-  filter: drop-shadow(
-    0 0 2px rgba(46, 204, 113, 0.5)
-  ); /* Thêm chút hiệu ứng hắt sáng */
-  font-size: 1.2rem; /* Chỉnh to hơn một chút nếu muốn nổi bật */
+/* 
+4. Dữ liệu sản phẩm
+=========================
+*/
+
+/* Chỉnh sửa cột và hàng ở phần sản phẩm */
+#mainProduct table {
+  table-layout: fixed; /* Ép bảng tuân thủ width của th */
+  width: 100%;
 }
 
-/* ================= Cần xem lại ================ */
+/* Xử lý nếu tên sản phẩm quá dài không làm vỡ cột */
+#mainProduct table td {
+  white-space: nowrap; /* Không cho xuống dòng */
+  overflow: hidden; /* Ẩn phần thừa */
+  text-overflow: ellipsis; /* Hiện dấu ... nếu dài quá */
+}
+
+/* 
+5. Phân trang pagination
+=========================
+*/
+
+/* Phần phân trang */
+#pagination {
+  margin-top: auto; /* Thần chú để đẩy nó xuống dưới cùng */
+  padding-bottom: 20px; /* Khoảng cách với mép dưới */
+}
+
 /* Container phân trang */
 .pagination {
   gap: 8px;
@@ -101,12 +132,6 @@
   transition: all 0.3s ease;
 }
 
-.page-item.disabled .page-link {
-  background: transparent;
-  color: #6c757d;
-  cursor: default;
-}
-
 /* Khi di chuột vào */
 .page-item .page-link:hover {
   background-color: #f8f9fa;
@@ -116,10 +141,16 @@
 
 /* Nút đang được chọn (Active) */
 .page-item.active .page-link {
-  background-color: #0d6efd; /* Màu xanh thương hiệu */
+  background-color: #0d6efd;
   border-color: #0d6efd;
   color: white;
   box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.page-item.disabled .page-link {
+  background: transparent;
+  color: #6c757d;
+  cursor: default;
 }
 
 /* Nút mũi tên */
@@ -129,32 +160,32 @@
   background-color: #fff;
 }
 
-#mainCategory {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Đảm bảo section luôn cao bằng màn hình */
+/* ======================
+6. Thanh cuộn và tiện ích
+=========================
+*/
+/* Tùy chỉnh mọi thành phần có class overflow-auto của Bootstrap */
+.overflow-auto::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* Phần bao quanh bảng danh mục */
-#mainCategory .p-2.d-flex.flex-column {
-  flex-grow: 1; /* Cho phép phần bảng chiếm hết không gian trống phía trên */
+.overflow-auto::-webkit-scrollbar-track {
+  background: transparent; /* Để nền trong suốt cho sang ông ạ */
 }
 
-/* Phần phân trang */
-#pagination {
-  margin-top: auto; /* Thần chú để đẩy nó xuống dưới cùng */
-  padding-bottom: 20px; /* Khoảng cách với mép dưới */
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e0; /* Màu xám nhạt */
+  border-radius: 100px; /* Bo tròn tuyệt đối */
 }
 
-/* Chỉnh sửa cột và hàng ở phần sản phẩm */
-#mainProduct table {
-  table-layout: fixed; /* Ép bảng tuân thủ width của th */
-  width: 100%;
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
 
-/* Xử lý nếu tên sản phẩm quá dài không làm vỡ cột */
-#mainProduct table td {
-  white-space: nowrap; /* Không cho xuống dòng */
-  overflow: hidden; /* Ẩn phần thừa */
-  text-overflow: ellipsis; /* Hiện dấu ... nếu dài quá */
+.text-success-bright {
+  color: #2ecc71 !important; /* Màu xanh lá chuẩn modern */
+  filter: drop-shadow(
+    0 0 2px rgba(46, 204, 113, 0.5)
+  ); /* Thêm chút hiệu ứng hắt sáng */
+  font-size: 1.2rem; /* Chỉnh to hơn một chút nếu muốn nổi bật */
 }
