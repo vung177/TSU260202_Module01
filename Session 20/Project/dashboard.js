@@ -733,8 +733,8 @@ updateForm.addEventListener('submit', (e) => {
     let checkName = listProducts.some((checkInputName) => {
       return (
         checkInputName.id !== idUpdateValue &&
-        checkInputName.name.toLowerCase().trim() ===
-        nameUpdateValue.toLowerCase().trim()
+        checkInputName.name?.toLowerCase().trim() ===
+          nameUpdateValue.toLowerCase()
       );
     });
 
