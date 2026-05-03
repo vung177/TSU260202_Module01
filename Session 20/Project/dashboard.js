@@ -735,7 +735,7 @@ updateForm.addEventListener('submit', (e) => {
       return (
         checkInputName.id !== idUpdateValue &&
         checkInputName.name.toLowerCase().trim() ===
-          nameUpdateValue.toLowerCase().trim()
+        nameUpdateValue.toLowerCase().trim()
       );
     });
 
