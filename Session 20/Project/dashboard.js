@@ -34,6 +34,7 @@ if (!listProducts) {
       name: 'Sony WH-1000XM5',
       price: '6500000',
       status: 'active',
+      category: 'DM012',
       stock: 30,
       discount: 10,
     },
@@ -193,6 +194,14 @@ let currentPage = 1;
 let currentListData = categories;
 const itemsPerPage = 6;
 
+let currentProductPage = 1;
+const productsPerPage = 6;
+let filteredProducts = listProducts;
+
+let selectedCategoryId = 'Tất cả';
+let selectedStatus = 'Tất cả';
+let searchKeyword = '';
+
 // Tìm kiếm và lọc - sản phẩm và danh mục
 // Sản phẩm
 const inputProductSearch = document.getElementById('inputProductSearch');
@@ -224,15 +233,24 @@ function filterAndRenderProduct() {
   const searchText = inputProductSearch.value.toLowerCase().trim();
 
   const filtered = listProducts.filter((p) => {
+    // Lọc theo tên sản phẩm
     const matchName = p.name.toLowerCase().includes(searchText);
+
+    // Lọc theo trạng thái sản phẩm
     const matchStatus =
       productStatusFilter === 'Tất cả' ||
       (productStatusFilter === 'Đang hoạt động' && p.status === 'active') ||
       (productStatusFilter === 'Ngừng hoạt động' && p.status === 'inactive');
-    return matchName && matchStatus;
+
+    // Lọc theo danh mục
+    const matchCategory =
+      selectedCategoryId === 'Tất cả' ||
+      String(p.category) === String(selectedCategoryId);
+    return matchName && matchStatus && matchCategory;
   });
   renderProducts(filtered);
 }
+
 // Danh mục
 const inputCategorySearch = document.getElementById('inputCategorySearch');
 const categoryStatusLinks = document.querySelectorAll(
@@ -310,8 +328,13 @@ document.getElementById('listCategories').addEventListener('click', (e) => {
       } else {
         categories = categories.filter((c) => c.id !== catId);
         localStorage.setItem('categories', JSON.stringify(categories));
+        currentListData = categories;
+        const maxPage = Math.ceil(currentListData.length / itemsPerPage);
+        if (currentPage > maxPage && maxPage > 0) {
+          currentPage = maxPage;
+        }
         renderCategories(currentPage, categories);
-        setupPagination(categories);
+        setupPagination(currentListData);
         renderCategoryToSelect();
         alert(`Đã xóa danh mục "${catName}" thành công!`);
       }
@@ -415,11 +438,15 @@ categoryForm.addEventListener('submit', (e) => {
     renderCategories(currentPage);
     setupPagination();
     localStorage.setItem('categories', JSON.stringify(categories));
+    currentListData = categories;
+    renderCategories(currentPage, currentListData);
+    setupPagination(currentListData);
+    renderCategoryToSelect();
+
     alert('Thêm danh mục thành công!');
 
     categoryForm.reset();
     categoryAddModal.hide();
-    renderCategories(categories);
   }
 });
 
@@ -431,6 +458,70 @@ document.addEventListener('click', function (e) {
   const btn = e.target.closest('.btn-update-category');
   if (btn) {
     categoryUpdateModal.show();
+  }
+});
+
+// Sử dụng đúng các ID trong HTML của ông: category-id, category-name
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.btn-update-category');
+  if (btn) {
+    const idOld = btn.dataset.id;
+    const categoryOld = categories.find((c) => c.id === idOld);
+
+    if (categoryOld) {
+      // Đổ dữ liệu vào đúng ID ông đã đặt
+      document.getElementById('category-id').value = categoryOld.id;
+      document.getElementById('category-name').value = categoryOld.name;
+
+      // Tìm đúng radio có name="status" trong modal update của ông
+      const statusRadios = document.querySelectorAll(
+        '#idModalUpdateCategory input[name="status"]',
+      );
+      statusRadios.forEach((radio) => {
+        if (radio.value === categoryOld.status) {
+          radio.checked = true;
+        }
+      });
+    }
+    categoryUpdateModal.show();
+  }
+});
+
+const updateCategoryForm = document.getElementById('formUpdateCategory');
+
+updateCategoryForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const idUpdate = document.getElementById('category-id').value;
+  const nameUpdate = document.getElementById('category-name').value.trim();
+  const statusUpdate = document.querySelector(
+    '#idModalUpdateCategory input[name="status"]:checked',
+  ).value;
+
+  if (nameUpdate === '') {
+    alert('Tên danh mục không được để trống!');
+    return;
+  }
+
+  // Cập nhật vào mảng categories hiện tại
+  const index = categories.findIndex((c) => c.id === idUpdate);
+  if (index !== -1) {
+    categories[index].name = nameUpdate;
+    categories[index].status = statusUpdate;
+
+    // Lưu vào localStorage và cập nhật giao diện
+    localStorage.setItem('categories', JSON.stringify(categories));
+
+    // Render lại trang hiện tại để giữ vị trí phân trang
+    renderCategories(currentPage, categories);
+
+    alert('Cập nhật danh mục thành công!');
+    categoryUpdateModal.hide();
+
+    // Cập nhật lại dropdown bên sản phẩm nếu cần
+    if (typeof renderCategoryToSelect === 'function') {
+      renderCategoryToSelect();
+    }
   }
 });
 
@@ -897,6 +988,12 @@ function renderProducts(arr) {
 
   let newProducts = arr
     .map((p) => {
+      // Phần này dành cho việc render danh mục ra bảng sản phẩm khi bảng sản phẩm có thêm ô Danh mục
+      // const categoryObj = categories.find(
+      //   (cat) => String(cat.id) === String(p.category),
+      // );
+      // const categoryName = categoryObj ? categoryObj.name : 'Chưa phân loại';
+
       const price = p.price ? Number(p.price).toLocaleString('vi-VN') : 0;
       const statusBadge =
         p.status === 'active'
@@ -985,15 +1082,44 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
 // Code này cũng cần xem lại
 function renderCategoryToSelect() {
   const selectAdd = document.getElementById('productCategory');
   const selectUpdate = document.getElementById('updateProductCategory');
+  const filterMenu = document.getElementById('filterCategoryMenu');
+
   const options = categories
     .map((cat) => `<option value="${cat.id}">${cat.name}</option>`)
     .join('');
   if (selectAdd) selectAdd.innerHTML = options;
   if (selectUpdate) selectUpdate.innerHTML = options;
+
+  if (filterMenu) {
+    let filterHtml = `<li><a href="#" class="dropdown-item" data-id="Tất cả">Tất cả danh mục</a></li>`;
+    filterHtml += categories
+      .map(
+        (cat) =>
+          `<li><a href="#" class="dropdown-item" data-id="${cat.id}">${cat.name}</a></li>`,
+      )
+      .join('');
+    filterMenu.innerHTML = filterHtml;
+    setupFilterCategoryEvents();
+  }
+}
+
+function setupFilterCategoryEvents() {
+  const items = document.querySelectorAll('#filterCategoryMenu .dropdown-item');
+  const filterBtn = document.getElementById('dropdownFilterCategory');
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      selectedCategoryId = item.dataset.id;
+      if (filterBtn)
+        filterBtn.firstChild.textContent = item.textContent.trim() + ' ';
+      filterAndRenderProduct();
+    });
+  });
 }
 
 // Đảm bảo các hàm này được gọi ngay khi file JS load xong
