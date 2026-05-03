@@ -299,6 +299,7 @@ function sortProducts(direction = 'asc') {
       ? a.name.localeCompare(b.name)
       : b.name.localeCompare(a.name);
   });
+  filterAndRenderProduct();
 }
 
 // Sắp xếp theo danh mục
@@ -308,7 +309,7 @@ function sortCategories(direction = 'asc') {
       ? a.name.localeCompare(b.name)
       : b.name.localeCompare(a.name);
   });
-  renderCategories(1);
+  filterAndRenderCategories();
 }
 
 // Kiểm tra danh mục có còn sản phẩm hay không
@@ -437,8 +438,6 @@ categoryForm.addEventListener('submit', (e) => {
     };
 
     categories.push(newCategory);
-    renderCategories(currentPage);
-    setupPagination();
     localStorage.setItem('categories', JSON.stringify(categories));
     currentListData = categories;
     renderCategories(currentPage, currentListData);
@@ -809,23 +808,6 @@ btnConfirmDelete.addEventListener('click', () => {
   }
 });
 
-renderCategories(1);
-setupPagination();
-renderCategories(categories);
-renderProducts(listProducts);
-
-/**
- * Danh sách các hàm
- * setupPagination - cần xem lại
- * renderCategories
- * showError
- * removeError
- * closeModal
- * renderProducts
- * deleteProducts
- * BONUS
- */
-
 function setupPagination(dataToPaginate = currentListData) {
   const paginationUl = document.querySelector('#pagination ul');
   if (!paginationUl) return;
@@ -903,18 +885,6 @@ function renderPageBtn(container, i, dataToPaginate) {
     setupPagination(dataToPaginate);
   };
   container.appendChild(li);
-}
-
-// Đồng bộ danh mục
-function syncCategoryData() {
-  localStorage.setItem('categories', JSON.stringify(categories));
-  renderCategories(categories);
-}
-
-// Đồng bộ sản phẩm
-function syncProductData() {
-  localStorage.setItem('listProducts', JSON.stringify(listProducts));
-  renderProducts(listProducts);
 }
 
 // Hàm đóng Modal
@@ -1108,8 +1078,7 @@ function deleteProducts(id) {
     return i.id !== id;
   });
   localStorage.setItem('listProducts', JSON.stringify(listProducts));
-  renderProducts(listProducts);
-  setupProductPagination(listProducts);
+  filterAndRenderProduct();
 }
 
 // BONUS ++++++++++++++++++
@@ -1258,24 +1227,3 @@ menuLinks.forEach((link) => {
     }
   });
 });
-
-/**
- * Đoạn code lấy dữ liệu từ localStorage
-// Lấy dữ liệu có tên key là "categories"
-let data = localStorage.getItem('categories');
-
-console.log(data);
-
-// 1. Lấy chuỗi JSON từ localStorage
-let rawData = localStorage.getItem('categories');
-
-// 2. Chuyển chuỗi đó về lại thành Mảng/Đối tượng
-if (rawData) {
-  let categories = JSON.parse(rawData);
-  console.log('Danh sách danh mục:', categories);
-
-  // Bây giờ bạn có thể dùng categories.length để tính số trang
-} else {
-  console.log('Không tìm thấy dữ liệu trong localStorage');
-}
- */
