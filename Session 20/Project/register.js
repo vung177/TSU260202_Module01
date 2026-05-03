@@ -11,7 +11,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
   const confirmPassword = confirmPasswordInput.value;
 
   let isValid = true;
-
+  
   // 2. Kiểm tra mật khẩu có ít nhất 8 ký tự
   if (password.length < 8) {
     passwordInput.classList.add('is-invalid');
