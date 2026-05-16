@@ -345,6 +345,61 @@ document.getElementById('listCategories').addEventListener('click', (e) => {
   }
 });
 
+/* Tham khảo xóa danh mục sản phẩm bằng bootstrap
+const modalDeleteCategoryElement = document.getElementById('modalDeleteCategory');
+const categoryDeleteModal = modalDeleteCategoryElement ? new bootstrap.Modal(modalDeleteCategoryElement) : null;
+let idCategoryToDelete = null;
+let nameCategoryToDelete = null;
+
+document.getElementById('listCategories').addEventListener('click', (e) => {
+  const btnDelete = e.target.closest('.text-danger');
+  if (btnDelete) {
+    idCategoryToDelete = btnDelete.dataset.id;
+    nameCategoryToDelete = btnDelete.dataset.name;
+
+    if (modalDeleteCategoryElement) {
+      const spanName = modalDeleteCategoryElement.querySelector('.modal-body span');
+      if (spanName) {
+        spanName.textContent = nameCategoryToDelete;
+        spanName.classList.add('fw-bold');
+      }
+      categoryDeleteModal.show();
+    }
+  }
+});
+
+const btnConfirmDeleteCategory = document.querySelector('#modalDeleteCategory .btn-delete-category-confirm');
+if (btnConfirmDeleteCategory) {
+  btnConfirmDeleteCategory.addEventListener('click', () => {
+    if (!idCategoryToDelete) return;
+
+    const hasProduct = listProducts.some(
+      (p) => String(p.category) === String(idCategoryToDelete),
+    );
+
+    if (hasProduct) {
+      alert(`Không thể xóa danh mục "${nameCategoryToDelete}" vì vẫn còn sản phẩm thuộc danh mục này!`);
+      categoryDeleteModal.hide();
+    } else {
+      categories = categories.filter((c) => c.id !== idCategoryToDelete);
+      localStorage.setItem('categories', JSON.stringify(categories));
+      currentListData = categories;
+      const maxPage = Math.ceil(currentListData.length / itemsPerPage);
+      if (currentPage > maxPage && maxPage > 0) {
+        currentPage = maxPage;
+      }
+      renderCategories(currentPage, categories);
+      setupPagination(currentListData);
+      if (typeof renderCategoryToSelect === 'function') {
+        renderCategoryToSelect();
+      }
+      alert(`Đã xóa danh mục "${nameCategoryToDelete}" thành công!`);
+      categoryDeleteModal.hide();
+    }
+  });
+}
+*/
+
 // Đăng xuất tài khoản
 // Chuyển hướng về trang đăng nhập
 // Kiểm tra trạng thái đã đăng nhập hay chưa?
