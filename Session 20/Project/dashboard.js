@@ -189,8 +189,10 @@ if (!categories) {
   ];
 }
 
+// Đưa dữ liệu mẫu vão localStorage
 localStorage.setItem('categories', JSON.stringify(categories));
 
+// Biến toàn cục để quản lý trạng thái phân trang, lọc, tìm kiếm
 let currentPage = 1;
 let currentListData = categories;
 const itemsPerPage = 6;
