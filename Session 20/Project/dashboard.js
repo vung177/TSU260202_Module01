@@ -170,6 +170,7 @@ if (!listProducts) {
 }
 localStorage.setItem('listProducts', JSON.stringify(listProducts));
 
+// Dữ liệu mẫu cho danh mục sản phẩm
 let categories = JSON.parse(localStorage.getItem('categories'));
 if (!categories) {
   categories = [
