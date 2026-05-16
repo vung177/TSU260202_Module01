@@ -203,7 +203,7 @@ let selectedStatus = 'Tất cả';
 let searchKeyword = '';
 
 // Tìm kiếm và lọc - sản phẩm và danh mục
-// Sản phẩm
+// #mainproduct Sản phẩm
 const inputProductSearch = document.getElementById('inputProductSearch');
 const productStatusLinks = document.querySelectorAll(
   '#mainProduct .dropdown-menu .dropdown-item',
@@ -211,12 +211,12 @@ const productStatusLinks = document.querySelectorAll(
 
 let productStatusFilter = 'Tất cả';
 
-// Tìm kiếm sản phẩm theo tên
+// #productsearch Tìm kiếm sản phẩm theo tên
 inputProductSearch.addEventListener('input', () => {
   filterAndRenderProduct();
 });
 
-// Lọc trạng thái sản phẩm
+// #dropdown Lọc sản phẩm theo trạng thái
 productStatusLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -253,7 +253,7 @@ function filterAndRenderProduct() {
   setupProductPagination(filteredProducts);
 }
 
-// Danh mục
+// #maincategory Danh mục sản phẩm
 const inputCategorySearch = document.getElementById('inputCategorySearch');
 const categoryStatusLinks = document.querySelectorAll(
   '#mainCategory .dropdown-menu .dropdown-item',
@@ -261,10 +261,12 @@ const categoryStatusLinks = document.querySelectorAll(
 
 let categoryStatusFilter = 'Tất cả';
 
+// #categorysearch Tìm kiếm danh mục theo tên
 inputCategorySearch.addEventListener('input', () => {
   filterAndRenderCategories();
 });
 
+// #btnselectcategory Nút chọn danh mục
 categoryStatusLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -312,6 +314,7 @@ function sortCategories(direction = 'asc') {
   filterAndRenderCategories();
 }
 
+// ====== #deletecategory Nút xóa danh mục ======
 // Kiểm tra danh mục có còn sản phẩm hay không
 document.getElementById('listCategories').addEventListener('click', (e) => {
   const btnDelete = e.target.closest('.text-danger');
@@ -400,7 +403,7 @@ if (btnConfirmDeleteCategory) {
 }
 */
 
-// Đăng xuất tài khoản
+// #logout Log out tài khoản
 // Chuyển hướng về trang đăng nhập
 // Kiểm tra trạng thái đã đăng nhập hay chưa?
 let isLogin = JSON.parse(localStorage.getItem('isLogin'));
@@ -425,7 +428,7 @@ if (btnConfirmLogOut) {
   });
 }
 
-// Mở Thêm mới danh mục
+// ====== #addcategory Nút Thêm mới danh mục ======
 const btnAddNewCategory = document.getElementById('btnAddNewCategory');
 const modalCategory = document.getElementById('idModalAddCategory');
 const categoryAddModal = new bootstrap.Modal(modalCategory);
@@ -506,6 +509,7 @@ categoryForm.addEventListener('submit', (e) => {
   }
 });
 
+// ====== #updatecategory Nút cập nhật danh mục ======
 const modalUpdateCategory = document.getElementById('idModalUpdateCategory');
 const categoryUpdateModal = new bootstrap.Modal(modalUpdateCategory);
 
@@ -581,6 +585,7 @@ updateCategoryForm.addEventListener('submit', (e) => {
   }
 });
 
+// ======= #addproduct Nút Thêm mới sản phẩm ======
 const btnAddNewProduct = document.getElementById('btnAddNewProduct');
 const modalElement = document.getElementById('modalAddProduct');
 const productAddModal = new bootstrap.Modal(modalElement);
@@ -687,7 +692,7 @@ addForm.addEventListener('submit', (event) => {
   }
 });
 
-// Mở tab cập nhật sản phẩm
+// ====== #updateproduct Nút cập nhật sản phẩm ======
 const modalUpdateElement = document.getElementById('modalUpdateProduct');
 const productUpdateModal = new bootstrap.Modal(modalUpdateElement);
 
@@ -823,6 +828,7 @@ updateForm.addEventListener('submit', (e) => {
   }
 });
 
+// ====== #deleteproduct Nút xóa sản phẩm ======
 // Mở tab xóa sản phẩm
 // Cần có 1 biến trung gian để khi xóa sản phẩm cần lưu id sản phẩm xóa đó vào biến trung gian
 const modalDeleteElement = document.getElementById('modalDeleteProduct');
@@ -863,6 +869,7 @@ btnConfirmDelete.addEventListener('click', () => {
   }
 });
 
+// #paginationcategory Phân trang danh mục
 function setupPagination(dataToPaginate = currentListData) {
   const paginationUl = document.querySelector('#pagination ul');
   if (!paginationUl) return;
@@ -951,7 +958,7 @@ function closeModal(modalId) {
   }
 }
 
-// Render danh mục ra màn hình
+// #tablecategory Bảng danh mục
 function renderCategories(page = 1, dataToRender = categories) {
   const tableCategories = document.getElementById('listCategories');
   if (!tableCategories) return;
@@ -1008,7 +1015,7 @@ function removeError(input, errorId) {
   errorElement.style.display = 'none';
 }
 
-// Render sản phẩm ra màn hình
+// #table Bảng danh sách sản phẩm
 function renderProducts(arr = listProducts) {
   let productsTable = document.getElementById('tableProducts');
   if (!productsTable) return;
@@ -1062,6 +1069,7 @@ function renderProducts(arr = listProducts) {
     .join('');
 }
 
+// #pagination Phần trang sản phẩm
 function setupProductPagination(dataToPaginate = listProducts) {
   const paginationUl = document.querySelector('#productPagination ul');
   if (!paginationUl) return;
@@ -1136,7 +1144,7 @@ function deleteProducts(id) {
   filterAndRenderProduct();
 }
 
-// BONUS ++++++++++++++++++
+// #mainStatistics Bảng thống kê tham khảo
 document.addEventListener('DOMContentLoaded', function () {
   const ctx = document.getElementById('revenueChart').getContext('2d');
 
