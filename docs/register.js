@@ -1,7 +1,7 @@
 document.querySelector('form').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  // 1. Lấy các element và giá trị
+  // 1. Get elements and values
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const email = document.getElementById('emailInput').value;
@@ -12,7 +12,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
   let isValid = true;
 
-  // 2. Kiểm tra mật khẩu có ít nhất 8 ký tự
+  // 2. Validate password length (min 8 chars)
   if (password.length < 8) {
     passwordInput.classList.add('is-invalid');
     isValid = false;
@@ -20,7 +20,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     passwordInput.classList.remove('is-invalid');
   }
 
-  // 3. Kiểm tra mật khẩu có trùng hay không
+  // 3. Validate password confirmation
   if (confirmPassword !== password) {
     confirmPasswordInput.classList.add('is-invalid');
     isValid = false;
@@ -28,7 +28,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     confirmPasswordInput.classList.remove('is-invalid');
   }
 
-  // 4. Lưu tài khoản và mật khẩu vào localStorage, đồng thời kiểm tra tài khoản đăng ký có bị trùng hay không.
+  // 4. Save account to localStorage if valid
   e.target.classList.add('was-validated');
 
   if (isValid) {
@@ -46,12 +46,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
       listAccount = [{ email: 'admin@gmail.com', password: '12345678' }];
     }
     if (listAccount.some((e) => e.email === email)) {
-      alert('Email đã được đăng ký, vui lòng đăng ký email khác!');
+      alert('This email is already registered, please use another email!');
       return;
     }
     listAccount.push(user);
     localStorage.setItem('users', JSON.stringify(listAccount));
-    alert('Đăng ký thành công!');
+    alert('Registration successful!');
     window.location.href = './signin.html';
   }
 });

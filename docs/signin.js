@@ -21,10 +21,10 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
       localStorage.removeItem('rememberedEmail');
     }
     localStorage.setItem('isLogin', true);
-    alert('Đăng nhập thành công!');
+    alert('Login successful!');
     window.location.href = './dashboard.html';
   } else {
-    alert('Email và mật khẩu không đúng!');
+    alert('Incorrect email or password!');
   }
 });
 
@@ -41,5 +41,5 @@ document.getElementById('register').addEventListener('click', (e) => {
 });
 
 document.getElementById('forgetPassword').addEventListener('click', (e) => {
-  alert('Trang đang được hoàn thiện, vui lòng quay lại sau!');
+  alert('This feature is under development, please check back later!');
 });
