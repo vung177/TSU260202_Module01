@@ -527,14 +527,27 @@ body {
 }
 
 .btn-banner2 {
-  width: 187px;
+  min-width: 200px;
   height: 56px;
   border-radius: 6px;
   border: 1px solid #ffffff;
-  padding: 16px 56px;
+  padding: 0 36px;
   margin-top: 30px;
   background-color: black;
   color: #ffffff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-banner2:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .banner2-left {
@@ -614,6 +627,8 @@ body {
 .footer-p {
   margin-top: 24px;
   font-size: 14px;
+  line-height: 24px;
+  text-align: justify;
 }
 
 .footer-service h3,

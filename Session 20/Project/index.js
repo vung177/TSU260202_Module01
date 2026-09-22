@@ -8,3 +8,15 @@
 - Nếu đã có tài khoản thì nhấp vào đăng nhập, chuyển đến màn hình đăng nhập
 - Tất cả ô thông tin phải được nhập thông tin trước khi đăng ký.
 */
+
+// Liên kết icon Profile: nếu đã đăng nhập thì vào Dashboard, nếu chưa thì vào Đăng nhập
+const profileLink = document.getElementById('profileLink');
+if (profileLink) {
+  profileLink.addEventListener('click', (e) => {
+    const isLogin = JSON.parse(localStorage.getItem('isLogin'));
+    if (isLogin) {
+      e.preventDefault();
+      window.location.href = './dashboard.html';
+    }
+  });
+}

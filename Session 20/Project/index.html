@@ -67,7 +67,7 @@
           <input type="text" name="keyword" placeholder="Tìm kiếm" />
         </form>
         <nav class="navigation">
-          <a href="#" class="Home">Trang chủ</a>
+          <a href="./index.html" class="Home">Trang chủ</a>
           <a href="#" class="About">Giới thiệu</a>
           <a href="#" class="Contacts">Liên hệ</a>
           <a href="#" class="Blog">Blog</a>
@@ -106,22 +106,29 @@
               stroke-linejoin="round"
             />
           </svg>
-          <svg
-            class="Profile"
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <a
+            href="./signin.html"
+            id="profileLink"
+            title="Tài khoản / Đăng nhập"
+            style="color: inherit; display: inline-flex; align-items: center; text-decoration: none;"
           >
-            <path
-              d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27M21 9.5C21 11.9853 18.9853 14 16.5 14C14.0147 14 12 11.9853 12 9.5C12 7.01472 14.0147 5 16.5 5C18.9853 5 21 7.01472 21 9.5Z"
-              stroke="black"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+            <svg
+              class="Profile"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27M21 9.5C21 11.9853 18.9853 14 16.5 14C14.0147 14 12 11.9853 12 9.5C12 7.01472 14.0147 5 16.5 5C18.9853 5 21 7.01472 21 9.5Z"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
         </section>
       </section>
       <section class="subnav-container">
@@ -349,10 +356,9 @@
               </section>
               <div class="banner-image">
                 <img
-                  src="https://ipowerresale.com/cdn/shop/files/media_7c183408-86c2-4815-a00f-a7d39bcc701a.png?v=1766096140
-                  "
-                  alt="Macbook Air"
-                  class="img-fluid"
+                  src="./Photos/MacBook Gold.png"
+                  alt="MacBook Air"
+                  class="img-fluid w-auto"
                 />
               </div>
             </section>
@@ -953,7 +959,7 @@
 
       <!-- ========= Products Discount ========= -->
       <section class="products-discount">
-        <h3 class="category-title">Sản phẩm giảm giá</h3>
+        <h3 class="category-title">Discounts up to -50%</h3>
         <section class="products-discount-items">
           <article class="products-card">
             <div class="cards-top">
@@ -981,7 +987,7 @@
             <div class="cards-info">
               <h4 class="cards-name">Apple iPhone 14 Pro 512GB Gold (MQ233)</h4>
               <p class="cards-price">$1437</p>
-              <button class="btn-cards">Mua ngay</button>
+              <button class="btn-cards">Buy Now</button>
             </div>
           </article>
           <article class="products-card">
@@ -1010,7 +1016,7 @@
             <div class="cards-info">
               <h4 class="cards-name">AirPods Max Silver</h4>
               <p class="cards-price">$549</p>
-              <button class="btn-cards">Mua ngay</button>
+              <button class="btn-cards">Buy Now</button>
             </div>
           </article>
           <article class="products-card">
@@ -1041,7 +1047,7 @@
                 Apple Watch Series 9 GPS 41mm Starlight Aluminium
               </h4>
               <p class="cards-price">$399</p>
-              <button class="btn-cards">Mua ngay</button>
+              <button class="btn-cards">Buy Now</button>
             </div>
           </article>
           <article class="products-card">
@@ -1070,7 +1076,7 @@
             <div class="cards-info">
               <h4 class="cards-name">Apple iPhone 14 Pro 1TB Gold (MQ2V3)</h4>
               <p class="cards-price">$1499</p>
-              <button class="btn-cards">Mua ngay</button>
+              <button class="btn-cards">Buy Now</button>
             </div>
           </article>
         </section>
@@ -1105,9 +1111,9 @@
           alt=""
         />
         <article class="banner2-contents">
-          <h2 class="banner2-title">Ưu đãi mùa hè</h2>
-          <p class="banner2-body">Nhanh tay săn đón các sản phẩm chất lượng</p>
-          <button class="btn-banner2">Mua ngay</button>
+          <h2 class="banner2-title">Big Summer <span>Sale</span></h2>
+          <p class="banner2-body">Commodo fames vitae vitae leo mauris in. Eu consequat.</p>
+          <button class="btn-banner2">Shop Now</button>
         </article>
       </section>
       <section class="footer">
@@ -1148,32 +1154,32 @@
             </svg>
 
             <p class="footer-p">
-              Chúng tôi cung cấp các sản phẩm công nghệ, giúp khách hàng thỏa
-              sức trải nghiệm các dịch vụ, tiện ích nhanh chóng và hiệu quả
+              We provide technology products, empowering customers to experience
+              fast, convenient, and effective services and utilities.
             </p>
           </div>
           <section class="footer-nav">
             <article class="footer-service">
-              <h3>Dịch vụ</h3>
+              <h3>Services</h3>
               <nav>
-                <a href="">Chương trình khuyến mãi</a>
+                <a href="">Bonus program</a>
                 <a href="">Gift cards</a>
-                <a href="">Tín dụng và thNh toán</a>
-                <a href="">Dịch vụ hợp đồng</a>
-                <a href="">Ví tiền điện tử</a>
-                <a href="">Thanh toán</a>
+                <a href="">Credit and payment</a>
+                <a href="">Service contracts</a>
+                <a href="">Non-cash account</a>
+                <a href="">Payment</a>
               </nav>
             </article>
             <article class="footer-support">
-              <h3>Hỗ trợ người mua</h3>
+              <h3>Assistance to the buyer</h3>
               <nav>
-                <a href="">Tìm kiếm đơn đặt hàng</a>
-                <a href="">Điều khoản giao hàng</a>
-                <a href="">Trao đổi và trả hàng</a>
-                <a href="">Chính sách bảo hành</a>
-                <a href="">Câu hỏi thường gặp</a>
-                <a href="">Chính sách và điều khoản</a>
-              </nav>
+                <a href="">Find an order</a>
+                <a href="">Terms of delivery</a>
+                <a href="">Exchange and return of goods</a>
+                <a href="">Guarantee</a>
+                <a href="">Frequently asked questions</a>
+                <a href="">Terms of use of the site</a>
+             </nav>
             </article>
           </section>
         </article>
